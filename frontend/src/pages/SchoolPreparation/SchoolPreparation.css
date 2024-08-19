@@ -1,0 +1,88 @@
+/* Container Style */
+.school-preparation-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Arial, sans-serif';
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* Title Style */
+.title {
+    text-align: center;
+    font-size: 2.8em;
+    margin-bottom: 25px;
+    color: #019BBD;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Stages Container */
+.stages {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* Each Stage Style */
+.stage {
+    background: linear-gradient(145deg, #fafafa, #f0f0f0);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, background 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Stage Hover Effect */
+.stage:hover {
+    transform: translateY(-5px);
+    background: #f0f4f8;
+}
+
+/* Stage Header Style */
+.stage h2 {
+    margin-top: 0;
+    font-size: 1.5em;
+    color: #333;
+}
+
+/* Stage Paragraph and List Style */
+.stage p, .stage ul {
+    margin: 0;
+    font-size: 1em;
+    color: #555;
+    line-height: 1.6;
+    opacity: 0;
+    transition: opacity 0.3s ease, max-height 0.3s ease;
+    max-height: 0;
+    overflow: hidden;
+}
+
+.stage:hover p, .stage:hover ul {
+    opacity: 1;
+    max-height: 1000px; /* High enough value to show content */
+}
+
+/* Stage List Style */
+.stage ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.stage ul li {
+    margin: 5px 0;
+}
+
+.stage ul li a {
+    color: #2980b9;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.stage ul li a:hover {
+    color: #1a5276;
+    text-decoration: underline;
+}

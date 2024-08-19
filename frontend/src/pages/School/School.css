@@ -1,0 +1,108 @@
+/* Container Style */
+.school-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Title Style */
+.title {
+    text-align: center;
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 40px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    position: relative;
+}
+
+/* Adding a subtle underline */
+.title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #00bcd4;
+    margin: 10px auto;
+    border-radius: 2px;
+    transform: scaleX(0);
+    transition: transform 0.7s ease; /* Slower transition */
+}
+
+.title:hover::after {
+    transform: scaleX(1);
+}
+
+/* Stages Container Style */
+.stages {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Stage Style */
+.stage {
+    background: #f5f7f9;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 1s ease, box-shadow 1s ease; /* Slower transition */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hover Effect for Stages */
+.stage:hover {
+    transform: translateY(-10px); /* Slightly larger lift effect */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Adding a hover effect to the stage header */
+.stage h2 {
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 700;
+    position: relative;
+    transition: color 0.5s ease; /* Slower transition */
+}
+
+/* Hover effect for stage header */
+.stage:hover h2 {
+    color: #00bcd4;
+}
+
+/* Stage Paragraph Style */
+.stage p {
+    font-size: 1.1em;
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+    position: relative;
+    padding-left: 20px;
+}
+
+/* Adding a subtle left border to paragraphs */
+.stage p::before {
+    content: '';
+    display: block;
+    width: 4px;
+    height: 100%;
+    background: #00bcd4;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 2px;
+    transition: background-color 1s ease; /* Slower transition */
+}
+
+/* Optional: Change color on hover for the paragraph border */
+.stage:hover p::before {
+    background-color: #0186a1; /* Darker shade on hover */
+}

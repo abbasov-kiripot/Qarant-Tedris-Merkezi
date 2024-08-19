@@ -1,0 +1,77 @@
+/* Notifications Page Section */
+.notifications-page {
+    padding-left: 550px; /* Sol iç boşluk */
+    margin-top: 60px; /* Üstten boşluk */
+    border-radius: 8px; /* Köşe yuvarlama */
+  }
+  
+  .notifications-page h2 {
+    color: #333; /* Başlık rengi */
+    font-size: 2rem; /* Başlık boyutu */
+    margin-bottom: 10px; /* Başlık altı boşluk */
+    font-weight: 600; /* Kalın başlık */
+  }
+  
+  .notifications-page p {
+    color: #666; /* Metin rengi */
+    font-size: 1.125rem; /* Metin boyutu */
+    margin-bottom: 20px; /* Metin altı boşluk */
+  }
+  
+  /* Notifications List Section */
+  .notifications-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Kartlar arası boşluk */
+  }
+  
+  .notification-card {
+    background-color: #ffffff; /* Kart arka plan rengi */
+    padding: 20px;
+    border-radius: 8px; /* Köşe yuvarlama */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Kart gölgesi */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Geçiş efekti */
+    cursor: pointer; /* İmleç işaretçisi */
+    position: relative; /* Konumlandırma */
+  }
+  
+  .notification-card:hover {
+    background-color: #f1f1f1; /* Hover arka plan rengi */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Hover gölgesi */
+  }
+  
+  .notification-card h3 {
+    margin-top: 0;
+    color: #333; /* Başlık rengi */
+    font-size: 1.25rem; /* Başlık boyutu */
+  }
+  
+  .notification-card p {
+    color: #666; /* Metin rengi */
+    font-size: 1rem; /* Metin boyutu */
+  }
+  
+  /* No Notifications Section */
+  .no-notifications {
+    color: #999; /* Metin rengi */
+    font-size: 1rem; /* Metin boyutu */
+    text-align: center; /* Merkezleme */
+    margin-top: 20px; /* Üstten boşluk */
+  }
+  
+  /* Delete Button */
+  .delete-btn {
+    background: none;
+    border: none;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #ff5c5c; /* Kapatma ikonu rengi */
+    cursor: pointer;
+    transition: color 0.3s ease; /* Geçiş efekti */
+  }
+  
+  .delete-btn:hover {
+    color: #ff0000; /* Hover rengi */
+  }
+  

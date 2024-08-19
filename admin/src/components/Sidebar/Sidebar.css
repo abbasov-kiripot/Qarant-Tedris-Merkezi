@@ -1,0 +1,65 @@
+/* Sidebar Section */
+.sidebar {
+  width: 200px;
+  height: 100vh;
+  background-color: #019bbd; /* Updated background color */
+  position: fixed;
+  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for background color and shadow */
+  overflow-y: auto; /* Allows scrolling if content overflows */
+  z-index: 1;
+  backdrop-filter: blur(10px); /* Blur effect behind sidebar */
+}
+
+
+/* Sidebar Options */
+.sidebar-options {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Spacing between options */
+}
+
+.sidebar-option {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  padding: 10px;
+  color: #fff; /* Text color */
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for background color and text color */
+  cursor: pointer; /* Hand cursor on hover */
+}
+
+.sidebar-option:hover {
+  background-color: #017a9b; /* Background color change on hover */
+  color: #e0f7fa; /* Lighter text color on hover */
+  transform: scale(1.05); /* Slight scaling on hover */
+}
+
+.sidebar-link {
+  color: inherit; /* Inherit color from parent */
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500; /* Slightly bold text */
+}
+
+/* Sidebar Icon */
+.sidebar-icon {
+  font-size: 1.5rem; /* Icon size */
+  margin-right: 10px; /* Space between icon and text */
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100px; /* Narrower sidebar on small screens */
+    border-radius: 10px; /* Rounded corners on small screens */
+  }
+
+  .sidebar-option p {
+    display: none; /* Hide text on small screens */
+  }
+
+  .sidebar-option {
+    justify-content: center; /* Center content horizontally */
+  }
+}

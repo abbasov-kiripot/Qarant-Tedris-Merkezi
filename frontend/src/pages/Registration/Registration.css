@@ -1,0 +1,82 @@
+/* Contact Form Styles */
+.online-exam-portal {
+  width: 100%;
+  max-width: 450px;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 40px;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Form Header Style */
+.online-exam-portal h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #333;
+}
+
+/* Form Elements Style */
+.online-exam-portal form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Input, Select, and Textarea Styles */
+.online-exam-portal select,
+.online-exam-portal input,
+.online-exam-portal textarea {
+  padding: 15px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.online-exam-portal select:focus,
+.online-exam-portal input:focus,
+.online-exam-portal textarea:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+  outline: none;
+}
+
+/* Birth Date Style */
+.online-exam-portal .birth-date {
+  display: flex;
+  gap: 10px;
+}
+
+.online-exam-portal .birth-date select {
+  flex: 1;
+}
+
+/* Button Style */
+.online-exam-portal button {
+  padding: 15px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.online-exam-portal button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.online-exam-portal button:active {
+  background-color: #004494;
+  transform: scale(1);
+}

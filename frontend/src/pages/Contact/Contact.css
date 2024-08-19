@@ -1,0 +1,63 @@
+/* src/App.css */
+.Contact {
+  text-align: start;
+}
+.AH-1{
+ font-size: 40px;
+ padding-left: 400px;
+ font-weight: 500;
+}
+.Contact-header {
+  padding: 20px;
+  color: #019BBD;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16% ;
+  padding: 15px;
+  border: 1px solid #019BBD;
+  border-radius: 10px;
+  max-width: 400px;
+  
+}
+
+.contact-form label {
+  margin-bottom: 15px;
+  width: 100%;
+  opacity: 95%;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #019BBD;
+  
+  border-radius: 5px;
+
+}
+
+.contact-form button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.contact-form button:hover {
+  background-color: #0056b3;
+}
+
+.map-container {
+  margin: 20px auto;
+  max-width: 600px;
+  display: flex;
+  margin-left: 50%;
+  margin-top: -53%;
+}

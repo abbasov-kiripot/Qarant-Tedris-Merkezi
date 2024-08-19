@@ -1,0 +1,136 @@
+/* Courses Page Section */
+.courses-page {
+    padding-left: 600px;
+    margin-top: 50px;
+  }
+  
+  .courses-header {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .courses-header h2 {
+    color: #333;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  
+  .courses-header p {
+    color: #666;
+    font-size: 1.125rem;
+    margin-bottom: 20px;
+  }
+  
+  .toggle-form-btn {
+    background-color: #019bbd;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .toggle-form-btn:hover {
+    background-color: #017a9b;
+  }
+  
+  .course-form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .course-form input,
+  .course-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .save-btn {
+    background-color: #4caf50; /* Green */
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .save-btn:hover {
+    background-color: #388e3c;
+  }
+  
+  .courses-list {
+    margin-top: 20px;
+  }
+  
+  .no-courses {
+    color: #999;
+    font-size: 1rem;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .course-card {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+    position: relative;
+  }
+  
+  .course-card h3 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.5rem;
+  }
+  
+  .course-card p {
+    color: #666;
+    font-size: 1rem;
+    margin: 0;
+  }
+  
+  .course-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .edit-btn, .delete-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .edit-btn {
+    background-color: #4caf50; /* Green */
+  }
+  
+  .edit-btn:hover {
+    background-color: #388e3c;
+  }
+  
+  .delete-btn {
+    background-color: #f44336; /* Red */
+  }
+  
+  .delete-btn:hover {
+    background-color: #c62828;
+  }
+  

@@ -1,0 +1,179 @@
+/* Signup Container */
+.signup-container {
+  width: 100%;
+  max-width: 450px;
+  margin: 50px auto;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+/* Signup Header */
+.signup-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.signup-header .logo {
+  width: 50%;
+  margin: 0 auto 20px;
+  display: block;
+}
+
+.signup-header h2 {
+  margin: 0;
+  font-size: 2rem;
+  color: #333;
+  font-weight: 700;
+}
+
+.signup-header p {
+  margin: 10px 0;
+  color: #666;
+  font-size: 0.875rem;
+}
+
+/* Social Login Buttons */
+.social-login {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.social-button {
+  width: 30%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #fff;
+  transition: background-color 0.4s, transform 0.4s, box-shadow 0.4s; /* Slow down transitions */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Hover Effect for Social Buttons */
+.social-button:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Specific Button Styles */
+.social-button.facebook {
+  background-color: #4267B2;
+}
+
+.social-button.facebook:hover {
+  background-color: #365899;
+}
+
+.social-button.google {
+  background-color: #DB4437;
+}
+
+.social-button.google:hover {
+  background-color: #C1351D;
+}
+
+.social-button.apple {
+  background-color: #000;
+}
+
+.social-button.apple:hover {
+  background-color: #333;
+}
+
+/* Icon Styles */
+.social-button svg {
+  font-size: 1.5rem; /* Adjust icon size */
+  margin-right: 10px; /* Space between icon and text */
+  transition: transform 0.4s; /* Slow down icon scale on hover */
+}
+
+/* Hover Effect for Icons */
+.social-button:hover svg {
+  transform: scale(1.1);
+}
+
+/* Form Styles */
+.form-2 {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"] {
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="password"]:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+  outline: none;
+}
+
+/* Terms and Conditions */
+.terms {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.terms input[type="checkbox"] {
+  cursor: pointer;
+}
+
+.terms label {
+  font-size: 0.875rem;
+  color: #666;
+}
+
+/* Submit Button */
+.submit-button {
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: #007bff;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s; /* Slow down transitions */
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+/* Popup Section */
+.Pop {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.Pop a {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 0.875rem;
+}
+
+.Pop a:hover {
+  text-decoration: underline;
+}

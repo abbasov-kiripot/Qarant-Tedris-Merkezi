@@ -1,0 +1,133 @@
+/* CardManagement.css */
+
+/* Genel Konteyner Ayarları */
+.card-management-container {
+  align-items: center;
+  padding-left: 250px;
+}
+
+/* Form Başlığı ve İçerik Alanları */
+.card-management-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 20px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.card-management-header input {
+  width: calc(100% - 20px);
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.card-management-header button {
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.card-management-header button:hover {
+  background-color: #0056b3;
+}
+
+.card-management-header .cancel-btn {
+  background-color: #6c757d;
+}
+
+.card-management-header .cancel-btn:hover {
+  background-color: #5a6268;
+}
+
+/* Kart Listesi ve Kart Stilleri */
+.card-list {
+  width: 100%;
+  max-width: 600px;
+}
+
+.card-item {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  padding: 15px;
+}
+
+.card-info {
+  text-align: center;
+}
+
+.card-info h3 {
+  margin: 10px 0;
+  font-size: 24px;
+  color: #333;
+}
+
+.card-info p {
+  color: #666;
+  margin: 10px 0;
+}
+
+.card-info .card-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+/* Kart Eylem Butonları */
+.card-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.card-actions button {
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  margin: 0 5px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.card-actions .edit-btn {
+  background-color: #28a745;
+}
+
+.card-actions .edit-btn:hover {
+  background-color: #218838;
+}
+
+.card-actions .delete-btn {
+  background-color: #dc3545;
+}
+
+.card-actions .delete-btn:hover {
+  background-color: #c82333;
+}
+
+/* Boş Kart Mesajı */
+.card-list p {
+  text-align: center;
+  color: #333;
+}

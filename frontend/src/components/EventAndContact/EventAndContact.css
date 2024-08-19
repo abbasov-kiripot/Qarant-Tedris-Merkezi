@@ -1,0 +1,187 @@
+/* Event and Contact Section */
+.event-and-contact {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding-top: 50px;
+  margin-bottom: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Section Title */
+.event-and-contact h2 {
+  color: #00bcd4;
+  margin-bottom: 20px;
+  font-size: 30px;
+  font-weight: 600;
+  text-transform: uppercase; /* Emphasis */
+  letter-spacing: 1px; /* Space between letters */
+  transition: color 0.3s ease, letter-spacing 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.event-and-contact h2:hover {
+  color: #0186a1; /* Change color on hover */
+  letter-spacing: 2px; /* Increase letter spacing on hover */
+}
+
+/* Events Container */
+.events {
+  flex: 2;
+  font-size: 1rem;
+}
+
+/* Individual Event */
+.event {
+  display: flex;
+  margin-bottom: 20px;
+  align-items: center;
+  transition: transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.event:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+}
+
+/* Date Box */
+.date {
+  width: 80px;
+  background-color: #00bcd4;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-right: 20px;
+  border-radius: 12px; /* Larger radius for a modern look */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.date:hover {
+  transform: translate(-5%, -5%);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Deeper shadow */
+  background-color: #0186a1; /* Slightly darker shade */
+  cursor: pointer;
+}
+
+.date div {
+  font-size: 1.25rem;
+  margin: 10px 0;
+  font-weight: 700; /* Emphasis */
+}
+
+/* Event Details */
+.details {
+  flex: 1;
+  transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.details h3 {
+  margin: 0;
+  color: #00bcd4;
+  font-size: 1.25rem;
+  font-weight: 600;
+  transition: color 0.3s ease, text-shadow 0.3s ease; /* Smooth transition for hover effect */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle text shadow */
+}
+
+.details h3:hover {
+  color: #0186a1; /* Change color on hover */
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+/* Details Text */
+.details p {
+  margin: 5px 0;
+  color: #333;
+  transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.details p:hover {
+  color: #555; /* Slightly lighter shade on hover */
+  transform: translateX(5px); /* Slide effect on hover */
+}
+
+/* Contact Forms Container */
+.contact-forms {
+  flex: 1;
+  padding: 20px;
+  border: 1px solid #00bcd4;
+  border-radius: 12px; /* Larger radius for a modern look */
+  background-color: #f9f9f9; /* Light background for contrast */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.contact-forms:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+}
+
+/* Contact Forms Title */
+.contact-forms h2 {
+  margin-top: 0;
+  color: #00bcd4;
+  font-size: 1.5rem;
+  font-weight: 600;
+  transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.contact-forms h2:hover {
+  color: #0186a1; /* Change color on hover */
+}
+
+/* Form Elements */
+.contact-forms input,
+.contact-forms select,
+.contact-forms textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #00bcd4;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for focus */
+}
+
+.contact-forms input:focus,
+.contact-forms select:focus,
+.contact-forms textarea:focus {
+  border-color: #0186a1;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow on focus */
+}
+
+/* Form Submit Button */
+.contact-forms button {
+  width: 100%;
+  padding: 12px;
+  background-color: #00bcd4;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* Smooth transitions */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+.contact-forms button:hover {
+  background-color: #0186a1;
+  transform: scale(1.05); /* Slightly enlarge on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Deeper shadow */
+}
+
+.contact-forms button:active {
+  background-color: #017a92;
+  transform: scale(1); /* Reset scale on active */
+}
+
+/* Icon Color */
+.event-and-contact i {
+  color: #00bcd4;
+  transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.event-and-contact i:hover {
+  color: #0186a1; /* Change color on hover */
+  transform: scale(1.1); /* Slightly enlarge on hover */
+}

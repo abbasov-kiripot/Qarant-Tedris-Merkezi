@@ -1,0 +1,105 @@
+/* Footer Styles */
+.footer {
+  background-color: #00bcd4; /* Bright cyan background */
+  color: #ffffff; /* White text */
+  font-family: 'Arial', sans-serif; /* Consistent font-family */
+  margin-top: 50px;
+  border-radius: 4px;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap; /* Allow content to wrap on smaller screens */
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.f-left, .f-center, .f-right {
+  flex: 1;
+  margin: 10px;
+  padding: 50px 15px;
+  text-align: center; /* Center align text for consistency */
+}
+
+.f-left, .f-center {
+  padding-top: 5%;
+}
+
+.f-left {
+  font-size: 1.25rem;
+}
+
+.f-center {
+  font-size: 1.25rem;
+}
+
+.f-right {
+  font-size: 1.25rem;
+}
+
+.address, .social-icons, .branches {
+  margin: 20px 0;
+}
+
+.address a, .branches a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.address a:hover, .branches a:hover {
+  color: #ffeb3b; /* Yellow color on hover for better visibility */
+}
+
+.social-icons a {
+  color: #ffffff;
+  margin: 0 10px; /* Uniform margin for social icons */
+  font-size: 1.75rem; /* Slightly larger size for better visibility */
+  transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.social-icons a:hover {
+  color: #ffeb3b; /* Yellow color on hover */
+}
+
+.f-center ul, .f-right ul {
+  list-style: none;
+  padding: 0;
+}
+
+.f-center ul li, .f-right ul li {
+  margin-bottom: 10px;
+}
+
+.f-right ul.branches li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.f-right ul.branches li img {
+  width: 50px;
+  height: 50px;
+  margin-right: 15px;
+  border-radius: 50%; /* Circular images */
+}
+
+.footer-bottom {
+  display: flex;
+  flex-direction: column; /* Stack elements vertically on smaller screens */
+  align-items: center;
+  text-align: center;
+  font-size: 1.125rem;
+  margin-top: 20px; /* Increased margin for spacing */
+  border-top: 3px solid #ffffff;
+  padding-top: 16px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column; /* Stack sections vertically on smaller screens */
+  }
+}

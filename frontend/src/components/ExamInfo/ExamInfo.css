@@ -1,0 +1,142 @@
+/* src/ExamInfo.css */
+
+/* Ürün öğesi stilini belirleme */
+.exam-info {
+  text-align: center;
+  padding: 40px;
+  margin-bottom: -69px;
+  font-family: 'Roboto', sans-serif;
+  border-radius: 10px;
+  opacity: 0; /* Başlangıçta görünmez */
+  transform: translateY(20px); /* Başlangıçta biraz yukarıda */
+  transition: opacity 1s ease, transform 1s ease; /* Yumuşak geçişler */
+}
+
+/* Görünür hale geldiğinde uygulanacak stil */
+.exam-info.visible {
+  opacity: 1;
+  transform: translateY(0); /* Yavaşça yukarı doğru kaydır */
+}
+
+.exam-info h2 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #019bbd;
+  margin: 20px 0;
+  padding: 10px;
+  line-height: 1.4;
+  border-bottom: 2px solid #ddd;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.exam-info h3 {
+  font-size: 1.6rem;
+  color: #333;
+  margin: 15px 0;
+  padding: 10px;
+}
+
+.info-item {
+  display: inline-block;
+  margin: 20px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  border-radius: 8px;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.info-item:hover {
+  transform: translateY(-10px);
+  background-color: #eaf6f9;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.info-item img {
+  width: 80px;
+  height: 80px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.info-item:hover img {
+  transform: scale(1.1);
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.2));
+}
+
+.info-item h3 {
+  margin-top: 10px;
+  font-size: 1.4rem;
+  color: #555;
+}
+
+.info-item a {
+  display: block;
+  margin-top: 10px;
+  color: #019bbd;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.info-item a:hover {
+  color: #017a9c;
+  transform: translateY(-2px);
+}
+
+.container-info {
+  padding: 20px;
+}
+
+.select-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 15px;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.select-section input[type="date"], 
+.select-section select, 
+.select-section button {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+  max-width: 300px;
+}
+
+.select-section input[type="date"], 
+.select-section select {
+  width: 100%;
+}
+
+.select-section button {
+  background-color: #019bbd;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 31px;
+  margin-bottom: -40px;
+}
+
+.select-section input[type="date"]:focus, 
+.select-section select:focus {
+  border-color: #019bbd;
+  outline: none;
+}
+
+.select-section button:hover {
+  background-color: #017a9c;
+  transform: scale(1.05);
+}
+
+.select-section button:active {
+  background-color: #015f73;
+  transform: scale(1);
+}
+/* ExamInfo.css */
+

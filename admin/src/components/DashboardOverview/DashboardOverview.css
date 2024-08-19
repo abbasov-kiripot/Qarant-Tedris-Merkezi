@@ -1,0 +1,55 @@
+/* Dashboard Overview Section */
+.dashboard-overview {
+padding-left: 550px;
+  margin-top: 100px; /* Daha modern ve uyumlu margin */
+  text-align: center; /* İçeriğin ortalanması */
+}
+
+.dashboard-overview h2 {
+  color: #222; /* Daha koyu bir renk tonu */
+  font-size: 2.5rem; /* Daha büyük başlık boyutu */
+  margin-bottom: 0.5rem; /* Daha uygun boşluk */
+  font-weight: 700; /* Daha belirgin font ağırlığı */
+}
+
+.dashboard-overview p {
+  color: #555; /* Daha uygun bir gri tonu */
+  font-size: 1.25rem; /* Biraz daha büyük font boyutu */
+  margin-bottom: 1.5rem; /* Daha geniş boşluk */
+  line-height: 1.6; /* Satır yüksekliği ile daha okunabilir */
+}
+
+.stats {
+  display: flex;
+  flex-wrap: wrap; /* Kartların ekran genişliğine göre satırlara sığması */
+  gap: 1.5rem; /* Daha uyumlu boşluk */
+  justify-content: center; /* Kartların ortalanması */
+}
+
+.stat-card {
+  background-color: #fff; /* Beyaz arka plan */
+  padding: 1.5rem; /* Daha uygun padding */
+  border-radius: 12px; /* Daha yuvarlak köşeler */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Daha belirgin gölge efekti */
+  text-align: center;
+  flex: 1 1 200px; /* Kartların en az genişliği */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hover efektleri için geçiş */
+}
+
+.stat-card:hover {
+  transform: translateY(-5px); /* Hover etkisiyle kartın yukarı hareketi */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* Daha belirgin hover gölgesi */
+}
+
+.stat-card h3 {
+  margin-top: 0;
+  color: #333; /* Daha koyu başlık rengi */
+  font-size: 1.75rem; /* Daha büyük başlık boyutu */
+}
+
+.stat-card p {
+  color: #444; /* Biraz daha koyu gri */
+  font-size: 2.5rem; /* Daha büyük font boyutu */
+  margin: 0;
+  font-weight: 600; /* Daha belirgin font ağırlığı */
+}

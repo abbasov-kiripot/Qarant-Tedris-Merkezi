@@ -1,0 +1,99 @@
+/* Header Section */
+.header {
+  background: url("https://plus.unsplash.com/premium_photo-1661775756810-82dbd209fc95?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aGVhZGVyfGVufDB8fDB8fHww") no-repeat center center;
+  height: 34vw;
+  background-size: cover;
+  position: relative;
+  border-radius: 10px;
+  margin: -25px auto;
+  overflow: hidden; /* Ensure contents don’t overflow */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Soft shadow for the entire header */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effect */
+}
+
+
+
+/* Header Contents */
+.header-contents {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5vw;
+  max-width: 50%;
+  bottom: 30%;
+  left: 6vw;
+  font-size: 25px;
+  color: white;
+  animation: fadeIn 3s ease-out; /* Smooth fade-in */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6); /* Shadow for better text readability */
+  transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.header-contents:hover {
+  transform: translateY(-10px); /* Lift effect on hover */
+  opacity: 0.95; /* Slight fade effect on hover */
+}
+
+/* Header Title */
+.header-contents h2 {
+  font-weight: 500;
+  color: white;
+  font-size: max(4.5vw, 22px);
+  transition: transform 0.4s ease, color 0.4s ease, text-shadow 0.4s ease; /* Smooth transition for hover effect */
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.5); /* Soft shadow for text */
+}
+
+.header-contents h2:hover {
+  transform: translateY(-5px); /* Lift effect */
+  color: #ffeb3b; /* Change color on hover */
+  text-shadow: 0 5px 10px rgba(0, 0, 0, 0.6); /* Strong shadow effect on hover */
+}
+
+/* Header Description */
+.header-contents p {
+  color: white;
+  font-size: 1vw;
+  transition: color 0.4s ease, text-shadow 0.4s ease; /* Smooth transition for hover effect */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Soft shadow for text */
+}
+
+.header-contents p:hover {
+  color: #ffeb3b; /* Change color on hover */
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.6); /* Strong shadow effect on hover */
+}
+
+/* Button Styling */
+.header-contents button {
+  border: none;
+  cursor: pointer;
+  color: #019bbd;
+  font-weight: 500;
+  padding: 1vw 2.3vw;
+  background-color: white;
+  font-size: max(1vw, 13px);
+  border-radius: 50px;
+  transition: background-color 0.4s ease, color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease; /* Smooth transitions */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* Subtle text shadow */
+}
+
+.header-contents button:hover {
+  background-color: #078fad;
+  color: white;
+  transform: scale(1.05); /* Slightly enlarge on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Deeper shadow */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); /* Stronger shadow */
+}
+
+/* Animation Keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px); /* Subtle move-up effect */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

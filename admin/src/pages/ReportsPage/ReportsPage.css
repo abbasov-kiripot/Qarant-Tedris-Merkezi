@@ -1,0 +1,68 @@
+/* Reports Page Section */
+.reports-page {
+    padding: 20px;
+    padding-left: 300px; /* Sol iç boşluk */
+    margin-top: 150px; /* Üstten boşluk */
+    border-radius: 8px; /* Köşe yuvarlama */
+    transition: all 0.3s ease; /* Geçiş efekti */
+  }
+  
+  .reports-page h2 {
+    color: #333; /* Başlık rengi */
+    font-size: 2rem; /* Başlık boyutu */
+    margin-bottom: 10px; /* Başlık altı boşluk */
+    font-weight: 600; /* Kalın başlık */
+  }
+  
+  .reports-page p {
+    color: #666; /* Metin rengi */
+    font-size: 1.125rem; /* Metin boyutu */
+    margin-bottom: 20px; /* Metin altı boşluk */
+  }
+  
+  /* Reports Content Section */
+  .reports-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Kartlar arası boşluk */
+  }
+  
+  .report-card {
+    background-color: #f4f4f4; /* Kart arka plan rengi */
+    padding: 20px;
+    border-radius: 8px; /* Köşe yuvarlama */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Kart gölgesi */
+    flex: 1 1 calc(33.333% - 20px); /* Üç sütun düzeni */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease; /* Geçiş efekti */
+    cursor: pointer; /* İmleç işaretçisi */
+    position: relative; /* Konumlandırma */
+  }
+  
+  .report-card:hover {
+    background-color: #ffffff; /* Hover arka plan rengi */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Hover gölgesi */
+    transform: translateY(-5px); /* Hover yükselme efekti */
+  }
+  
+  .report-card.active {
+    border: 2px solid #019bbd; /* Aktif kart için sınır */
+  }
+  
+  .report-card h3 {
+    margin-top: 0;
+    color: #333; /* Başlık rengi */
+    font-size: 1.5rem; /* Başlık boyutu */
+  }
+  
+  .report-card p {
+    color: #666; /* Metin rengi */
+    font-size: 1rem; /* Metin boyutu */
+  }
+  
+  /* Report Details Section */
+  .report-details {
+    margin-top: 10px;
+    font-size: 0.875rem; /* Detay metin boyutu */
+    color: #444; /* Detay metin rengi */
+  }
+  

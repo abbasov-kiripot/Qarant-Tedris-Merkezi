@@ -1,0 +1,79 @@
+/* Application Form Styles */
+.application-form {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 20px;
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.application-form:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.application-form h1 {
+  text-align: center;
+  color: #019bbd;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 600;
+}
+
+.application-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.application-form label {
+  margin-bottom: 8px;
+  font-size: 1rem;
+  color: #333;
+}
+
+.application-form input,
+.application-form textarea {
+  margin-bottom: 15px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.application-form input:focus,
+.application-form textarea:focus {
+  border-color: #019bbd;
+  box-shadow: 0 0 5px rgba(1, 155, 189, 0.3);
+  outline: none;
+}
+
+.application-form input[type="file"] {
+  padding: 0;
+}
+
+.application-form button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: #019bbd;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.application-form button:hover {
+  background-color: #017a92;
+  transform: scale(1.05);
+}
+
+.application-form button:active {
+  background-color: #015f73;
+  transform: scale(1);
+}
