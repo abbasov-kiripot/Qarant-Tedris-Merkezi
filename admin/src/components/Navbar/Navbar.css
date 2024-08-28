@@ -1,42 +1,58 @@
+:root {
+  --navbar-bg-start: #019bbd;
+  --navbar-bg-end: #017ea3;
+  --text-color: #ffffff;
+  --hover-color: #e0f7fa;
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
 /* Navbar Section */
 .navbar {
-  background-image: linear-gradient(to bottom, #019bbd, #017ea3);
+  background-image: linear-gradient(to right, var(--navbar-bg-start), var(--navbar-bg-end));
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-  overflow: hidden; /* Added to prevent overflow */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.navbar::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 80%);
+  transform: rotate(45deg);
+  transition: var(--transition);
+  opacity: 0;
+}
+
+.navbar:hover::before {
+  opacity: 1;
 }
 
 /* Navbar Brand */
 .navbar-brand {
   display: flex;
   align-items: center;
+  position: relative;
+  z-index: 1;
 }
 
 .navbar-brand .logo {
   width: 120px;
-  transition: transform 0.3s ease;
+  transition: var(--transition);
   border-radius: 3%;
-  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.2)); /* Added drop shadow */
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.2));
 }
 
 .navbar-brand .logo:hover {
-  transform: scale(1.1);
-  animation: logo-pulse 0.5s ease-in-out;
-}
-
-@keyframes logo-pulse {
-  0% {
-    transform: scale(1.05);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1.05);
-  }
+  transform: scale(1.05) rotate(2deg);
+  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.3));
 }
 
 /* Navbar Menu */
@@ -47,68 +63,83 @@
 }
 
 .navbar-menu .navbar-item {
-  color: white;
+  color: var(--text-color);
   text-decoration: none;
   cursor: pointer;
   font-size: 1.2rem;
-  transition: color 0.3s ease, transform 0.3s ease;
-  position: relative; /* Added for hover effect */
+  transition: var(--transition);
+  position: relative;
+  padding: 5px 0;
+}
+
+.navbar-menu .navbar-item::before,
+.navbar-menu .navbar-item::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background-color: var(--hover-color);
+  transition: var(--transition);
 }
 
 .navbar-menu .navbar-item::before {
-  content: "";
-  position: absolute;
-  bottom: 0;
   left: 0;
-  width: 0;
-  height: 2px;
-  background-color: #ddd;
-  transition: width 0.3s ease;
+  top: 0;
 }
 
-.navbar-menu .navbar-item:hover::before {
+.navbar-menu .navbar-item::after {
+  right: 0;
+  bottom: 0;
+}
+
+.navbar-menu .navbar-item:hover::before,
+.navbar-menu .navbar-item:hover::after {
   width: 100%;
 }
 
 .navbar-menu .navbar-item:hover {
-  color: #ddd;
-  transform: translateY(-3px);
-  animation: menu-item-pulse 0.5s ease-in-out;
-}
-
-@keyframes menu-item-pulse {
-  0% {
-    transform: translateY(-2px);
-  }
-  50% {
-    transform: translateY(-3px);
-  }
-  100% {
-    transform: translateY(-2px);
-  }
+  color: var(--hover-color);
+  transform: translateY(-2px);
 }
 
 /* Navbar Profile */
+.navbar-profile {
+  position: relative;
+  z-index: 1;
+}
+
 .navbar-profile .profile {
   width: 60px;
-  transition: transform 0.3s ease;
+  transition: var(--transition);
   border-radius: 50%;
-  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.2)); /* Added drop shadow */
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.2));
 }
 
 .navbar-profile .profile:hover {
   transform: scale(1.1);
-  animation: profile-pulse 0.5s ease-in-out;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
 }
 
-@keyframes profile-pulse {
-  0% {
-    transform: scale(1.05);
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.navbar-brand .logo:hover,
+.navbar-profile .profile:hover {
+  animation: pulse 1s infinite;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
   }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1.05);
+
+  .navbar-menu {
+    flex-direction: column;
+    align-items: center;
   }
 }

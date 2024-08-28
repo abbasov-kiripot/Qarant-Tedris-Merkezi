@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Vacancies.css';  
+import './Vacancies.css';
 
 const JobApplicationForm = () => {
   const [formData, setFormData] = useState({
@@ -28,10 +28,47 @@ const JobApplicationForm = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Form submission logic here
-    console.log('Form Data:', formData);
+    
+    const formDataToSend = new FormData();
+    formDataToSend.append('firstName', formData.firstName);
+    formDataToSend.append('lastName', formData.lastName);
+    formDataToSend.append('fatherName', formData.fatherName);
+    formDataToSend.append('dateOfBirth', formData.dateOfBirth);
+    formDataToSend.append('email', formData.email);
+    formDataToSend.append('phone', formData.phone);
+    formDataToSend.append('additionalNotes', formData.additionalNotes);
+    if (formData.cv) {
+      formDataToSend.append('cv', formData.cv);
+    }
+
+    try {
+      const response = await fetch('http://localhost:8080/api/vacancies', {
+        method: 'POST',
+        body: formDataToSend,
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const result = await response.json();
+      console.log('Form submitted successfully:', result);
+      // Optional: Clear form after submission
+      setFormData({
+        firstName: '',
+        lastName: '',
+        fatherName: '',
+        dateOfBirth: '',
+        email: '',
+        phone: '',
+        additionalNotes: '',
+        cv: null,
+      });
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    }
   };
 
   return (
@@ -110,6 +147,7 @@ const JobApplicationForm = () => {
           <label>Upload CV</label>
           <input
             type="file"
+            name="cv"
             onChange={handleFileChange}
           />
         </div>

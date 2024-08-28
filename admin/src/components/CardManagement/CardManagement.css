@@ -1,133 +1,239 @@
 /* CardManagement.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
-/* Genel Konteyner Ayarları */
+:root {
+  --background-color: #f0f4f8;
+  --surface-color: #ffffff;
+  --primary-color: #63b3ed;
+  --secondary-color: #9ae6b4;
+  --accent-color: #fbd38d;
+  --text-color: #4a5568;
+  --heading-color: #2d3748;
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+
 .card-management-container {
-  align-items: center;
-  padding-left: 250px;
+  max-width: 1200px;
+  margin: 4rem auto;
+  padding-left: 300px;
 }
 
-/* Form Başlığı ve İçerik Alanları */
+h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--heading-color);
+  margin-bottom: 3rem;
+  text-align: center;
+  letter-spacing: -0.02em;
+}
+
 .card-management-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+input[type="text"] {
   width: 100%;
-  max-width: 600px;
-  margin-bottom: 20px;
-  background: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  padding: 0.75rem 1rem;
+  background-color: var(--surface-color);
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  color: var(--text-color);
+  transition: var(--transition);
 }
 
-.card-management-header input {
-  width: calc(100% - 20px);
-  margin: 10px 0;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 16px;
+input[type="text"]:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(99, 179, 237, 0.3);
 }
 
-.card-management-header button {
-  background-color: #007bff;
-  color: #ffffff;
+button {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: var(--primary-color);
+  color: white;
   border: none;
-  padding: 10px 20px;
-  margin: 10px;
-  border-radius: 4px;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
   cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
+  transition: var(--transition);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
-.card-management-header button:hover {
-  background-color: #0056b3;
+button:hover {
+  background-color: #4299e1;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(66, 153, 225, 0.3);
 }
 
-.card-management-header .cancel-btn {
-  background-color: #6c757d;
-}
-
-.card-management-header .cancel-btn:hover {
-  background-color: #5a6268;
-}
-
-/* Kart Listesi ve Kart Stilleri */
 .card-list {
-  width: 100%;
-  max-width: 600px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
 }
 
 .card-item {
-  display: flex;
-  flex-direction: column;
-  background: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-  padding: 15px;
+  background-color: var(--surface-color);
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: var(--transition);
+  box-shadow: var(--card-shadow);
+}
+
+.card-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
 .card-info {
-  text-align: center;
+  padding: 1.5rem;
 }
 
 .card-info h3 {
-  margin: 10px 0;
-  font-size: 24px;
-  color: #333;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--heading-color);
+  margin-top: 0;
+  margin-bottom: 0.75rem;
 }
 
 .card-info p {
-  color: #666;
-  margin: 10px 0;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
 }
 
-.card-info .card-image {
-  max-width: 100%;
-  height: auto;
-  border-radius: 4px;
-  margin-top: 10px;
+.card-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 1rem 1rem 0 0;
+  transition: var(--transition);
 }
 
-/* Kart Eylem Butonları */
+.card-item:hover .card-image {
+  transform: scale(1.05);
+}
+
 .card-actions {
   display: flex;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background-color: #f7fafc;
+}
+
+.edit-btn, .delete-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.edit-btn {
+  background-color: var(--secondary-color);
+  color: #2f855a;
+}
+
+.edit-btn:hover {
+  background-color: #9ae6b4;
+  transform: translateY(-2px);
+}
+
+.delete-btn {
+  background-color: #fed7d7;
+  color: #c53030;
+}
+
+.delete-btn:hover {
+  background-color: #feb2b2;
+  transform: translateY(-2px);
+}
+
+/* Loading Animation */
+@keyframes breathe {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+.loading {
+  display: flex;
   justify-content: center;
-  margin-top: 10px;
+  align-items: center;
+  height: 200px;
 }
 
-.card-actions button {
-  background-color: #007bff;
-  color: #ffffff;
-  border: none;
-  padding: 8px 16px;
-  margin: 0 5px;
+.loading::after {
+  content: "Loading...";
+  color: var(--primary-color);
+  font-size: 1.25rem;
+  font-weight: 500;
+  animation: breathe 2s ease-in-out infinite;
+}
+
+/* Error Message Styling */
+.error-message {
+  background-color: #fff5f5;
+  color: #c53030;
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  border-left: 4px solid #fc8181;
+}
+
+.error-message::before {
+  content: "⚠️";
+  font-size: 1.25rem;
+  margin-right: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .card-management-container {
+    padding: 1rem;
+    margin: 2rem auto;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  .card-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .card-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Subtle Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e0;
   border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: background-color 0.3s ease;
 }
 
-.card-actions .edit-btn {
-  background-color: #28a745;
-}
-
-.card-actions .edit-btn:hover {
-  background-color: #218838;
-}
-
-.card-actions .delete-btn {
-  background-color: #dc3545;
-}
-
-.card-actions .delete-btn:hover {
-  background-color: #c82333;
-}
-
-/* Boş Kart Mesajı */
-.card-list p {
-  text-align: center;
-  color: #333;
+::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0;
 }

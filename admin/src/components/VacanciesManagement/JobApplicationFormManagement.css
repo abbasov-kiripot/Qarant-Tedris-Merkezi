@@ -1,0 +1,73 @@
+/* JobApplicationFormManagement.css */
+.job-application-form-management {
+  font-family: Arial, sans-serif;
+  padding-left: 200px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1 {
+  color: #333;
+  font-size: 2em;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.application-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.application-item {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  width: 300px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.application-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.application-item h3 {
+  margin: 0;
+  font-size: 1.2em;
+  color: #555;
+}
+
+.application-item p {
+  margin: 5px 0;
+  color: #666;
+}
+
+.application-item strong {
+  color: #333;
+}
+
+.delete-btn {
+  background-color: #e74c3c;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1em;
+  padding: 10px 15px;
+  margin-top: 10px;
+  transition: background-color 0.2s;
+}
+
+.delete-btn:hover {
+  background-color: #c0392b;
+}
+
+.no-applications {
+  text-align: center;
+  font-size: 1.2em;
+  color: #888;
+}

@@ -1,61 +1,77 @@
-.exam-dates {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    padding: 20px;
-  }
-  .exam-dates p{
-    padding-top: 10px;
-  }
-  .exam-card {
-    background: #ffffff;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.3s, box-shadow 0.3s;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  .exam-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-  }
-  
-  .exam-image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-  }
-  
-  .exam-card-content {
-    padding: 20px;
-    text-align: center;
-  }
-  
-  .exam-date {
-    
-    font-size: 18px;
-    font-weight: 500;
-    margin: 10px 0;
-    color: #333;
-  }
-  
-  .link-button {
-    display: inline-block;
-    padding: 10px 20px;
-    background: #007bff;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 25px;
-    transition: background 0.3s;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-  
-  .link-button:hover {
-    background: #0056b3;
-  }
-  
+/* Genel Ayarlar */
+.med-dates {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+
+h2 {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: #333;
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+/* Kart Stili */
+.med-card {
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.med-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Görüntü Stili */
+.med-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* Kart İçeriği */
+.med-card-content {
+  padding: 20px;
+  text-align: center;
+}
+
+.med-title {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 10px 0;
+  color: #333;
+}
+
+.med-description {
+  padding-top: 10px;
+  font-size: 16px;
+  color: #666;
+}
+
+/* Buton Stili */
+.link-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 25px;
+  transition: background 0.3s;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.link-button:hover {
+  background: #0056b3;
+}
