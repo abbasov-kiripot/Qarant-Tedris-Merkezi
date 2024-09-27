@@ -6,6 +6,7 @@ import Slide from "../../components/Slide/Slide";
 import Services from "../../components/Services/services";
 import EventAndContact from "../../components/EventAndContact/EventAndContact";
 import Card from "../../components/Card/Card";
+import Counter from "../../components/counter/counter";
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
       <Header />
       <ExamInfo />
       <Services />
+      <Counter/>
       <Slide />
       <EventAndContact />
       <Card />

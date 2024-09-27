@@ -44,7 +44,7 @@ const JobApplicationForm = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:8080/api/vacancies', {
+      const response = await fetch('http://localhost:8080/api/JobApplications', {
         method: 'POST',
         body: formDataToSend,
       });
@@ -64,7 +64,7 @@ const JobApplicationForm = () => {
         email: '',
         phone: '',
         additionalNotes: '',
-        cv: null,
+        cv: '',
       });
     } catch (error) {
       console.error('Error submitting form:', error);

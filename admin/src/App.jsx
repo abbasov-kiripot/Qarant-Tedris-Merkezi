@@ -13,7 +13,14 @@ import TopicManagement from './components/TopicManagement/TopicManagement';
 import EventManagement from './components/EventManagement/EventManagement';
 import ContactManagement from './components/ContactManagement/ContactManagement';
 import SchoolManagement from './components/schoolManagement/schoolManagement';
-import JobApplicationFormManagement from './components/VacanciesManagement/JobApplicationFormManagement';
+import JobApplicationFormManagement from './components/VacanciesManagement/JobApplicationFormManagement.';
+import RegistrationManagement from './components/RegistrationManagement/RegistrationManagement';
+import PlaceOrderManagement from './components/PlaceOrderManagement/PlaceOrderManagement';
+import PreparationManagement from './components/preparationManagement/preparationManagement';
+import FLTManagement from './components/fltManagement/fltManagement';
+import MIQManagement from './components/MIQManagement/MIQManagement';
+import AboutUsManagement from './components/AboutUsManagement/AboutUsManagement';
+import ExamResultsManagement from './components/ExamResultsManagement/ExamResultsManagement';
 
 const App = () => {
   return (
@@ -36,6 +43,13 @@ const App = () => {
               <Route path='/ContactManagement' element={<ContactManagement/>}/>
               <Route path='/schoolManagement' element={<SchoolManagement/>}/>
               <Route path='/JobApplicationFormManagement' element={<JobApplicationFormManagement/>}/>
+              <Route path='/RegistrationManagement' element={<RegistrationManagement/>}/>
+              <Route path='/PlaceOrderManagement' element={<PlaceOrderManagement/>}/>
+              <Route path='/preparationManagement' element={<PreparationManagement/>}/>
+              <Route path='/fltManagement' element={<FLTManagement/>}/>
+              <Route path='/MIQManagement' element={<MIQManagement/>}/>
+              <Route path='/AboutUsManagement' element={<AboutUsManagement/>}/>
+              <Route path='/ExamResultsManagement' element={<ExamResultsManagement/>}/>
             </Routes>
           </div>
         </div>

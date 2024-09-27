@@ -74,9 +74,10 @@ h1 {
 
 .results-icon {
   border-top: 2px solid #ffffff;
-  width: 240%; /* Adjusted for better scaling */
+  width: 150%; /* Adjusted for better scaling */
   padding-top: 20px;
   margin-top: 20px;
+  margin-left: -130px;
 }
 
 .option p {

@@ -10,8 +10,8 @@ const Header = () => {
     <div>
       <div className="header">
         <div className="header-contents">
-            <h2>Get your online exam trial ticket!</h2>
-            <p>Get your free online exam trial ticket and test your knowledge, register now!</p>
+            <h2>Onlayn imtahan sınaq biletinizi elde edin!</h2>
+            <p className="regs" >Onlayn imtahan sınaq biletinizi əldə edin və biliklərinizi yoxlayın, indi qeydiyyatdan keçin!</p>
             <button onClick={()=>navigate("/PlaceOrder")} >View Ticket</button>
         </div>
       </div>

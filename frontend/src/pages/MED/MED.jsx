@@ -35,7 +35,6 @@ const ExamDates = () => {
           <div className="exam-card" key={exam._id}>
             <img src={exam.image} alt={`Exam on ${exam.date}`} className="exam-image" />
             <div className="exam-content">
-              <p className="exam-date">Date: {exam.date}</p>
               <a href={exam.link} className="link-button">Details</a>
             </div>
           </div>

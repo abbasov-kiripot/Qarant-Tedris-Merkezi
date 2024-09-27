@@ -1,0 +1,47 @@
+.about-us-management-container {
+    padding: 20px;
+    margin-left: 615px;
+    margin-top: 130px;
+}
+
+.about-us-form {
+    margin-bottom: 20px;
+}
+
+.about-us-form input,
+.about-us-form textarea {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.about-us-form button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+}
+
+.about-us-form button:hover {
+    background-color: #0056b3;
+}
+
+.about-us-list {
+    margin-top: 20px;
+}
+
+.about-us-item {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.about-us-item button {
+    margin-right: 10px;
+}

@@ -1,7 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './AboutUs.css';
 
 const AboutUs = () => {
+    const [aboutUsData, setAboutUsData] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        // API'den veri çekme
+        const fetchAboutUsData = async () => {
+            try {
+                const response = await fetch('http://localhost:8080/api/about-us');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                setAboutUsData(data);
+            } catch (error) {
+                setError(error.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchAboutUsData();
+    }, []);
+
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error: {error}</p>;
+
     return (
         <div className="about-us-container">
             <div className="about-us-header">
@@ -9,30 +36,15 @@ const AboutUs = () => {
                 <p>Şirketimiz hakkında bilgi edinmek için aşağıdaki alanlara göz atın.</p>
             </div>
             <div className="about-us-content">
-                <section className="about-us-section">
-                    <h2>Kimik?</h2>
-                    <p>Biz, alanında uzman ekibimizle kaliteli hizmet sunmayı amaçlayan bir firmayız. Müşteri memnuniyetini ön planda tutarak, yenilikçi çözümler sunmaktayız.</p>
-                </section>
-                <section className="about-us-section">
-                    <h2>Vizyonumuz</h2>
-                    <p>Vizyonumuz, sektörümüzde lider bir firma olarak, müşteri ihtiyaçlarına en iyi şekilde cevap vermek ve sürekli gelişim sağlamak.</p>
-                </section>
-                <section className="about-us-section">
-                    <h2>Değerlerimiz</h2>
-                    <ul>
-                        <li>İnovasyon</li>
-                        <li>Kalite</li>
-                        <li>Müşteri Memnuniyeti</li>
-                        <li>Şeffaflık</li>
-                    </ul>
-                </section>
-                <section className="about-us-section">
-                    <h2>Ekibimiz</h2>
-                    <p>Uzman ve deneyimli ekibimiz, her projede en yüksek standartları sağlamak için çalışmaktadır.</p>
-                </section>
+                {aboutUsData.map((section, index) => (
+                    <section key={index} className="about-us-section">
+                        <h2>{section.title}</h2>
+                        <p>{section.description}</p>
+                    </section>
+                ))}
             </div>
         </div>
     );
-}
+};
 
 export default AboutUs;

@@ -17,10 +17,10 @@ const CardManagement = () => {
       try {
         const response = await fetch('http://localhost:8080/api/cards');
         const data = await response.json();
-        
+
         if (response.ok) {
           console.log("API Response:", data); // Veriyi inceleyin
-        
+
           if (Array.isArray(data)) {
             setCards(data);
           } else if (data.cards && Array.isArray(data.cards)) {
@@ -72,13 +72,13 @@ const CardManagement = () => {
 
       if (response.ok) {
         const data = await response.json();
-        
+
         if (isEditing) {
           setCards(cards.map(card => card._id === currentCardId ? data : card));
         } else {
           setCards([...cards, data]);
         }
-        
+
         socket.emit('updateCards', data); // Yeni veya güncellenmiş kartı frontend’e bildir
         resetForm();
       } else {
@@ -121,7 +121,7 @@ const CardManagement = () => {
   };
 
 
-  
+
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;

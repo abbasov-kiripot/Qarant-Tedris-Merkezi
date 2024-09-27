@@ -14,8 +14,9 @@
 .event-management-container {
   max-width: 1200px;
   margin: 2rem auto;
-  padding-left: 300px;
+  margin-left: 490px;
   border-radius: 16px;
+  margin-top: 35px;
 }
 
 .event-management-header {

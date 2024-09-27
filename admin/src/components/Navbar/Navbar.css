@@ -12,10 +12,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px;
+  padding: 15px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   position: relative;
   overflow: hidden;
+  position: fixed;
+  z-index: 1000; /* Sidebar'dan daha yüksek bir değer */
+  width: 100%;
+  top: 0;
+  left: 0;
 }
 
 .navbar::before {
@@ -118,17 +123,6 @@
 .navbar-profile .profile:hover {
   transform: scale(1.1);
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
-}
-
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
-}
-
-.navbar-brand .logo:hover,
-.navbar-profile .profile:hover {
-  animation: pulse 1s infinite;
 }
 
 @media (max-width: 768px) {

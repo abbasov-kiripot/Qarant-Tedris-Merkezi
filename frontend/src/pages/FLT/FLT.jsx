@@ -1,38 +1,52 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './FLT.css';
 
 const FLT = () => {
-    return (
-        <div className="flt-container">
-            <h1 className="title">Foreign Language Training</h1>
-            <div className="stages">
-                <div className="stage">
-                    <h2>Language Courses</h2>
-                    <p>Enroll in structured courses through language schools or online platforms to learn a new language.</p>
-                </div>
-                <div className="stage">
-                    <h2>Language Practice</h2>
-                    <p>Join conversation clubs and language exchange programs to practice speaking.</p>
-                </div>
-                <div className="stage">
-                    <h2>Test Preparation</h2>
-                    <p>Prepare for language proficiency tests like TOEFL and IELTS with dedicated courses.</p>
-                </div>
-                <div className="stage">
-                    <h2>Cultural Education</h2>
-                    <p>Understand the cultural context of the language and improve cultural awareness.</p>
-                </div>
-                <div className="stage">
-                    <h2>Self-Study</h2>
-                    <p>Use mobile apps, books, videos, and other resources for independent language learning.</p>
-                </div>
-                <div className="stage">
-                    <h2>Overseas Experience</h2>
-                    <p>Travel or live abroad to immerse yourself in the language and culture.</p>
-                </div>
-            </div>
-        </div>
-    );
+  const [stages, setStages] = useState([]);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  const getData = async () => {
+    try {
+      const response = await fetch('http://localhost:8080/api/flts');
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      setStages(data);
+    } catch (error) {
+      console.error('Error fetching stages:', error);
+      setError('An error occurred while fetching the stages.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  return (
+    <div className="flt-container">
+      <h1 className="title">Foreign Language Training</h1>
+      <div className="stages">
+        {stages.map((stage) => (
+          <div className="stage" key={stage._id}>
+            <h2>{stage.title}</h2>
+            <p>{stage.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
 
 export default FLT;

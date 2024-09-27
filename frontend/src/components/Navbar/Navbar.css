@@ -47,6 +47,7 @@ span {
 .Navbar .logo {
   margin-bottom: -5px;
   font-size: 50px;
+  margin-left: -170px;
 }
 
 .Navbar-menu {

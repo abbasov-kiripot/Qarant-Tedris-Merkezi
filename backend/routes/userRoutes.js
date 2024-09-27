@@ -4,8 +4,8 @@ import { authMiddleware, adminMiddleware } from '../middleware/auth.js';
 
 const router = express.Router();
 
-router.post('/register', registerUser); // Kullanıcı kaydı
-router.post('/login', loginUser); // Kullanıcı girişi
-router.get('/', authMiddleware, adminMiddleware, getAllUsers); // Tüm kullanıcıları listele (Sadece admin)
+router.post('/register', registerUser);
+router.post('/login', loginUser);
+router.get('/users', authMiddleware, adminMiddleware, getAllUsers); // Admin yetkili
 
 export default router;

@@ -1,0 +1,224 @@
+/* Global Styles and Variables */
+:root {
+  --primary-color: #3498db;
+  --secondary-color: #2980b9;
+  --background-color: #ecf0f1;
+  --text-color: #2c3e50;
+  --border-color: #bdc3c7;
+  --success-color: #2ecc71;
+  --danger-color: #e74c3c;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+
+
+.exam-results-management {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  margin-left: 280px;
+  margin-top: 80px;
+}
+
+/* Typography */
+h1, h2 {
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+h1 {
+  font-size: 2.5em;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 10px;
+  padding-top: 50px;
+}
+
+h2 {
+  font-size: 2em;
+  margin-top: 40px;
+}
+
+/* Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+  background-color: white;
+  box-shadow: var(--box-shadow);
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+th {
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #e6e6e6;
+  transition: var(--transition);
+}
+
+/* Button Styles */
+button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: var(--transition);
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: var(--secondary-color);
+}
+
+button[type="submit"] {
+  background-color: var(--success-color);
+  width: 100%;
+  padding: 12px;
+  font-size: 1.1em;
+  margin-top: 20px;
+}
+
+button[type="submit"]:hover {
+  background-color: #27ae60;
+}
+
+td button {
+  background-color: var(--danger-color);
+}
+
+td button:hover {
+  background-color: #c0392b;
+}
+
+/* Form Styles */
+form {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: var(--box-shadow);
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 1em;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .exam-results-management {
+    padding: 10px;
+  }
+
+  table {
+    font-size: 0.9em;
+  }
+
+  th, td {
+    padding: 8px 10px;
+  }
+
+  input, button {
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2em;
+  }
+
+  h2 {
+    font-size: 1.5em;
+  }
+
+  table {
+    font-size: 0.8em;
+  }
+
+  th, td {
+    padding: 6px 8px;
+  }
+
+  input, button {
+    font-size: 0.8em;
+  }
+}
+
+/* Loading and Error States */
+.loading, .error {
+  text-align: center;
+  padding: 20px;
+  font-size: 1.2em;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: var(--box-shadow);
+}
+
+.error {
+  color: var(--danger-color);
+  border: 1px solid var(--danger-color);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.exam-results-management {
+  animation: fadeIn 0.5s ease-in;
+}
+
+/* Accessibility */
+button:focus, input:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Print Styles */
+@media print {
+  .exam-results-management {
+    padding: 0;
+  }
+
+  button, form {
+    display: none;
+  }
+
+  table {
+    box-shadow: none;
+  }
+
+  th {
+    background-color: white;
+    color: black;
+    border-bottom: 2px solid black;
+  }
+}

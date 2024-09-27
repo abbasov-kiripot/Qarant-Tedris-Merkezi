@@ -14,6 +14,7 @@ router.get('/', async (req, res) => {
   }
 });
 
+
 // Yeni etkinlik ekle
 router.post('/', async (req, res) => {
   try {

@@ -1,38 +1,45 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './MIQ.css';
 
 const MIQ = () => {
-    return (
-        <div className="miq-container">
-            <h1 className="title">Müəllimlərin İşə Qəbuluna Hazırlıq</h1>
-            <div className="stages">
-                <div className="stage">
-                    <h2>Hazırlıq Məsləhətləri</h2>
-                    <p>Müəllimlərin işə qəbul imtahanlarına hazırlıq üçün faydalı məsləhətlər.</p>
-                </div>
-                <div className="stage">
-                    <h2>Resurslar</h2>
-                    <ul>
-                        <li><a href="#!">Resurs 1</a></li>
-                        <li><a href="#!">Resurs 2</a></li>
-                        <li><a href="#!">Resurs 3</a></li>
-                    </ul>
-                </div>
-                <div className="stage">
-                    <h2>Test Hazırlığı</h2>
-                    <p>İşə qəbul imtahanlarına hazırlıq üçün testlər və materiallar.</p>
-                </div>
-                <div className="stage">
-                    <h2>Karyera Məsləhətləri</h2>
-                    <p>Müəllimlər üçün karyera məsləhətləri və yol xəritəsi.</p>
-                </div>
-                <div className="stage">
-                    <h2>Özünü İnkişaf</h2>
-                    <p>Müəllimlərin şəxsi və peşəkar inkişafı üçün faydalı mənbələr.</p>
-                </div>
-            </div>
-        </div>
-    );
-}
+  const [stages, setStages] = useState([]);
+  const [error, setError] = useState(null);
+
+  const getData = async () => {
+    try {
+      const response = await fetch('http://localhost:8080/api/miq'); // API URL'yi güncelleyin
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      setStages(data);
+    } catch (error) {
+      console.error('Error fetching stages:', error);
+      setError('An error occurred while fetching the stages.');
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  return (
+    <div className="miq-container">
+      <h1 className="title">Müəllimlərin İşə Qəbuluna Hazırlıq</h1>
+      <div className="stages">
+        {stages.map((stage) => (
+          <div className="stage" key={stage._id}>
+            <h2>{stage.title}</h2>
+            <p>{stage.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
 
 export default MIQ;

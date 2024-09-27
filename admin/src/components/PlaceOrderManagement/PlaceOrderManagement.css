@@ -1,0 +1,150 @@
+/* PlaceOrderManagement.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+  --primary-color: #3498db;
+  --secondary-color: #2ecc71;
+  --background-color: #f8f9fa;
+  --text-color: #333333;
+  --border-color: #dee2e6;
+  --hover-color: #e9ecef;
+  --delete-color: #e74c3c;
+  --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.place-order-management {
+  font-family: 'Inter', sans-serif;
+  max-width: 1280px;
+  margin: 2rem auto;
+  margin-left: 320px;
+  border-radius: 10px;
+  margin-top: 160px;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: var(--text-color);
+  font-weight: 600;
+  margin: 0 0 1.5rem 0;
+}
+
+.search-container {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+input[type="text"]:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+.message {
+  background-color: var(--secondary-color);
+  color: white;
+  padding: 1rem 1.25rem;
+  border-radius: 6px;
+  margin-bottom: 2rem;
+  font-weight: 500;
+  font-size: 1rem;
+  text-align: center;
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+th, td {
+  padding: 1rem 1.25rem;
+  text-align: left;
+  font-size: 0.95rem;
+}
+
+th {
+  background-color: var(--primary-color);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: var(--background-color);
+}
+
+tr:hover {
+  background-color: var(--hover-color);
+  transition: background-color 0.2s ease;
+}
+
+.delete-button {
+  background-color: var(--delete-color);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.delete-button:hover {
+  background-color: #c0392b;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .place-order-management {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .search-container {
+    max-width: 100%;
+  }
+
+  input[type="text"] {
+    font-size: 0.95rem;
+  }
+
+  th, td {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .delete-button {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.85rem;
+  }
+}

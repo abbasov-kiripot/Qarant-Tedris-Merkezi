@@ -1,7 +1,15 @@
 /* Users Page Section */
+
+.user-container{
+  margin-left: 500px; /* Sol iç boşluk */
+  margin-top: 10px; /* Üstten boşluk */
+  transition: all 0.3s ease; /* Geçiş efekti */
+
+}
+
 .users-page {
     padding: 20px;
-    padding-left: 630px; /* Sol iç boşluk */
+    margin-left: 1000px; /* Sol iç boşluk */
     margin-top: 50px; /* Üstten boşluk */
     border-radius: 8px; /* Köşe yuvarlama */
     transition: all 0.3s ease; /* Geçiş efekti */

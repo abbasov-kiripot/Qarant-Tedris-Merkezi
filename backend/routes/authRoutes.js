@@ -1,17 +1,28 @@
 import express from 'express';
-import { register, login, authenticateToken } from '../controllers/authController.js';
+import jwt from 'jsonwebtoken';
+import User from '../models/User.js';
+import bcrypt from 'bcrypt';
 
 const router = express.Router();
 
-// Kullanıcı kaydı
-router.post('/register', register);
+// Kullanıcı giriş yapma
+router.post('/login', async (req, res) => {
+  const { email, password } = req.body;
 
-// Kullanıcı girişi
-router.post('/login', login);
-
-// Örnek korumalı rota
-router.get('/protected', authenticateToken, (req, res) => {
-  res.send('This is a protected route');
+  try {
+    // Kullanıcıyı email ile bul
+    const user = await User.findOne({ email });
+    if (user && (await bcrypt.compare(password, user.password))) {
+      // Token oluştur
+      const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '30d' });
+      res.status(200).json({ token, message: 'Giriş başarılı!' });
+    } else {
+      res.status(401).json({ message: 'Geçersiz kullanıcı adı veya şifre' });
+    }
+  } catch (error) {
+    // Hata oluşursa 500 ile yanıt ver
+    res.status(500).json({ message: 'Sunucu hatası', error: error.message });
+  }
 });
 
 export default router;
