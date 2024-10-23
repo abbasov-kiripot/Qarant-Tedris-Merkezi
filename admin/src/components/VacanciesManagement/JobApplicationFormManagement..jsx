@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import './JobApplicationFormManagement.css'; // Stil dosyanızı ekleyin
+import './JobApplicationFormManagement.css';
+import { FaEye } from "react-icons/fa";
 
-// İş başvurularını almak için API çağrısı yapan fonksiyon
 const fetchJobApplications = async () => {
   try {
-    const response = await fetch('http://localhost:8080/api/JobApplications');
+    const response = await fetch('http://localhost:8080/api/jobApplications');
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
@@ -15,10 +15,9 @@ const fetchJobApplications = async () => {
   }
 };
 
-// İş başvurusunu silmek için API çağrısı yapan fonksiyon
 const deleteJobApplication = async (id) => {
   try {
-    const response = await fetch(`http://localhost:8080/api/JobApplications/${id}`, {
+    const response = await fetch(`http://localhost:8080/api/jobApplications/${id}`, {
       method: 'DELETE',
     });
     if (!response.ok) {
@@ -73,8 +72,18 @@ const JobApplicationFormManagement = () => {
               <h3>{app.firstName} {app.lastName}</h3>
               <p><strong>Email:</strong> {app.email}</p>
               <p><strong>Phone:</strong> {app.phone}</p>
-              <p><strong>Date of Birth:</strong> {app.dateOfBirth}</p>
+              <p><strong>Date of Birth:</strong> {new Date(app.dateOfBirth).toLocaleDateString()}</p>
               <p><strong>Additional Notes:</strong> {app.additionalNotes}</p>
+              <p>
+                <strong>CV:</strong>
+                {app.cv ? (
+                  <a href={app.cv} target="_blank" rel="noopener noreferrer" style={{ marginLeft: '5px' }}>
+                  <FaEye className="eye-icon" title="View CV" />
+                </a>
+                ) : (
+                  <span>No CV Uploaded</span>
+                )}
+              </p>
               <button className="delete-btn" onClick={() => handleDelete(app._id)}>Delete</button>
             </div>
           ))

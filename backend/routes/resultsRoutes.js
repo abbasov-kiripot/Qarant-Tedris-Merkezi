@@ -1,13 +1,15 @@
-// routes/Results.js
 import express from 'express';
-import { createUser, getUsers, updateUser, deleteUser } from '../controllers/resultsController.js';
+import { loginUser, createUser, getUsers, updateUser, deleteUser } from '../controllers/resultsController.js';
 
 const router = express.Router();
 
 // Yeni kullanıcı oluşturma
 router.post('/', createUser);
 
-// Tüm kullanıcıları getirme
+// Kullanıcı girişi
+router.post('/login', loginUser);
+
+// Tüm kullanıcıları alma
 router.get('/', getUsers);
 
 // Kullanıcı güncelleme

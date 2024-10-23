@@ -26,10 +26,8 @@
 
 /* Each Stage Style */
 .stage {
-    background: linear-gradient(145deg, #fafafa, #f0f0f0);
     padding: 25px;
     border-radius: 15px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, background 0.3s ease;
     position: relative;
     overflow: hidden;

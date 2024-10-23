@@ -1,16 +1,16 @@
 /* Users Page Section */
 
 .user-container{
-  margin-left: 500px; /* Sol iç boşluk */
-  margin-top: 10px; /* Üstten boşluk */
+  margin-left: 150px;
+  margin-top: 30px; /* Üstten boşluk */
   transition: all 0.3s ease; /* Geçiş efekti */
+  width: 1300px;
 
 }
 
 .users-page {
     padding: 20px;
-    margin-left: 1000px; /* Sol iç boşluk */
-    margin-top: 50px; /* Üstten boşluk */
+    margin-top: 55px; /* Üstten boşluk */
     border-radius: 8px; /* Köşe yuvarlama */
     transition: all 0.3s ease; /* Geçiş efekti */
   }
@@ -153,3 +153,8 @@
     background-color: #c62828; /* Hover arka plan rengi */
   }
   
+  .button-style{
+    display: flex;
+    gap: 10px;
+    width: 80%;
+  }

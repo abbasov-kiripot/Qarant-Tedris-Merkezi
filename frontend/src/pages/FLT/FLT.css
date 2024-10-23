@@ -1,13 +1,11 @@
 /* Container Style */
 .flt-container {
-    max-width: 900px;
     margin: 0 auto;
     padding: 30px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     border-radius: 12px;
-    background: #ffffff;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
     margin-bottom: 30px;
+    margin-top: -40px;
 }
 
 /* Title Style */

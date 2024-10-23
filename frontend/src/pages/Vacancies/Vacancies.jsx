@@ -10,73 +10,150 @@ const JobApplicationForm = () => {
     email: '',
     phone: '',
     additionalNotes: '',
-    cv: null,
+    cv: null, // Dosya null başlar
   });
 
+  // Input alanı değişikliklerini yakala
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
+    setFormData((prevData) => ({
+      ...prevData,
       [name]: value,
-    });
+    }));
+    console.log(`Form data changed: ${name}: ${value}`); // Form verilerini konsola yazdır
   };
 
+  // Dosya seçildiğinde
   const handleFileChange = (e) => {
-    setFormData({
-      ...formData,
-      cv: e.target.files[0],
-    });
+    const file = e.target.files[0];
+
+    // Dosya türü kontrolü
+    const allowedTypes = [
+      'application/pdf', // PDF dosyası
+      'image/jpeg',      // JPEG resmi
+      'image/png',       // PNG resmi
+      'image/jpg'        // JPG resmi
+    ];
+
+    if (file && allowedTypes.includes(file.type)) {
+      setFormData((prevData) => ({
+        ...prevData,
+        cv: file, // Seçilen dosyayı kaydet
+      }));
+      console.log('Seçilen CV dosyası:', file);
+    } else {
+      console.error('Geçersiz dosya türü. Lütfen yalnızca PDF veya resim dosyası yükleyin.'); // Hata mesajını konsola yazdır
+      alert('Lütfen yalnızca PDF veya resim dosyası yükleyin.');
+    }
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    
-    const formDataToSend = new FormData();
-    formDataToSend.append('firstName', formData.firstName);
-    formDataToSend.append('lastName', formData.lastName);
-    formDataToSend.append('fatherName', formData.fatherName);
-    formDataToSend.append('dateOfBirth', formData.dateOfBirth);
-    formDataToSend.append('email', formData.email);
-    formDataToSend.append('phone', formData.phone);
-    formDataToSend.append('additionalNotes', formData.additionalNotes);
-    if (formData.cv) {
-      formDataToSend.append('cv', formData.cv);
-    }
+// Formu gönderdiğinde
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    try {
-      const response = await fetch('http://localhost:8080/api/JobApplications', {
+  const { firstName, lastName, email, cv, fatherName, dateOfBirth, phone, additionalNotes } = formData;
+
+  // Gerekli alanların doldurulup doldurulmadığını kontrol et
+  if (!firstName || !lastName || !email) {
+    console.error('Gerekli alanlar doldurulmadı:', formData);
+    alert('Lütfen gerekli tüm alanları doldurun.');
+    return;
+  }
+
+  // CV dosyasının varlığını kontrol et
+  if (!cv) {
+    console.error('CV dosyası yüklenmedi.'); 
+    alert('Lütfen bir CV dosyası yükleyin.');
+    return;
+  }
+
+  // CV yüklendiyse Cloudinary'e yükle
+  let cvUrl = '';
+  try {
+    const cloudinaryData = new FormData();
+    cloudinaryData.append('file', cv);
+    cloudinaryData.append('upload_preset', 'tbrgiuze');
+
+    const cloudinaryResponse = await fetch(
+      'https://api.cloudinary.com/v1_1/de6kealil/upload',
+      {
         method: 'POST',
-        body: formDataToSend,
-      });
-
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
+        body: cloudinaryData,
       }
+    );
 
-      const result = await response.json();
-      console.log('Form submitted successfully:', result);
-      // Optional: Clear form after submission
-      setFormData({
-        firstName: '',
-        lastName: '',
-        fatherName: '',
-        dateOfBirth: '',
-        email: '',
-        phone: '',
-        additionalNotes: '',
-        cv: '',
-      });
-    } catch (error) {
-      console.error('Error submitting form:', error);
+    if (!cloudinaryResponse.ok) {
+      throw new Error('CV dosyası yüklenirken hata oluştu.');
     }
+
+    const cloudinaryResult = await cloudinaryResponse.json();
+    console.log('Cloudinary Yükleme Sonucu:', cloudinaryResult);
+    cvUrl = cloudinaryResult.secure_url;
+  } catch (error) {
+    console.error('CV yüklenirken hata:', error);
+    alert('CV yüklenirken hata oluştu. Lütfen tekrar deneyin.');
+    return;
+  }
+
+  // Backend'e gönderilecek form verileri
+  const formDataToSend = {
+    firstName,
+    lastName,
+    fatherName,
+    dateOfBirth: new Date(dateOfBirth).toISOString(),
+    email,
+    phone,
+    additionalNotes,
+    cv: cvUrl,
   };
+
+  // Backend'e veri gönderimi
+  try {
+    const response = await fetch('http://localhost:8080/api/JobApplications', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formDataToSend),
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error('Form gönderilirken hata oluştu:', errorText);
+      alert('Form gönderilirken hata oluştu. Lütfen tekrar deneyin.');
+      return;
+    }
+
+    const result = await response.json();
+    console.log('Form başarıyla gönderildi:', result);
+
+    // Formu temizle
+    setFormData({
+      firstName: '',
+      lastName: '',
+      fatherName: '',
+      dateOfBirth: '',
+      email: '',
+      phone: '',
+      additionalNotes: '',
+      cv: null,
+    });
+
+    alert('Form başarıyla gönderildi!');
+  } catch (error) {
+    console.error('Form gönderilirken hata oluştu:', error);
+    alert('Form gönderilirken hata oluştu. Lütfen tekrar deneyin.');
+  }
+};
+
+
 
   return (
     <div className="application-form">
-      <h1>Job Application</h1>
+      <h1>İş Müraciəti</h1>
       <form onSubmit={handleSubmit}>
         <div>
-          <label>First Name *</label>
+          <label>Ad *</label>
           <input
             type="text"
             name="firstName"
@@ -86,7 +163,7 @@ const JobApplicationForm = () => {
           />
         </div>
         <div>
-          <label>Last Name *</label>
+          <label>Soyadı *</label>
           <input
             type="text"
             name="lastName"
@@ -96,17 +173,16 @@ const JobApplicationForm = () => {
           />
         </div>
         <div>
-          <label>Father's Name *</label>
+          <label>Ata Adı</label>
           <input
             type="text"
             name="fatherName"
             value={formData.fatherName}
             onChange={handleChange}
-            required
           />
         </div>
         <div>
-          <label>Date of Birth *</label>
+          <label>Doğum tarixi *</label>
           <input
             type="date"
             name="dateOfBirth"
@@ -116,7 +192,7 @@ const JobApplicationForm = () => {
           />
         </div>
         <div>
-          <label>Email *</label>
+          <label>E-poçt *</label>
           <input
             type="email"
             name="email"
@@ -126,7 +202,7 @@ const JobApplicationForm = () => {
           />
         </div>
         <div>
-          <label>Phone *</label>
+          <label>Telefon *</label>
           <input
             type="tel"
             name="phone"
@@ -136,7 +212,7 @@ const JobApplicationForm = () => {
           />
         </div>
         <div>
-          <label>Additional Notes</label>
+          <label>Əlavə Qeydlər</label>
           <textarea
             name="additionalNotes"
             value={formData.additionalNotes}
@@ -144,14 +220,15 @@ const JobApplicationForm = () => {
           />
         </div>
         <div>
-          <label>Upload CV</label>
+          <label>CV yükləyin!</label>
           <input
             type="file"
             name="cv"
+            accept=".pdf, .jpg, .jpeg, .png"
             onChange={handleFileChange}
           />
         </div>
-        <button type="submit">Submit</button>
+        <button type="submit">Gönder</button>
       </form>
     </div>
   );

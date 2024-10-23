@@ -1,5 +1,9 @@
 import React, { useEffect } from 'react';
-import { FaCode, FaCoffee, FaLightbulb, FaBug } from 'react-icons/fa';
+import { AiOutlineBarChart } from "react-icons/ai";
+import { FaUserGraduate } from "react-icons/fa6";
+import { FaCalendarCheck } from 'react-icons/fa';
+import { RxPerson } from "react-icons/rx";
+
 import './counter.css';
 
 const Counter = () => {
@@ -51,29 +55,29 @@ const Counter = () => {
   }, []);
 
   return (
-    <div className="wrapper">
+    <div className="wrapper" data-aos="fade-down" data-aos-duration="1500" >
       <div className="counter col_fourth">
-        <FaCode className="icon" />
-        <h2 className="timer count-title count-number" data-to="300" data-speed="2500"></h2>
-        <p className="count-text">SomeText GoesHere</p>
+        <RxPerson className="icon" />
+        <h2 className="timer count-title count-number" data-to="300" data-speed="5000"></h2>
+        <p className="count-text">Tələbə sayı</p>
       </div>
 
       <div className="counter col_fourth">
-        <FaCoffee className="icon" />
-        <h2 className="timer count-title count-number" data-to="1700" data-speed="2400"></h2>
-        <p className="count-text">SomeText GoesHere</p>
+        <AiOutlineBarChart className="icon" />
+        <h2 className="timer count-title count-number" data-to="11900" data-speed="4500"></h2>
+        <p className="count-text">İştirak dərəcəsi</p>
       </div>
 
       <div className="counter col_fourth">
-        <FaLightbulb className="icon" />
-        <h2 className="timer count-title count-number" data-to="11900" data-speed="2300"></h2>
-        <p className="count-text">SomeText GoesHere</p>
+        <FaUserGraduate className="icon" />
+        <h2 className="timer count-title count-number" data-to="1700" data-speed="4300"></h2>
+        <p className="count-text">Məzun</p>
       </div>
 
       <div className="counter col_fourth end">
-        <FaBug className="icon" />
-        <h2 className="timer count-title count-number" data-to="157" data-speed="2200"></h2>
-        <p className="count-text">SomeText GoesHere</p>
+        <FaCalendarCheck className="icon" />
+        <h2 className="timer count-title count-number" data-to="157" data-speed="4100"></h2>
+        <p className="count-text">Keçirilmiş Tədbirlərin Sayı</p>
       </div>
     </div>
   );

@@ -6,20 +6,18 @@
   --secondary-color: #10b981;
   --danger-color: #ef4444;
   --text-color: #1f2937;
-  --background-color: #f9fafb;
-  --card-background: #ffffff;
   --shadow-color: rgba(0, 0, 0, 0.1);
   --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
+
+
 .flt-management-container {
-  max-width: 1200px;
   margin: 2rem auto;
   padding: 2rem;
-  border-radius: 12px;
-  margin-left: 615px;
-  margin-top: 130px;
-
+  border-radius: 16px;
+  margin-left: 200px;
+  width: 80%;
 }
 
 .title {
@@ -31,11 +29,17 @@
 }
 
 .form-container {
-  background-color: #ffffff;
   padding: 2rem;
   border-radius: 12px;
-  box-shadow: 0 4px 6px var(--shadow-color);
   margin-bottom: 2rem;
+}
+
+
+
+.form-container h2 {
+  font-size: 1.8rem;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
 }
 
 .input-field,
@@ -65,15 +69,12 @@
 .form-buttons {
   display: flex;
   gap: 1rem;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 .submit-btn,
 .cancel-btn {
-  background-color: var(--primary-color);
-  color: white;
-  border: none;
-  padding: 1rem 1.5rem;
+  padding: 0.75rem 1.5rem;
   font-size: 1rem;
   border-radius: 8px;
   cursor: pointer;
@@ -81,56 +82,84 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
+  border: none;
+}
+
+.submit-btn {
+  background-color: var(--primary-color);
+  color: white;
 }
 
 .submit-btn:hover {
   background-color: var(--primary-light);
+  transform: translateY(-2px);
 }
 
 .cancel-btn {
   background-color: var(--danger-color);
+  color: white;
 }
 
 .cancel-btn:hover {
   background-color: #dc2626;
+  transform: translateY(-2px);
 }
 
 .stages {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 2rem;
 }
 
 .stage {
-  background-color: var(--card-background);
   border-radius: 12px;
   padding: 1.5rem;
   box-shadow: 0 4px 6px var(--shadow-color);
+  transition: var(--transition);
   position: relative;
   overflow: hidden;
+}
+
+.stage:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px var(--shadow-color), 0 4px 6px -2px var(--shadow-color);
+}
+
+.stage h2 {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.stage p {
+  color: var(--text-color);
+  margin-bottom: 1rem;
 }
 
 .stage-actions {
   display: flex;
   gap: 1rem;
   justify-content: flex-end;
-  margin-top: 1rem;
 }
 
 .edit-btn,
 .delete-btn {
-  background-color: var(--secondary-color);
-  color: white;
-  border: none;
-  padding: 0.75rem 1.25rem;
+  padding: 0.5rem 1rem;
   font-size: 0.9rem;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   transition: var(--transition);
+  border: none;
+  color: white;
+}
+
+.edit-btn {
+  background-color: var(--secondary-color);
 }
 
 .edit-btn:hover {
   background-color: #059669;
+  transform: translateY(-2px);
 }
 
 .delete-btn {
@@ -139,6 +168,7 @@
 
 .delete-btn:hover {
   background-color: #dc2626;
+  transform: translateY(-2px);
 }
 
 .loading,
@@ -146,4 +176,27 @@
   text-align: center;
   font-size: 1.2rem;
   color: var(--text-color);
+  padding: 2rem;
+  background-color: var(--card-background);
+  border-radius: 12px;
+  box-shadow: 0 4px 6px var(--shadow-color);
+}
+
+@media (max-width: 768px) {
+  .flt-management-container {
+    padding: 1rem;
+  }
+  
+  .stages {
+    grid-template-columns: 1fr;
+  }
+  
+  .form-buttons {
+    flex-direction: column;
+  }
+  
+  .submit-btn,
+  .cancel-btn {
+    width: 100%;
+  }
 }

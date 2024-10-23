@@ -29,7 +29,7 @@ const MIQ = () => {
 
   return (
     <div className="miq-container">
-      <h1 className="title">Müəllimlərin İşə Qəbuluna Hazırlıq</h1>
+      <h1 className="title">Müəllimlərin İşə Qəbulu</h1>
       <div className="stages">
         {stages.map((stage) => (
           <div className="stage" key={stage._id}>

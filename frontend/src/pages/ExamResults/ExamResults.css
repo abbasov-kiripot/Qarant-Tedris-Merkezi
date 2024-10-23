@@ -1,74 +1,220 @@
+/* ExamResults.css */
+:root {
+  --primary-color: #5ca0e2;
+  --secondary-color: #8e44ad;
+  --background-color: #f0f4f8;
+  --text-color: #2c3e50;
+  --border-color: #d1d9e6;
+  --success-color: #2ecc71;
+  --error-color: #e74c3c;
+  --hover-color: #3498db;
+  --button-hover-color: #8e44ad; /* Yeni morumtrak hover rengi */
+}
+
 .exam-results {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.exam-results:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.exam-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.form-label {
+  font-weight: 600;
+  color: var(--text-color);
+  transition: color 0.3s ease;
+}
+
+.form-label:hover {
+  color: var(--primary-color);
+}
+
+.form-select,
+.form-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-select:focus,
+.form-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+}
+
+.form-select:hover,
+.form-input:hover {
+  border-color: var(--hover-color);
+}
+
+.form-button {
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.form-button:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.form-button:disabled {
+  background-color: var(--border-color);
+  cursor: not-allowed;
+}
+
+.error-message {
+  color: var(--error-color);
+  font-weight: 600;
+  margin-top: 1rem;
+  padding: 0.75rem;
+  border-radius: 8px;
+  background-color: rgba(231, 76, 60, 0.1);
+  transition: all 0.3s ease;
+}
+
+.error-message:hover {
+  background-color: rgba(231, 76, 60, 0.2);
+}
+
+.results-display {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.results-display:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.results-display h3 {
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  font-size: 1.75rem;
+  transition: color 0.3s ease;
+}
+
+.results-display h3:hover {
+  color: var(--hover-color);
+}
+
+.results-display p {
+  margin-bottom: 0.75rem;
+  transition: transform 0.3s ease;
+}
+
+.results-display p:hover {
+  transform: translateX(5px);
+}
+
+.results-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 1.5rem;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.results-table th,
+.results-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.results-table th {
+  background-color: var(--primary-color);
+  color: #fff;
+  font-weight: 600;
+}
+
+.results-table tr:last-child td {
+  border-bottom: none;
+}
+
+.results-table tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+.results-table tr:hover {
+  background-color: #e8f4fd;
+}
+
+.results-table td:hover {
+  transform: scale(1.05);
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .exam-results {
+    padding: 1.5rem;
   }
-  
-  .exam-form {
-    background: #ffffff;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 100%;
-    max-width: 400px;
-    text-align: center;
+
+  .results-table {
+    font-size: 0.9rem;
   }
-  
-  .form-label {
-    display: block;
-    font-size: 18px;
-    font-weight: 500;
-    color: #333;
-    margin-bottom: 10px;
-  }
-  
-  .form-select,
-  .form-input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #019BBD;
-    border-radius: 5px;
-    font-size: 16px;
-  }
-  
-  .form-button {
-    display: inline-block;
-    padding: 10px 20px;
-    background: #019BBD;
-    color: #fff;
-    text-decoration: none;
-    border: none;
-    border-radius: 25px;
-    transition: background 0.3s;
-    cursor: pointer;
-  }
-  
-  .form-button:hover {
-    background: #0056b3;
-  }
-  
-  .results-display {
-    background: #ffffff;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
-    padding: 20px;
-    text-align: center;
-    width: 100%;
-    max-width: 400px;
-  }
-  
-  .results-display h3 {
-    font-size: 24px;
-    font-weight: 700;
-    color: #333;
-    margin-bottom: 10px;
-  }
-  
-  .results-display p {
-    font-size: 18px;
-    color: #666;
-  }
-  
+}
+
+
+.form-button {
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.form-button:hover {
+  background-color: var(--button-hover-color); /* Morumtrak hover rengi */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(142, 68, 173, 0.3); /* Mor gölge */
+}
+
+.form-button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.form-button:disabled {
+  background-color: var(--border-color);
+  cursor: not-allowed;
+}

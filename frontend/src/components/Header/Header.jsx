@@ -8,11 +8,11 @@ const Header = () => {
 
   return (
     <div>
-      <div className="header">
+      <div className="header" data-aos="zoom-in" data-aos-duration="1000" >
         <div className="header-contents">
-            <h2>Onlayn imtahan sınaq biletinizi elde edin!</h2>
-            <p className="regs" >Onlayn imtahan sınaq biletinizi əldə edin və biliklərinizi yoxlayın, indi qeydiyyatdan keçin!</p>
-            <button onClick={()=>navigate("/PlaceOrder")} >View Ticket</button>
+            <h2>Onlayn imtahan sınaq biletinizi əldə edin!</h2>
+            <p className="regs" >TƏHSİLDƏ QARANT BİZİK!</p>
+            <button onClick={()=>navigate("/PlaceOrder")} >Bilet satışı</button>
         </div>
       </div>
     </div>

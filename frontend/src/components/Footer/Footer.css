@@ -1,10 +1,15 @@
 /* Footer Styles */
-.footer {
+.footer  {
   background-color: #00bcd4; /* Bright cyan background */
   color: #ffffff; /* White text */
   font-family: 'Arial', sans-serif; /* Consistent font-family */
-  margin-top: 50px;
-  border-radius: 4px;
+  width: 112%;
+  margin-top: 100px;
+  margin-left: -88px;
+}
+
+.container h3{
+  margin-bottom: 15px;
 }
 
 .container {
@@ -14,17 +19,16 @@
   align-items: flex-start;
   max-width: 1200px;
   margin: 0 auto;
+  
 }
 
 .f-left, .f-center, .f-right {
   flex: 1;
-  margin: 10px;
-  padding: 50px 15px;
   text-align: center; /* Center align text for consistency */
 }
 
 .f-left, .f-center {
-  padding-top: 5%;
+  padding-top: 10%;
 }
 
 .f-left {
@@ -37,6 +41,8 @@
 
 .f-right {
   font-size: 1.25rem;
+  margin-top: 120px;
+
 }
 
 .address, .social-icons, .branches {
@@ -77,6 +83,7 @@
   display: flex;
   align-items: center;
   margin-bottom: 15px;
+  gap: 5px;
 }
 
 .f-right ul.branches li img {

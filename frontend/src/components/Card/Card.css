@@ -1,0 +1,75 @@
+.card-slider {
+  margin: 10px; /* Slider için dış marj ayarı */
+}
+
+.card {
+  flex: 1;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  /* react-slick'in otomatik kaydırma efekti için genişlik ayarı */
+  max-width: 300px; /* Kartların genişliğini ayarlayın */
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.card img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.card-text {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+.card-footer {
+  padding: 12px 20px;
+  background-color: #f8f8f8;
+  border-top: 1px solid #f0f0f0;
+  text-align: right;
+}
+
+.card-footer small {
+  color: #777;
+  
+}
+
+.card:hover .card-title {
+  color: #2980b9;
+}
+
+/* Slick Slider özelleştirmeleri */
+.slick-slide {
+  margin: 0 5px; /* Kartlar arası boşluk */
+}
+
+.slick-prev, .slick-next {
+  z-index: 1; /* Öncelik sırası */
+}
+
+.slick-prev:before, .slick-next:before {
+  color: #2980b9; /* Ok ikonları rengi */
+  border-radius: 12px;
+  display: none;
+}

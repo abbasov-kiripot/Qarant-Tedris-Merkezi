@@ -7,6 +7,8 @@ const Footer = () => {
     <footer className="footer">
       <div className="container">
         <div className="f-left">
+        <h3>Melumatlarimiz</h3>
+
           <address>
             Əliyar Əliyev küçesi 41, <br />
             Neriman Nerimanov m/s yanı <br />
@@ -23,8 +25,8 @@ const Footer = () => {
         <div className="f-center">
           <h3>Sections</h3>
           <ul>
+          <li><Link to="/exam">Online Exam</Link></li>
             <li><Link to="/">Our courses</Link></li>
-            <li><Link to="/exam">Online Exam</Link></li>
             <li><Link to="/Vacancies">Vacancies</Link></li>
             <li><Link to="/AboutUs" href="#">AboutUs</Link></li>
             <li><Link to="/Contact" href="#">Contact</Link></li>
@@ -36,13 +38,18 @@ const Footer = () => {
           <ul className="branches">
             <li>
               <img src="https://www.zefer.edu.az/frq-content/plugins/branches_x1/entry/20173011110309_59622600.jpeg" alt="İnşaatçılar filialı" />
-              <span>İnşaatçılar branch</span>
+              <span>İnşaatçılar branch -</span>
               <a href="tel:+994124800875">(012) 480-08-75</a>
             </li>
             <li>
               <img src="https://www.zefer.edu.az/frq-content/plugins/branches_x1/entry/20173011110147_23718600.jpeg" alt="Nərimanov filialı" />
-              <span>Nərimanov branch</span>
+              <span>Nərimanov branch - </span>
               <a href="tel:+994124802632">(012) 480 26 32</a>
+            </li>
+            <li>
+              <img src="https://www.zefer.edu.az/frq-content/plugins/branches_x1/entry/20173011110309_59622600.jpeg" alt="İnşaatçılar filialı" />
+              <span>İnşaatçılar branch - </span>
+              <a href="tel:+994124800875">(012) 480-08-75</a>
             </li>
           </ul>
         </div>

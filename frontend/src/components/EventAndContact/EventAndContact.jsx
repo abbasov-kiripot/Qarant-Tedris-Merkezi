@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './EventAndContact.css';
+import emailjs from '@emailjs/browser'; // EmailJS'i dahil ettik
 
 // Etkinlikleri almak için API çağrısı yapan fonksiyon
 const fetchEvents = async () => {
@@ -21,7 +22,7 @@ const submitApplication = async (data) => {
     const response = await fetch('http://localhost:8080/api/contacts', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json', // 'contact/json' yerine 'application/json'
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(data),
     });
@@ -44,6 +45,7 @@ const EventAndContact = () => {
     email: '',
     message: ''
   });
+  const [status, setStatus] = useState(''); // Başarı veya hata durumlarını takip eden state
   const [error, setError] = useState(null); // Hata durumlarını saklamak için state
 
   // Etkinlikleri yüklemek için useEffect
@@ -65,11 +67,33 @@ const EventAndContact = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Form verilerini gönderen event handler
+  // Form verilerini gönderen event handler (EmailJS ve API'ye)
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // EmailJS parametreleri
+    const serviceID = 'service_br9gu7n';
+    const templateID = 'template_9u8s6ja';
+    const userID = 'AyP_QIfgP8PlN1YMp'; // optional, only if you are using a user ID in EmailJS
+
+    const templateParams = {
+      name: formData.name,
+      service: formData.service,
+      phone: formData.phone,
+      email: formData.email,
+      message: formData.message,
+    };
+
     try {
+      // EmailJS ile e-posta gönderimi
+      await emailjs.send(serviceID, templateID, templateParams, userID);
+      setStatus('Sorgu göndərilir...');
+      
+      // Aynı zamanda API'ye form verilerini gönderme
       await submitApplication(formData);
+      setStatus('Uğurla göndərildi!');
+
+      // Formu temizleme
       setFormData({
         name: '',
         service: '',
@@ -77,16 +101,33 @@ const EventAndContact = () => {
         email: '',
         message: ''
       });
-      setError(null); // Önceki hataları temizle
-    } catch (err) {
-      setError('Error submitting application.');
+
+    } catch (error) {
+      setStatus('Error sending message');
+      console.error('Error:', error);
     }
+
+    // Mesajın 3 saniye sonra kaybolmasını sağla
+    setTimeout(() => {
+      setStatus('');
+    }, 3000);
   };
 
+  // Mesajın 3 saniye sonra kaybolmasını sağla
+  useEffect(() => {
+    if (status) {
+      const timer = setTimeout(() => {
+        setStatus('');
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [status]);
+
   return (
-    <div className="event-and-contact">
+    <div className="event-and-contact" data-aos="fade-right" data-aos-duration="1500" >
       <div className="events">
-        <h2>Some of Our Events</h2>
+        <h2>Tədbirlərimizdən Bəziləri</h2>
         {error && <div className="error">{error}</div>}
         {events.length > 0 ? (
           events.map((event) => (
@@ -109,43 +150,44 @@ const EventAndContact = () => {
           <p>No events available.</p>
         )}
       </div>
-      <div className="contact-forms">
-        <h2>Online Application</h2>
+      <div className="contact-forms" data-aos="fade-left" data-aos-duration="2000" >
+        <h2>Onlayn müraciət</h2>
         <form onSubmit={handleSubmit}>
           <input
             type="text"
             name="name"
-            placeholder="Name and Surname"
+            placeholder="Ad və Soyad"
             value={formData.name}
             onChange={handleChange}
           />
           <select name="service" value={formData.service} onChange={handleChange}>
-            <option value="">Select a service</option>
+            <option value="">Xidmət Seçin</option>
             <option value="general">General</option>
             {/* Add other options here */}
           </select>
           <input
             type="text"
             name="phone"
-            placeholder="Phone"
+            placeholder="Telefon"
             value={formData.phone}
             onChange={handleChange}
           />
           <input
             type="email"
             name="email"
-            placeholder="E-mail"
+            placeholder="E-poçt"
             value={formData.email}
             onChange={handleChange}
           />
           <textarea
             name="message"
-            placeholder="Write your message"
+            placeholder="Əlavə Qeyd"
             value={formData.message}
             onChange={handleChange}
           ></textarea>
-          <button type="submit">Send</button>
+          <button type="submit">GÖNDƏR</button>
         </form>
+        {status && <p className={`status ${status.includes('Error') ? 'error-message' : 'success-message'}`}>{status}</p>} {/* Başarı veya hata mesajı */}
       </div>
     </div>
   );

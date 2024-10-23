@@ -7,6 +7,8 @@ export default function Slide() {
   return (
     <>
       <Swiper
+       data-aos="zoom-in"
+       data-aos-duration="1500"
         className="mySwiper"
         autoplay={{
           delay: 2500,

@@ -1,14 +1,14 @@
 /* Container Style */
 .school-container {
-    max-width: 900px;
     margin: 0 auto;
     padding: 40px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     border-radius: 20px;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
     margin-bottom: 40px;
     position: relative;
     overflow: hidden;
+    margin-top: -50px;
+    margin-left: 10px;
 }
 
 /* Title Style */
@@ -17,8 +17,7 @@
     font-size: 2.5em;
     color: #333;
     margin-bottom: 40px;
-    font-weight: 700;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     position: relative;
 }
 
@@ -28,7 +27,6 @@
     display: block;
     width: 60px;
     height: 4px;
-    background: #00bcd4;
     margin: 10px auto;
     border-radius: 2px;
     transform: scaleX(0);
@@ -48,10 +46,8 @@
 
 /* Stage Style */
 .stage {
-    background: #f5f7f9;
     padding: 30px;
     border-radius: 20px;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
     transition: transform 1s ease, box-shadow 1s ease; /* Slower transition */
     position: relative;
     overflow: hidden;
@@ -60,7 +56,6 @@
 /* Hover Effect for Stages */
 .stage:hover {
     transform: translateY(-10px); /* Slightly larger lift effect */
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
 /* Adding a hover effect to the stage header */
@@ -73,10 +68,7 @@
     transition: color 0.5s ease; /* Slower transition */
 }
 
-/* Hover effect for stage header */
-.stage:hover h2 {
-    color: #00bcd4;
-}
+
 
 /* Stage Paragraph Style */
 .stage p {
@@ -94,15 +86,9 @@
     display: block;
     width: 4px;
     height: 100%;
-    background: #00bcd4;
     position: absolute;
     left: 0;
     top: 0;
     border-radius: 2px;
     transition: background-color 1s ease; /* Slower transition */
-}
-
-/* Optional: Change color on hover for the paragraph border */
-.stage:hover p::before {
-    background-color: #0186a1; /* Darker shade on hover */
 }

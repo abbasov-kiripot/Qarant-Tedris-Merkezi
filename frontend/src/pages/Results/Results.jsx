@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Results.css';
 import { FaFacebook } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
 import { IoLogoApple } from "react-icons/io5";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Results = () => {
   const [formData, setFormData] = useState({
@@ -16,6 +16,18 @@ const Results = () => {
 
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (success) {
+      const timer = setTimeout(() => {
+        setSuccess(''); // 3 saniye sonra başarı mesajını temizle
+        navigate('/Login'); // Başarılı kayıt sonrası Login sayfasına yönlendir
+      }, 3000);
+
+      return () => clearTimeout(timer); // Component unmount olduğunda timer'ı temizle
+    }
+  }, [success, navigate]);
 
   const handleChange = (e) => {
     setFormData({
@@ -27,39 +39,21 @@ const Results = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Şifrelerin eşleşmesini kontrol et
+    // Form alanlarının dolu olup olmadığını kontrol et
+    if (!formData.username || !formData.email || !formData.phone || !formData.password || !formData.confirmPassword) {
+      setError('Tüm alanlar doldurulmalıdır.');
+      return;
+    }
+
+    // Şifrelerin eşit olup olmadığını kontrol et
     if (formData.password !== formData.confirmPassword) {
       setError('Şifreler aynı olmalıdır.');
       return;
     }
 
-    // Kullanıcı adı ve e-posta kontrolü için API'ye istek gönder
     try {
+      // Kullanıcı kaydı için API'ye istekte bulunun
       const response = await fetch('http://localhost:8080/api/results', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          username: formData.username,
-          email: formData.email,
-        }),
-      });
-
-      const data = await response.json();
-
-      if (data.usernameExists) {
-        setError('Bu kullanıcı adı zaten kullanılıyor.');
-        return;
-      }
-
-      if (data.emailExists) {
-        setError('Bu e-posta adresi zaten kullanılıyor.');
-        return;
-      }
-
-      // Kayıt işlemi
-      const registerResponse = await fetch('http://localhost:8080/api/results', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -72,15 +66,25 @@ const Results = () => {
         }),
       });
 
-      if (!registerResponse.ok) {
-        const registerData = await registerResponse.json();
-        throw new Error(registerData.message || 'Kayıt sırasında bir hata oluştu.');
+      const data = await response.json();
+
+      // API yanıtını kontrol et
+      if (!response.ok) {
+        if (data.usernameExists) {
+          setError('Bu kullanıcı adı zaten kullanılıyor.');
+        } else if (data.emailExists) {
+          setError('Bu e-posta adresi zaten kullanılıyor.');
+        } else {
+          throw new Error(data.message || 'Kayıt sırasında bir hata oluştu.');
+        }
+        return;
       }
 
+      // Başarı durumu
       setSuccess('Kayıt başarılı! Şimdi giriş yapabilirsiniz.');
       setError('');
 
-      // Form alanlarını sıfırla
+      // Formu temizle
       setFormData({
         username: '',
         email: '',
@@ -96,9 +100,9 @@ const Results = () => {
   return (
     <div className="signup-container">
       <div className="signup-header">
-        <img src="https://i.pinimg.com/736x/3f/a4/b3/3fa4b39ee840d16ecf922478affcef2d.jpg" alt="Logo" className="logo" />
+        <img src="https://i.ibb.co/hFG0bvF/qarant-logo.jpg" alt="Logo" className="logo" />
         <h2>Qarant Ailəsinə Xoş Gəlmisiniz!</h2>
-        <p>Neticeleri öyrənmək üçün əvvəlcə qeydiyyatdan keçmək lazımdır.</p>
+        <p>Neticeleri öyrənmək üçün əvvəlcə giriş etmək lazımdır!</p>
       </div>
       <div className="social-login">
         <button className="social-button facebook">
@@ -114,7 +118,7 @@ const Results = () => {
           Apple
         </button>
       </div>
-      <form onSubmit={handleSubmit} className='form-2'>
+      <form onSubmit={handleSubmit} className="form-2">
         <input 
           type="text" 
           name="username" 
@@ -151,7 +155,7 @@ const Results = () => {
           onChange={handleChange} 
         />
         <div className="terms">
-          <input type="checkbox" id="terms" />
+          <input type="checkbox" id="terms" required />
           <label htmlFor="terms">
             İstifadəçi razılaşması və Məxfilik siyasətini qəbul edirəm.
           </label>
@@ -159,7 +163,7 @@ const Results = () => {
         <button type="submit" className="submit-button">Qeydiyyatdan Keç</button>
       </form>
       {error && <p className="error-message">{error}</p>}
-      {success && <p className="success-message">{success}</p>}
+      {success && <p className="success-message fade-in-out">{success}</p>}
       <div className="Pop">
         <Link to="/Login">Qeydiyyatdan keçmisən? Daxil ol!</Link>
       </div>

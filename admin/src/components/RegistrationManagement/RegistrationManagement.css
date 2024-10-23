@@ -10,10 +10,11 @@
 
 
 .registration-management {
-  max-width: 1000px;
+  max-width: 100%;
   margin: 40px auto;
-  margin-left: 390px;
+  margin-left: 210px;
   border-radius: 12px;
+  margin-top: 80px;
 }
 
 h2 {
@@ -64,10 +65,7 @@ tr {
   transition: all 0.3s ease;
 }
 
-tr:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
-}
+
 
 .delete-button {
   background-color: var(--error-color);

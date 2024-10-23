@@ -19,8 +19,6 @@ body {
   transition: all 0.3s ease;
 }
 
-
-
 /* Header Contents */
 .header-contents {
   position: absolute;
@@ -34,8 +32,6 @@ body {
   color: white;
   animation: fadeInUp 1s ease-out;
 }
-
-
 
 /* Header Title */
 .header-contents h2 {
@@ -53,7 +49,7 @@ body {
   position: absolute;
   width: 50%;
   height: 3px;
-  background-color:#ffffff;
+  background-color: #ffffff;
   bottom: -10px;
   left: 0;
   transform: scaleX(0);
@@ -127,8 +123,77 @@ body {
 }
 
 /* Responsive adjustments */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
+  .header {
+    height: 60vh;
+  }
+
   .header-contents {
-    max-width: 80%;
+    max-width: 70%;
+    bottom: 20%;
+  }
+
+  .header-contents h2 {
+    font-size: clamp(1.4rem, 3vw, 2.1rem);
+    margin-bottom: 4rem;
+  }
+
+  .header-contents p {
+    font-size: clamp(0.8rem, 1.8vw, 1rem);
+  }
+
+  .header-contents button {
+    padding: 0.6em 1.2em;
+    font-size: clamp(0.7rem, 1.3vw, 0.9rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    height: 50vh;
+  }
+
+  .header-contents {
+    max-width: 85%;
+    bottom: 25%;
+  }
+
+  .header-contents h2 {
+    font-size: clamp(1.3rem, 3vw, 2rem);
+    margin-bottom: 3rem;
+  }
+
+  .header-contents p {
+    font-size: clamp(0.7rem, 1.6vw, 0.9rem);
+  }
+
+  .header-contents button {
+    padding: 0.5em 1em;
+    font-size: clamp(0.6rem, 1.2vw, 0.8rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    height: 40vh;
+  }
+
+  .header-contents {
+    max-width: 90%;
+    bottom: 30%;
+  }
+
+  .header-contents h2 {
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    margin-bottom: 2rem;
+  }
+
+  .header-contents p {
+    font-size: clamp(0.6rem, 1.4vw, 0.8rem);
+  }
+
+  .header-contents button {
+    padding: 0.4em 0.8em;
+    font-size: clamp(0.5rem, 1vw, 0.7rem);
   }
 }

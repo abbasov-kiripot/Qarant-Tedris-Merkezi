@@ -29,13 +29,13 @@ const ExamDates = () => {
 
   return (
     <div className="exam-dates">
-      <h2>Upcoming Exams</h2>
+      <h2>2024-2025-Cİ İL İMTAHAN TARİXLƏRİ </h2>
       <div className="exam-list">
         {exams.map((exam) => (
           <div className="exam-card" key={exam._id}>
             <img src={exam.image} alt={`Exam on ${exam.date}`} className="exam-image" />
             <div className="exam-content">
-              <a href={exam.link} className="link-button">Details</a>
+              <a href={exam.link} className="link-button">ƏTRAFLI</a>
             </div>
           </div>
         ))}

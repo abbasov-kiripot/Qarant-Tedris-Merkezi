@@ -36,7 +36,7 @@ const FLT = () => {
 
   return (
     <div className="flt-container">
-      <h1 className="title">Foreign Language Training</h1>
+      <h1 className="title">Xarici dil hazırlığı</h1>
       <div className="stages">
         {stages.map((stage) => (
           <div className="stage" key={stage._id}>

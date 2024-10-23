@@ -1,12 +1,11 @@
-import { Schema, model } from 'mongoose';
+// models/Card.js
+import mongoose from 'mongoose';
 
-const stageSchema = new Schema({
-    title: { type: String, required: true },
-    description: { type: String, required: true },
-    // Diğer gerekli alanlar
-    createdAt: { type: Date, default: Date.now }
-});
+const cardSchema = new mongoose.Schema({
+  title: { type: String, required: true },
+  description: { type: String, required: true },
+  imageUrl: { type: String, required: true },
+}, { timestamps: true });
 
-const Stage = model('Stage', stageSchema);
-
-export default Stage;
+const Card = mongoose.model('Card', cardSchema);
+export default Card;

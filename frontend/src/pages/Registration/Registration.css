@@ -1,15 +1,11 @@
 /* Contact Form Styles */
 .online-exam-portal {
   width: 100%;
-  max-width: 450px;
   margin: 0 auto;
   padding: 40px;
-  background-color: #ffffff;
   border-radius: 15px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   background-size: cover;
   background-position: center;
-  margin-bottom: 40px;
   font-family: 'Poppins', sans-serif;
 }
 
@@ -19,7 +15,7 @@
   margin-bottom: 30px;
   font-size: 2.2rem;
   font-weight: 700;
-  color: #333;
+  color: #007bff;
 }
 
 /* Form Elements Style */
@@ -79,4 +75,18 @@
 .online-exam-portal button:active {
   background-color: #004494;
   transform: scale(1);
+}
+
+
+.message{
+  color: rgb(255, 255, 255);
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  animation: fadeIn 0.5s ease-in-out;position: fixed;
+  padding: 15px 55px;
+  background-color: red;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px -1px black;
+  position: relative;
 }

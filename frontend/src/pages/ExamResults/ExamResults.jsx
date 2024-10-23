@@ -13,11 +13,12 @@ const ExamResults = () => {
   const [error, setError] = useState('');
   const [exams, setExams] = useState([]);
 
+  // Sınavları API'den çekmek için useEffect
   useEffect(() => {
     const fetchExams = async () => {
       try {
-        const response = await fetch('http://localhost:8080/api/examResults');
-        if (!response.ok) throw new Error('Sınavlar alınamadı');
+        const response = await fetch('http://localhost:8080/api/examResults'); // Sınav sonuçlarını al
+        if (!response.ok) throw new Error('Sınav sonuçları alınamadı');
         const data = await response.json();
         const uniqueExams = [...new Set(data.map(result => result.examName))];
         setExams(uniqueExams);
@@ -35,19 +36,18 @@ const ExamResults = () => {
     setError('');
 
     try {
-      const response = await fetch('http://localhost:8080/api/examResults/getResult', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ jobNumber, examName: selectedExam }),
-      });
+      const response = await fetch('http://localhost:8080/api/examResults')
+
 
       if (!response.ok) throw new Error('Sonuçlar alınamadı');
 
       const data = await response.json();
-      setExamDate(data.examDate);
-      setResults(data.results || []); // Eğer data.results undefined ise boş dizi olarak ayarlayın
+      let filterData = data.filter(item => item.jobNumber === jobNumber)
+
+      setExamDate(filterData[0].examDate);
       setScore(data.score);
       setPercentage(data.percentage);
+      setResults(filterData); // Eğer data.results undefined ise boş dizi olarak ayarlayın
       setShowResults(true);
     } catch (err) {
       setError('Sonuçlar alınırken bir hata oluştu: ' + err.message);
@@ -90,8 +90,8 @@ const ExamResults = () => {
 
       {error && <p className="error-message">{error}</p>}
 
-      {showResults && results.length > 0 && ( // Sadece sonuç varsa göster
-        <div className="results-display">
+      {
+        results.length ? <div className="results-display">
           <h3>İMTAHAN NƏTİCƏLƏRİ</h3>
           <p><strong>İmtahan:</strong> {selectedExam}</p>
           <p><strong>İş Nömrəsi:</strong> {jobNumber}</p>
@@ -112,16 +112,17 @@ const ExamResults = () => {
             <tbody>
               {results.map((result, index) => (
                 <tr key={index}>
-                  <td>{result.subject}</td>
-                  <td>{result.correct}</td>
-                  <td>{result.incorrect}</td>
-                  <td>{result.empty}</td>
+                  <td>{result.subjects}</td>
+                  <td>{result.correctAnswers}</td>
+                  <td>{result.wrongAnswers}</td>
+                  <td>{result.empty || 0}</td> {/* Eğer boş cevap yoksa 0 göster */}
                 </tr>
               ))}
             </tbody>
           </table>
-        </div>
-      )}
+        </div> : null
+      }
+
     </div>
   );
 };

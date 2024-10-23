@@ -1,5 +1,4 @@
 import { Schema, model } from 'mongoose';
-import bcrypt from 'bcrypt';
 
 const userSchema = new Schema({
   username: { type: String, required: true, unique: true },
@@ -14,23 +13,13 @@ const userSchema = new Schema({
   birthDay: { type: String, required: false },
   birthMonth: { type: String, required: false },
   birthYear: { type: String, required: false },
-  email: { type: String, required: true, unique: true, match: [/.+\@.+\..+/, 'Lütfen geçerli bir email adresi girin'] }, // Email formatı kontrolü
+  email: { 
+    type: String, 
+    required: true, 
+    unique: true, 
+    match: [/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, 'Geçerli bir email adresi giriniz.'] 
+  },
   role: { type: String, enum: ['admin', 'user'], default: 'user' }
 });
-
-// Şifreyi kaydetmeden önce hash'leriz
-userSchema.pre('save', async function (next) {
-  if (!this.isModified('password')) return next();
-
-  const salt = await bcrypt.genSalt(10);
-  this.password = await bcrypt.hash(this.password, salt);
-  next();
-});
-
-// Şifre doğrulama fonksiyonu
-userSchema.methods.comparePassword = async function (candidatePassword) {
-  return await bcrypt.compare(candidatePassword, this.password);
-};
-
 const User = model('User', userSchema);
 export default User;

@@ -114,7 +114,7 @@ const RegistrationManagement = () => {
                   onClick={() => handleDelete(registration._id)}
                   className="delete-button"
                 >
-                  Delete
+                  SİL
                 </button>
               </td>
             </tr>

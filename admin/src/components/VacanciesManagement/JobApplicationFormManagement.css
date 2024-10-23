@@ -10,21 +10,12 @@
   --success-color: #27ae60;
 }
 
-body {
-  font-family: 'Poppins', sans-serif;
-  background-color: var(--background-color);
-  color: var(--text-color);
-  line-height: 1.6;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-}
 
 .job-application-form-management {
   max-width: 1400px;
   margin: 2rem auto;
-  margin-left:270px ;
-  margin-top:150px;
+  margin-left:140px ;
+  margin-top:50px;
 }
 
 h1 {
@@ -36,6 +27,7 @@ h1 {
   text-transform: uppercase;
   letter-spacing: 2px;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  max-width: 1250px;
 }
 
 .application-list {
@@ -187,4 +179,17 @@ justify-content: center;
 
 .application-list::-webkit-scrollbar-thumb:hover {
   background: var(--secondary-color);
+}
+.eye-icon {
+  color: var(--primary-color);
+  font-size: 1.4rem;
+  transition: all 0.3s ease;
+  vertical-align: middle;
+  margin-left: 0.5rem;
+  margin-bottom: 5px;
+}
+
+.eye-icon:hover {
+  transform: scale(1.2) rotate(15deg);
+  color: var(--secondary-color);
 }

@@ -1,48 +1,48 @@
-import JobApplication from '../models/JobApplication.js'; // Model dosyanızı import edin
+import JobApplication from '../models/JobApplication.js';
 
-// İş başvurusu oluşturma
-export const createJobApplication = async (req, res) => {
+// Tüm başvuruları getir
+export const getJobApplications = async (req, res) => {
   try {
-    const { firstName, lastName, fatherName, dateOfBirth, email, phone, additionalNotes } = req.body;
-    const cv = req.file ? req.file.path : null; // CV dosyasının yolu
+    const applications = await JobApplication.find({});
+    res.json(applications);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
 
-    const newApplication = new JobApplication({
-      firstName,
-      lastName,
-      fatherName,
-      dateOfBirth,
-      email,
-      phone,
-      additionalNotes,
-      cv,
-    });
+// Yeni başvuru ekle
+export const createJobApplication = async (req, res) => {
+  const { firstName, lastName, fatherName, dateOfBirth, email, phone, additionalNotes, cv } = req.body;
 
+  const newApplication = new JobApplication({
+    firstName,
+    lastName,
+    fatherName,
+    dateOfBirth,
+    email,
+    phone,
+    additionalNotes,
+    cv,
+  });
+
+  try {
     const savedApplication = await newApplication.save();
     res.status(201).json(savedApplication);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(400).json({ message: error.message });
   }
 };
 
-// İş başvurularını alma
-export const getJobApplications = async (req, res) => {
-  try {
-    const applications = await JobApplication.find();
-    res.status(200).json(applications);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-};
-
-// İş başvurusunu silme
+// Başvuru sil
 export const deleteJobApplication = async (req, res) => {
+  const { id } = req.params;
+
   try {
-    const { id } = req.params;
-    const deletedApplication = await JobApplication.findByIdAndDelete(id);
-    if (!deletedApplication) {
-      return res.status(404).json({ message: 'Application not found' });
+    const application = await JobApplication.findByIdAndDelete(id);
+    if (!application) {
+      return res.status(404).json({ message: 'Başvuru bulunamadı' });
     }
-    res.status(200).json(deletedApplication);
+    res.json({ message: 'Başvuru silindi' });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

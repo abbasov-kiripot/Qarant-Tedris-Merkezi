@@ -185,3 +185,25 @@
   color: #0186a1; /* Change color on hover */
   transform: scale(1.1); /* Slightly enlarge on hover */
 }
+
+/* Başarı ve Hata Mesajları Stilleri */
+.status {
+  margin-top: 55px;
+  padding: 15px;
+  border-radius: 5px;
+  transition: opacity 0.5s ease-in-out; /* Geçiş efekti */
+}
+
+/* Başarı Mesajı Stili */
+.success-message {
+  background-color: #d4edda; /* Yeşil arka plan */
+  color: #155724; /* Koyu yeşil metin */
+  border: 1px solid #c3e6cb; /* Yeşil kenar */
+}
+
+/* Hata Mesajı Stili */
+.error-message {
+  background-color: #f8d7da; /* Kırmızı arka plan */
+  color: #721c24; /* Koyu kırmızı metin */
+  border: 1px solid #f5c6cb; /* Kırmızı kenar */
+}

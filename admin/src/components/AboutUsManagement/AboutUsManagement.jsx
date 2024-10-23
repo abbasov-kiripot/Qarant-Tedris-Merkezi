@@ -100,43 +100,47 @@ const AboutUsManagement = () => {
     if (error) return <p>{error}</p>;
 
     return (
-        <div className="about-us-management-container">
-            <h2>About Us Management</h2>
-            <div className="about-us-form">
+        <div className="about-us">
+            <h2 className="about-us__title">About Us Management</h2>
+            <form className="about-us__form">
                 <input
                     type="text"
                     name="title"
                     value={formState.title}
                     onChange={handleInputChange}
                     placeholder="Title"
+                    className="about-us__input"
                 />
                 <textarea
                     name="description"
                     value={formState.description}
                     onChange={handleInputChange}
                     placeholder="Description"
+                    className="about-us__textarea"
                 />
-                <button onClick={handleFormSubmit}>
+                <button onClick={handleFormSubmit} className="about-us__button about-us__button--primary">
                     {isEditing ? 'Update Section' : 'Add Section'}
                 </button>
-                {isEditing && <button onClick={resetForm}>Cancel</button>}
-            </div>
-            <div className="about-us-list">
+                {isEditing && <button onClick={resetForm} className="about-us__button about-us__button--secondary">Cancel</button>}
+            </form>
+            <div className="about-us__list">
                 {aboutUsData.length > 0 ? (
                     aboutUsData.map(section => (
-                        <div key={section._id} className="about-us-item">
-                            <h3>{section.title}</h3>
-                            <p>{section.description}</p>
-                            <button onClick={() => handleEditClick(section)}>Edit</button>
-                            <button onClick={() => handleDeleteClick(section._id)}>Delete</button>
+                        <div key={section._id} className="about-us__item">
+                            <h3 className="about-us__item-title">{section.title}</h3>
+                            <p className="about-us__item-description">{section.description}</p>
+                            <button onClick={() => handleEditClick(section)} className="about-us__button about-us__button--edit">Edit</button>
+                            <button onClick={() => handleDeleteClick(section._id)} className="about-us__button about-us__button--delete">Delete</button>
                         </div>
                     ))
                 ) : (
-                    <p>No sections available.</p>
+                    <p className="about-us__empty-message">No sections available.</p>
                 )}
             </div>
         </div>
     );
 };
+
+
 
 export default AboutUsManagement;

@@ -13,12 +13,12 @@
 }
 
 .miq-management-container {
-  max-width: 1200px;
+  width: 80%;
   margin: 2rem auto;
   padding: 2rem;
   border-radius: 16px;
-  margin-left: 615px;
-  margin-top: 130px;
+  margin-left: 180px;
+  margin-top: 50px;
 }
 
 h2 {

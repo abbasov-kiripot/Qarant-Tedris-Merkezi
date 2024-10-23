@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
-import './CardManagement.css'; // Global CSS dosyası
+import './CardManagement.css'; // CSS dosyası
 
 const socket = io('http://localhost:8080'); // WebSocket sunucusunun adresi
 
 const CardManagement = () => {
   const [cards, setCards] = useState([]);
-  const [formState, setFormState] = useState({ title: '', description: '', imageUrl: '', createdAt: new Date(), price: 0});
+  const [formState, setFormState] = useState({ title: '', description: '', imageUrl: '' });
   const [isEditing, setIsEditing] = useState(false);
   const [currentCardId, setCurrentCardId] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -16,25 +16,20 @@ const CardManagement = () => {
     const fetchCards = async () => {
       try {
         const response = await fetch('http://localhost:8080/api/cards');
-        const data = await response.json();
-
-        if (response.ok) {
-          console.log("API Response:", data); // Veriyi inceleyin
-
-          if (Array.isArray(data)) {
-            setCards(data);
-          } else if (data.cards && Array.isArray(data.cards)) {
-            setCards(data.cards); // Eğer 'cards' içinde bir dizi varsa
-          } else {
-            console.error("Unexpected data format:", data);
-            setCards([]);
-          }
-        } else {
+        if (!response.ok) {
           throw new Error('Failed to fetch cards');
         }
+        const data = await response.json();
+        
+        if (Array.isArray(data)) {
+          setCards(data);
+        } else {
+          console.error('Unexpected data format:', data);
+          setCards([]);
+        }
       } catch (err) {
-        console.error("Error fetching cards:", err);
-        setError("Error fetching cards");
+        console.error('Error fetching cards:', err);
+        setError('Error fetching cards');
       } finally {
         setLoading(false);
       }
@@ -55,38 +50,32 @@ const CardManagement = () => {
 
   const handleFormSubmit = async () => {
     try {
-      let response;
+      const method = isEditing ? 'PUT' : 'POST';
+      const url = isEditing ? `http://localhost:8080/api/cards/${currentCardId}` : 'http://localhost:8080/api/cards';
+
+      const response = await fetch(url, {
+        method: method,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formState),
+      });
+
+      if (!response.ok) {
+        const errorResponse = await response.json();
+        throw new Error(`Failed to save card: ${errorResponse.message}`);
+      }
+
+      const savedCard = await response.json();
       if (isEditing) {
-        response = await fetch(`http://localhost:8080/api/cards/${currentCardId}`, {
-          method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formState),
-        });
+        setCards(cards.map(card => (card._id === currentCardId ? savedCard : card)));
       } else {
-        response = await fetch('http://localhost:8080/api/cards', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formState),
-        });
+        setCards(prevCards => [...prevCards, savedCard]);
+        socket.emit('addCard', savedCard); // Yeni kartı frontend’e bildir
       }
 
-      if (response.ok) {
-        const data = await response.json();
-
-        if (isEditing) {
-          setCards(cards.map(card => card._id === currentCardId ? data : card));
-        } else {
-          setCards([...cards, data]);
-        }
-
-        socket.emit('updateCards', data); // Yeni veya güncellenmiş kartı frontend’e bildir
-        resetForm();
-      } else {
-        throw new Error('Failed to save card');
-      }
+      resetForm();
     } catch (err) {
-      console.error("Error saving card:", err);
-      setError("Error saving card");
+      console.error('Error saving card:', err);
+      setError('Error saving card');
     }
   };
 
@@ -109,8 +98,8 @@ const CardManagement = () => {
         throw new Error('Failed to delete card');
       }
     } catch (err) {
-      console.error("Error deleting card:", err);
-      setError("Error deleting card");
+      console.error('Error deleting card:', err);
+      setError('Error deleting card');
     }
   };
 
@@ -119,9 +108,6 @@ const CardManagement = () => {
     setIsEditing(false);
     setCurrentCardId(null);
   };
-
-
-
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
@@ -152,7 +138,7 @@ const CardManagement = () => {
           placeholder="Image URL"
         />
         <button onClick={handleFormSubmit}>
-          {isEditing ? "Update Card" : "Add Card"}
+          {isEditing ? 'Update Card' : 'Add Card'}
         </button>
         {isEditing && <button onClick={resetForm}>Cancel</button>}
       </div>
@@ -163,7 +149,7 @@ const CardManagement = () => {
               <div className="card-info">
                 <h3>{card.title}</h3>
                 <p>{card.description}</p>
-                <img src={card.imageUrl} alt={card.title} className="card-image" />
+                <img src={card.imageUrl} alt={`Card: ${card.title}`} className="card-image" />
               </div>
               <div className="card-actions">
                 <button className="edit-btn" onClick={() => handleEditClick(card)}>Edit</button>

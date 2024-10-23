@@ -27,27 +27,76 @@ const PlaceOrder = () => {
   };
 
   const handleFileChange = (e) => {
-    setFormData({ ...formData, receiptFile: e.target.files[0] });
+    const file = e.target.files[0];
+
+    // Dosya türü kontrolü
+    const allowedTypes = ['application/pdf', 'image/jpeg', 'image/png', 'image/jpg'];
+    if (file && allowedTypes.includes(file.type)) {
+      setFormData({ ...formData, receiptFile: file });
+    } else {
+      alert('Lütfen yalnızca PDF veya resim dosyası yükleyin.');
+    }
+  };
+
+  const uploadFileToCloudinary = async (file) => {
+    const cloudinaryData = new FormData();
+    cloudinaryData.append('file', file);
+    cloudinaryData.append('upload_preset', 'tbrgiuze'); // Cloudinary'deki upload preset
+
+    try {
+      const response = await fetch('https://api.cloudinary.com/v1_1/de6kealil/upload', {
+        method: 'POST',
+        body: cloudinaryData,
+      });
+
+      if (!response.ok) {
+        throw new Error('Dosya yüklenirken hata oluştu.');
+      }
+
+      const result = await response.json();
+      console.log('Cloudinary yükleme başarılı:', result.secure_url); // Başarı mesajı
+      return result.secure_url; // Cloudinary'den dönen URL
+    } catch (error) {
+      console.error('Cloudinary yükleme hatası:', error);
+      return null;
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formDataToSubmit = new FormData();
-    Object.keys(formData).forEach((key) => {
-      formDataToSubmit.append(key, formData[key]);
-    });
-    formDataToSubmit.append("examDate", examDate);
-    formDataToSubmit.append("city", city);
-    formDataToSubmit.append("examType", examType);
-    formDataToSubmit.append("ticketPrice", ticketPrice);
+    setMessage('Yükleniyor...');
+
+    let receiptFileUrl = ''; // Değişiklik
+    if (formData.receiptFile) {
+      receiptFileUrl = await uploadFileToCloudinary(formData.receiptFile);
+      if (!receiptFileUrl) {
+        setMessage('Dosya yüklenemedi.');
+        console.error('Cloudinary yüklemesi başarısız, dosya yüklenemedi.'); // Hata mesajı
+        return;
+      }
+    }
+
+    const formDataToSubmit = {
+      ...formData,
+      examDate,
+      city,
+      examType,
+      ticketPrice,
+      receiptFile: receiptFileUrl, // Cloudinary URL'si burada backend'e gönderilecek
+    };
 
     try {
       const response = await fetch("http://localhost:8080/api/orders", {
         method: "POST",
-        body: formDataToSubmit,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formDataToSubmit),
       });
+
       if (response.ok) {
-        setMessage('Order placed successfully!');
+        setMessage('Sifariş uğurla yerinə yetirildi!');
+        console.log('Sipariş başarıyla gönderildi:', formDataToSubmit); // Başarı mesajı
         setFormData({
           firstName: "",
           lastName: "",
@@ -58,25 +107,25 @@ const PlaceOrder = () => {
           receiptFile: null,
         });
       } else {
-        setMessage('Failed to place order.');
+        setMessage('Sifarişi tamamlamaq mümkün olmadı.');
+        console.error('Sipariş gönderimi başarısız, yanıt:', await response.json()); // Hata mesajı
       }
     } catch (error) {
-      setMessage('An error occurred while placing the order.');
+      setMessage('Sifarişi tamamlama zamanı xəta baş verdi.');
+      console.error('Sipariş gönderimi sırasında hata:', error); // Hata mesajı
     }
   };
 
-  
-
   return (
     <>
-      {message && <div className={`notification ${message.includes('successfully') ? 'success' : 'error'}`}>{message}</div>}
+      {message && <div className={`notification ${message.includes('uğurla') ? 'success' : 'error'}`}>{message}</div>}
       <form className="place-order" onSubmit={handleSubmit}>
         <div className="place-order-left">
-          <p className="title">Your Data</p>
+          <p className="title">MƏLUMATLARINIZ</p>
           <div className="multi-fields">
             <input
               type="text"
-              placeholder="First name"
+              placeholder="AD"
               name="firstName"
               value={formData.firstName}
               onChange={handleChange}
@@ -84,7 +133,7 @@ const PlaceOrder = () => {
             />
             <input
               type="text"
-              placeholder="Last name"
+              placeholder="SOYAD"
               name="lastName"
               value={formData.lastName}
               onChange={handleChange}
@@ -93,7 +142,7 @@ const PlaceOrder = () => {
           </div>
           <input
             type="email"
-            placeholder="Email address"
+            placeholder="Email "
             name="email"
             value={formData.email}
             onChange={handleChange}
@@ -101,21 +150,21 @@ const PlaceOrder = () => {
           />
           <input
             type="text"
-            placeholder="Street"
+            placeholder="ATA ADI"
             name="street"
             value={formData.street}
             onChange={handleChange}
           />
           <input
             type="text"
-            placeholder="Phone"
+            placeholder="TELEFON"
             name="phone"
             value={formData.phone}
             onChange={handleChange}
           />
         </div>
         <div className="place-order-right">
-          <p className="right-p">Choose a Payment Method</p>
+          <p className="right-p">Ödəniş metodunu seçin</p>
           <div className="radio-buttons">
             <input
               type="radio"
@@ -137,24 +186,26 @@ const PlaceOrder = () => {
             <label htmlFor="m10">m10</label>
           </div>
           <div className="paymentReceipt">
-            <label className="File">Post the payment receipt</label>
+            <label className="File">Ödəniş qəbzini yerləşdirin</label>
             <input type="file" onChange={handleFileChange} />
             {formData.receiptFile && (
               <p>Uploaded File: {formData.receiptFile.name}</p>
             )}
           </div>
           <p className="terms">
-            By placing your order, you agree to our{" "}
-            <a href="#">Terms & Conditions</a>
+            Sifariş verməklə siz bizimlə razılaşırsınız
+            {" "}
+            <a href="/Terms">
+              Qaydalar və Şərtlər</a>
           </p>
-          <button type="submit">Buy a Ticket</button>
+          <button type="submit">Bilet alın</button>
         </div>
         <div className="order-summary">
-          <h2>Order Summary</h2>
-          <p>Exam Date: {examDate}</p>
-          <p>City: {city}</p>
-          <p>Exam Type: {examType}</p>
-          <p>Ticket Price: ${ticketPrice}</p>
+          <h2>Bilet məlumatlariniz</h2>
+          <p>İmtahan Tarixi: {examDate}</p>
+          <p>Filial: {city}</p>
+          <p>İmtahan növü: {examType}</p>
+          <p>Məbləğ: ₼{ticketPrice}</p>
         </div>
       </form>
     </>

@@ -26,7 +26,7 @@ const School = () => {
 
   return (
     <div className="school-container">
-      <h1 className="title">High School and College Preparation</h1>
+      <h1 className="title">Ali Məktəb və Kollec Hazırlığı</h1>
       <div className="stages">
         {stages.map((stage) => (
           <div className="stage" key={stage._id}>

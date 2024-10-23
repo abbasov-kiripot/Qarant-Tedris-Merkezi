@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './ExamResultsManagement.css';
 
-const examResultsManagement = () => {
+const ExamResultsManagement = () => {
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -182,29 +182,29 @@ const examResultsManagement = () => {
           </tr>
         </thead>
         <tbody>
-  {filteredResults.map(result => (
-    <tr key={result.jobNumber}> {/* Her satıra benzersiz bir key ekliyoruz */}
-      <td>{result.jobNumber}</td>
-      <td>{result.examName}</td>
-      <td>{result.examDate}</td>
-      <td>{result.examTime}</td>
-      <td>{result.score}</td>
-      <td>{result.correctAnswers}</td>
-      <td>{result.wrongAnswers}</td>
-      <td>{result.subjects}</td>
-      <td>
-        {result.resultFile ? (
-          <a href={`http://localhost:8080/uploads/${result.resultFile}`} target="_blank" rel="noopener noreferrer">
-            Dosyayı Görüntüle
-          </a>
-        ) : 'Dosya Yok'}
-      </td>
-      <td>
-        <button onClick={() => handleDelete(result.jobNumber)}>Sil</button>
-      </td>
-    </tr>
-  ))}
-</tbody>
+          {filteredResults.map(result => (
+            <tr key={result._id}>
+              <td>{result.jobNumber}</td>
+              <td>{result.examName}</td>
+              <td>{result.examDate}</td>
+              <td>{result.examTime}</td>
+              <td>{result.score}</td>
+              <td>{result.correctAnswers}</td>
+              <td>{result.wrongAnswers}</td>
+              <td>{result.subjects}</td>
+              <td>
+                {result.resultFile ? (
+                  <a href={`http://localhost:8080/uploads/${result.resultFile}`} target="_blank" rel="noopener noreferrer">
+                    Dosyayı Görüntüle
+                  </a>
+                ) : 'Dosya Yok'}
+              </td>
+              <td>
+                <button onClick={() => handleDelete(result.jobNumber)}>Sil</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
 
 
       </table>
@@ -212,4 +212,4 @@ const examResultsManagement = () => {
   );
 };
 
-export default examResultsManagement;
+export default ExamResultsManagement;

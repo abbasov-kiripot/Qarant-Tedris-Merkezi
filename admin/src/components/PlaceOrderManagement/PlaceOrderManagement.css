@@ -3,22 +3,22 @@
 
 :root {
   --primary-color: #3498db;
-  --secondary-color: #2ecc71;
+  --secondary-color: #2ecc71; /* Başarı mesajı için */
+  --error-color: #2ecc71; /* Hata mesajı için */
   --background-color: #f8f9fa;
   --text-color: #333333;
   --border-color: #dee2e6;
   --hover-color: #e9ecef;
-  --delete-color: #e74c3c;
   --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .place-order-management {
   font-family: 'Inter', sans-serif;
-  max-width: 1280px;
+  max-width: 90%;
   margin: 2rem auto;
-  margin-left: 320px;
+  margin-left: 210px;
   border-radius: 10px;
-  margin-top: 160px;
+  margin-top: 50px;
 }
 
 header {
@@ -57,15 +57,37 @@ input[type="text"]:focus {
   box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
 }
 
+/* Mesaj stilleri */
 .message {
-  background-color: var(--secondary-color);
-  color: white;
   padding: 1rem 1.25rem;
   border-radius: 6px;
   margin-bottom: 2rem;
   font-weight: 500;
   font-size: 1rem;
   text-align: center;
+}
+
+.success-message {
+  background-color: var(--secondary-color);
+  color: white;
+  border: 1px solid darkgreen;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.error-message {
+  background-color: var(--error-color);
+  color: white;
+  border: 1px solid rgb(0, 139, 32);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 table {
@@ -96,13 +118,10 @@ tr:nth-child(even) {
   background-color: var(--background-color);
 }
 
-tr:hover {
-  background-color: var(--hover-color);
-  transition: background-color 0.2s ease;
-}
+
 
 .delete-button {
-  background-color: var(--delete-color);
+  background-color: var(--error-color);
   color: white;
   border: none;
   padding: 0.5rem 1rem;

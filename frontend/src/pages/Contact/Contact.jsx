@@ -1,6 +1,6 @@
-// src/Contact.js
 import React, { useState } from 'react';
 import './Contact.css';
+import emailjs from '@emailjs/browser';
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -19,6 +19,33 @@ function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    const serviceID = 'service_br9gu7n';
+    const templateID = 'template_9u8s6ja';
+    const userID = 'AyP_QIfgP8PlN1YMp'; 
+    
+    const templateParams = {
+      name: formData.name,
+      service: formData.service,
+      phone: formData.phone,
+      email: formData.email,
+      message: formData.message,
+    };
+    
+    try {
+      await emailjs.send(serviceID, templateID, templateParams, userID)
+      .then(res => {
+        if (res.status === 200){
+          alert("Tebrikler");
+        }
+      });
+      
+      setStatus('Message sent successfully via email!');
+    } catch (error) {
+      setStatus('Error sending email message');
+      console.error(error);
+    }
+
     try {
       const response = await fetch('http://localhost:8080/api/contacts', {
         method: 'POST',
@@ -29,7 +56,7 @@ function Contact() {
       });
 
       if (response.ok) {
-        setStatus('Message sent successfully!');
+        setStatus('Uğurla Göndərildi!');
         setFormData({
           name: '',
           service: '',
@@ -37,11 +64,16 @@ function Contact() {
           email: '',
           message: ''
         });
+
+        // 1 saniye sonra mesajı temizle
+        setTimeout(() => {
+          setStatus('');
+        }, 3000);
       } else {
-        throw new Error('Failed to send message');
+        throw new Error('Failed to send message to the server');
       }
     } catch (error) {
-      setStatus('Error sending message');
+      setStatus('Error sending message to the server');
       console.error(error);
     }
   };
@@ -99,6 +131,7 @@ function Contact() {
             required
           />
         </label>
+
         <label>
           Your message *
           <textarea
@@ -110,7 +143,8 @@ function Contact() {
           ></textarea>
         </label>
         <button type="submit">Send</button>
-        {status && <p>{status}</p>}
+
+        {status && <p className={status === 'Uğurla Göndərildi!' ? 'success-message' : 'error-message'}>{status}</p>}
       </form>
       <div className="map-container">
         <iframe

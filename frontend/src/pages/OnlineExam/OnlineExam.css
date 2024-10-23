@@ -19,18 +19,16 @@
   padding: 30px;
   margin-bottom: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-top: 21px;
+
 }
 
-.logo {
-  margin-bottom: 30px;
-  width: 120px; /* Adjusted size for consistency */
-  height: auto;
-}
+
 
 h1 {
-  text-align: center;
   font-size: 3rem;
-  margin-bottom: 20px; /* Adjusted margin for better spacing */
+  margin-bottom: 50px; /* Adjusted margin for better spacing */
+  margin-right: 15px;
   font-weight: 700;
   color: #ffffff;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -74,10 +72,10 @@ h1 {
 
 .results-icon {
   border-top: 2px solid #ffffff;
-  width: 150%; /* Adjusted for better scaling */
+  width: 200%; /* Adjusted for better scaling */
   padding-top: 20px;
   margin-top: 20px;
-  margin-left: -130px;
+  margin-left: -190px;
 }
 
 .option p {

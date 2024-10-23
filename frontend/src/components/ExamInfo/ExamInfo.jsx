@@ -3,9 +3,11 @@ import './ExamInfo.css';
 import { Link } from 'react-router-dom';
 
 const prices = {
-  mock: 10,
-  final: 20,
-  entrance: 30,
+  mock: 8,
+  final: 12,
+  entrance: 16,
+  bigFinal: 20,
+
 };
 
 const ExamInfo = () => {
@@ -48,23 +50,23 @@ const ExamInfo = () => {
   }, []);
 
   return (
-    <div className="exam-info" ref={examInfoRef}>
+    <div className="exam-info" ref={examInfoRef}  >
       <div className="info-item">
         <img src="https://www.zefer.edu.az/frq-templates/assets/images/icons/online.png" alt="Mock Exam Dates" />
-        <h3>Mock Exam Dates</h3>
-        <Link to="/MED">More</Link>
+        <h3>Sınaq İmtahan Tarixləri</h3>
+        <Link to="/MED">Detallar</Link>
       </div>
       <div className="info-item">
         <img src="https://www.zefer.edu.az/frq-templates/assets/images/icons/book.png" alt="Mock Exam Topics" />
-        <h3>Mock Exam Topics</h3>
-        <Link to="/MET">More</Link>
+        <h3>Sınaq imtahan mövzuları</h3>
+        <Link to="/MET">Detallar</Link>
       </div>
       <div className="info-item">
         <img src="https://www.zefer.edu.az/frq-templates/images/examresults.png" alt="Exam Results" />
-        <h3>Exam Results</h3>
-        <Link to="/ExamResults">Check it out</Link>
+        <h3>İmtahan Nəticələri</h3>
+        <Link to="/ExamResults">Yoxlayın</Link>
       </div>
-      <h2>Buy your ticket with 1 Click</h2>
+      <h2>Biletinizi indi asanlıqla 1 kliklə alın!</h2>
       <div className="container-info">
         <div className="select-section">
           <input
@@ -76,18 +78,16 @@ const ExamInfo = () => {
             placeholder="Select exam date"
           />
           <select id="city" name="city" value={city} onChange={(e) => setCity(e.target.value)}>
-            <option value="">Select a city</option>
-            <option value="baku">Baku</option>
-            <option value="ganja">Gence</option>
-            <option value="sumqayit">Sumgayıt</option>
-            <option value="mingechevir">Mingəçevir</option>
-            <option value="lankaran">Lənkəran</option>
+            <option value="">Filial seçin</option>
+            <option value="Binə Sovxoz">Binə Sovxoz </option>
+            <option value="Xirdalan">Xırdalan</option>
           </select>
           <select id="exam-type" name="exam-type" value={examType} onChange={(e) => setExamType(e.target.value)}>
-            <option value="">Choose an exam type</option>
-            <option value="mock">Mock Exam - $10</option>
-            <option value="final">Final Exam - $20</option>
-            <option value="entrance">Entrance Exam - $30</option>
+            <option value="">İmtahan növünü seçin</option>
+            <option value="mock">İbtidai siniflər "2-4" 8AZN</option>
+            <option value="final">Təməl siniflər "5-8" 12AZN</option>
+            <option value="entrance">Buraxılış imtahanı "9-11" 20AZN</option>
+            <option value="entrance">Blok imtahanı "9-11" 16AZN</option>
           </select>
           <button onClick={() => {
             if (examDate && city && examType) {

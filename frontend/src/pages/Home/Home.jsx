@@ -12,8 +12,8 @@ const Home = () => {
   return (
     <div>
       <Header />
-      <ExamInfo />
-      <Services />
+      <ExamInfo  />
+      <Services  />
       <Counter/>
       <Slide />
       <EventAndContact />

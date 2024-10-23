@@ -59,7 +59,7 @@ const Registration = () => {
         // Check if the response is JSON
         try {
           const errorData = await response.json();
-          setMessage(`Error: ${errorData.message || 'An error occurred'}`);
+          setMessage(`İlk öncə forumu doldurun`);
         } catch (jsonError) {
           // If JSON parsing fails, assume the response is HTML or plain text
           setMessage(`Error: ${response.statusText || 'An error occurred'}`);
@@ -78,74 +78,74 @@ const Registration = () => {
   
   return (
     <div className="online-exam-portal">
-      <h2>Registration Form</h2>
+      <h2>Qeydiyyat formu</h2>
       <form onSubmit={handleSubmit}>
         <select value={exam} onChange={(e) => setExam(e.target.value)}>
-          <option value="">Select Exam</option>
+          <option value="">İmtahan seçin</option>
           <option value="Exam1">Exam1</option>
           <option value="Exam2">Exam2</option>
         </select>
         <select value={direction} onChange={(e) => setDirection(e.target.value)}>
-          <option value="">Select Direction</option>
+          <option value="">İstiqamət seçin</option>
           <option value="Direction1">Direction1</option>
           <option value="Direction2">Direction2</option>
         </select>
         <select value={city} onChange={(e) => setCity(e.target.value)}>
-          <option value="">Select City</option>
+          <option value="">Fillial seçin</option>
           <option value="City1">City1</option>
           <option value="City2">City2</option>
         </select>
         <input
           type="text"
-          placeholder="First Name"
+          placeholder="Ad"
           value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
         />
         <input
           type="text"
-          placeholder="Last Name"
+          placeholder="Soyadı"
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}
         />
         <input
           type="text"
-          placeholder="Father's Name"
+          placeholder="Atanın adı"
           value={fatherName}
           onChange={(e) => setFatherName(e.target.value)}
         />
         <input
           type="email" // Email input field
-          placeholder="Email Address"
+          placeholder="E-poçt ünvanı"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
           type="text"
-          placeholder="Phone Number (e.g., 012 123 45 67)"
+          placeholder="Telefon nömrəsi (məsələn, 012 123 45 67)"
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
         />
         <div className="birth-date">
           <select value={birthDay} onChange={(e) => setBirthDay(e.target.value)}>
-            <option value="">Day</option>
+            <option value="">GÜN</option>
             {[...Array(31).keys()].map(day => (
               <option key={day + 1} value={day + 1}>{day + 1}</option>
             ))}
           </select>
           <select value={birthMonth} onChange={(e) => setBirthMonth(e.target.value)}>
-            <option value="">Month</option>
+            <option value="">AY</option>
             {['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'].map((month, index) => (
               <option key={index + 1} value={index + 1}>{month}</option>
             ))}
           </select>
           <select value={birthYear} onChange={(e) => setBirthYear(e.target.value)}>
-            <option value="">Year</option>
+            <option value="">İL</option>
             {[...Array(100).keys()].map(year => (
               <option key={2024 - year} value={2024 - year}>{2024 - year}</option>
             ))}
           </select>
         </div>
-        <button type="submit">Submit</button>
+        <button type="submit">GÖNDƏR</button>
         {message && <p className="message">{message}</p>}
       </form>
     </div>

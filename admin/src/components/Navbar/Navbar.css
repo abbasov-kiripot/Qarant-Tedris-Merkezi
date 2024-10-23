@@ -1,139 +1,119 @@
-:root {
-  --navbar-bg-start: #019bbd;
-  --navbar-bg-end: #017ea3;
-  --text-color: #ffffff;
-  --hover-color: #e0f7fa;
-  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-/* Navbar Section */
+/* Sidebar genişliği ile uyumlu navbar */
 .navbar {
-  background-image: linear-gradient(to right, var(--navbar-bg-start), var(--navbar-bg-end));
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 15px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  position: relative;
-  overflow: hidden;
   position: fixed;
-  z-index: 1000; /* Sidebar'dan daha yüksek bir değer */
-  width: 100%;
   top: 0;
-  left: 0;
-}
-
-.navbar::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 80%);
-  transform: rotate(45deg);
-  transition: var(--transition);
-  opacity: 0;
-}
-
-.navbar:hover::before {
-  opacity: 1;
-}
-
-/* Navbar Brand */
-.navbar-brand {
+  left: 80px; /* Sidebar genişliği */
+  right: 0;
+  height: 64px; /* Navbar yüksekliği */
+  background: linear-gradient(90deg, #1e3a8a 0%, #1e40af 100%);
   display: flex;
+  justify-content: space-evenly;
   align-items: center;
-  position: relative;
-  z-index: 1;
+  padding: 0 24px;
+  z-index: 999; /* Sidebar z-index'i 1000 olduğu için */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.navbar-brand .logo {
-  width: 120px;
+.navbar-logo img {
+  width: 79px;
   transition: var(--transition);
-  border-radius: 3%;
   filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.2));
+  margin-left: -324px;
+
 }
 
-.navbar-brand .logo:hover {
-  transform: scale(1.05) rotate(2deg);
-  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.3));
-}
 
-/* Navbar Menu */
+/* Navbar menü listesi */
 .navbar-menu {
-  list-style: none;
   display: flex;
-  gap: 15px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 30px; /* Menü öğeleri arası boşluk */
+  margin-right: 300px;
 }
 
-.navbar-menu .navbar-item {
-  color: var(--text-color);
+/* Menü öğesi stilleri */
+.navbar-item {
+  color: #e0e7ff;
   text-decoration: none;
-  cursor: pointer;
-  font-size: 1.2rem;
-  transition: var(--transition);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  padding: 8px 0;
   position: relative;
-  padding: 5px 0;
+  transition: all 0.2s ease;
 }
 
-.navbar-menu .navbar-item::before,
-.navbar-menu .navbar-item::after {
+/* Hover efektleri */
+.navbar-item::before,
+.navbar-item::after {
   content: '';
   position: absolute;
   width: 0;
   height: 2px;
-  background-color: var(--hover-color);
-  transition: var(--transition);
+  background-color: #ffffff;
+  transition: all 0.3s ease;
 }
 
-.navbar-menu .navbar-item::before {
-  left: 0;
+.navbar-item::before {
   top: 0;
+  left: 0;
 }
 
-.navbar-menu .navbar-item::after {
-  right: 0;
+.navbar-item::after {
   bottom: 0;
+  right: 0;
 }
 
-.navbar-menu .navbar-item:hover::before,
-.navbar-menu .navbar-item:hover::after {
+.navbar-item:hover {
+  color: #ffffff;
+}
+
+.navbar-item:hover::before,
+.navbar-item:hover::after {
   width: 100%;
 }
 
-.navbar-menu .navbar-item:hover {
-  color: var(--hover-color);
-  transform: translateY(-2px);
-}
-
-/* Navbar Profile */
+/* Profil alanı */
 .navbar-profile {
-  position: relative;
-  z-index: 1;
+  display: flex;
+  align-items: center;
 }
 
-.navbar-profile .profile {
-  width: 60px;
-  transition: var(--transition);
+.profile {
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.2));
+  object-fit: cover;
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
 }
 
-.navbar-profile .profile:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+.profile:hover {
+  border-color: #ffffff;
+  transform: scale(1.05);
+}
+
+/* Sidebar açık/kapalı durumuna göre responsive davranış */
+body[data-sidebar-collapsed="true"] .navbar {
+  left: 80px; /* Daraltılmış sidebar genişliği */
+}
+
+/* Küçük ekranlar için responsive tasarım */
+@media (max-width: 1024px) {
+  .navbar-menu {
+    gap: 24px;
+  }
 }
 
 @media (max-width: 768px) {
   .navbar {
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
+    left: 0;
+    padding: 0 16px;
   }
-
+  
   .navbar-menu {
-    flex-direction: column;
-    align-items: center;
+    display: none;
   }
 }

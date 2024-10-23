@@ -1,0 +1,94 @@
+/* Container Style */
+.terms-container {
+    margin: 0 auto;
+    padding: 40px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    margin-top: -50px;
+    margin-left: 10px;
+}
+
+/* Title Style */
+.terms-container h1 {
+    color: black; /* Mavi rəng */
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+    position: relative;
+}
+
+/* Adding a subtle underline */
+.terms-container h1::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    margin: 10px auto;
+    border-radius: 2px;
+    background-color: #078fad; /* Mavi rəng */
+    transform: scaleX(0);
+    transition: transform 0.7s ease; /* Slower transition */
+}
+
+.terms-container h1:hover::after {
+    transform: scaleX(1);
+}
+
+/* Terms Section Style */
+.terms-section {
+    padding: 30px;
+    border-radius: 20px;
+    transition: transform 1s ease, box-shadow 1s ease; /* Slower transition */
+    position: relative;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+}
+
+/* Hover Effect for Sections */
+.terms-section:hover {
+    transform: translateY(-10px); /* Slightly larger lift effect */
+}
+
+/* Section Header Style */
+.terms-section h2 {
+    font-size: 1.8em;
+    color: #078fad; /* Mavi rəng */
+    margin-bottom: 20px;
+    font-weight: 700;
+    position: relative;
+    transition: color 0.5s ease; /* Slower transition */
+}
+
+/* Paragraph Style */
+.terms-section p {
+    font-size: 1.1em;
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+    position: relative;
+    padding-left: 20px;
+}
+
+/* Adding a subtle left border to paragraphs */
+.terms-section p::before {
+    content: '';
+    display: block;
+    width: 4px;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #078fad; /* Mavi rəng */
+    border-radius: 2px;
+    transition: background-color 1s ease; /* Slower transition */
+}
+
+/* Hover Effect for Paragraphs */
+.terms-section:hover p::before {
+    background-color: #555; /* Hover zamanı tündləşir */
+}

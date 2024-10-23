@@ -28,6 +28,8 @@ import Physical from "./pages/Physical/Physical";
 import Chemical from "./pages/Chemical/Chemical";
 import Biology from "./pages/Biology/Biology";
 import Login from "./pages/Login/Login";
+import Terms from "./pages/Terms/Terms";
+import Profile from "./pages/profile/profile";
 
 const App = () => {
   return (
@@ -57,6 +59,8 @@ const App = () => {
           <Route path="/Physical" element={<Physical />} />
           <Route path="/Chemical" element={<Chemical />} />
           <Route path="/Biology" element={<Biology />} />
+          <Route path="/Terms" element={<Terms/>}/>
+          <Route path="/Profile" element={<Profile/>}/>
         </Route>
       </Routes>
     </div>
