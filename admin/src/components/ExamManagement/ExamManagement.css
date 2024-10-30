@@ -16,7 +16,7 @@
   padding-top: 39px;
   max-width: 1400px;
   margin: 0 auto;
-  padding-left:450px;
+  padding-left:350px;
 }
 
 h2 {
@@ -82,6 +82,7 @@ button {
   font-weight: 600;
   position: relative;
   overflow: hidden;
+  width: 100%;
 }
 
 button::before {

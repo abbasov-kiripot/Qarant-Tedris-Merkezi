@@ -51,17 +51,17 @@ const ExamInfo = () => {
 
   return (
     <div className="exam-info" ref={examInfoRef}  >
-      <div className="info-item">
+      <div className="info-items">
         <img src="https://www.zefer.edu.az/frq-templates/assets/images/icons/online.png" alt="Mock Exam Dates" />
         <h3>Sınaq İmtahan Tarixləri</h3>
         <Link to="/MED">Detallar</Link>
       </div>
-      <div className="info-item">
+      <div className="info-items">
         <img src="https://www.zefer.edu.az/frq-templates/assets/images/icons/book.png" alt="Mock Exam Topics" />
         <h3>Sınaq imtahan mövzuları</h3>
         <Link to="/MET">Detallar</Link>
       </div>
-      <div className="info-item">
+      <div className="info-items">
         <img src="https://www.zefer.edu.az/frq-templates/images/examresults.png" alt="Exam Results" />
         <h3>İmtahan Nəticələri</h3>
         <Link to="/ExamResults">Yoxlayın</Link>

@@ -6,8 +6,8 @@ import {
   MdOutlineTopic, MdOutlineContactMail, MdAppRegistration, MdOutlineAnnouncement,
   MdSchool, MdShoppingCart, MdAssignment, MdQuiz, MdInfo, MdGrade
 } from "react-icons/md";
-import { LiaSchoolSolid } from "react-icons/lia";
 import { GiIdCard } from "react-icons/gi";
+import { PiStudentBold } from "react-icons/pi";
 
 // Menü öğelerini kategorilere ayırıyoruz
 const menuCategories = {
@@ -22,7 +22,7 @@ const menuCategories = {
   ],
   education: [
     { to: "/ExamManagement", icon: <MdGrade />, label: "Exam" },
-    { to: "/schoolManagement", icon: <LiaSchoolSolid />, label: "School" },
+    { to: "/schoolManagement", icon: <MdSchool />, label: "School" },
     { to: "/TopicManagement", icon: <MdOutlineTopic />, label: "Topic" },
     { to: "/ExamResultsManagement", icon: <MdBarChart />, label: "Exam Results" },
     { to: "/fltManagement", icon: <MdQuiz />, label: "FLT" },
@@ -33,6 +33,8 @@ const menuCategories = {
     { to: "/EventManagement", icon: <MdEvent />, label: "Event" },
     { to: "/JobApplicationFormManagement", icon: <MdOutlineAnnouncement />, label: "Vacancies" },
     { to: "/RegistrationManagement", icon: <MdAppRegistration />, label: "Registration" },
+    { to: "/StudentManagement", icon: <PiStudentBold />, label: "Student" },
+
   ],
   other: [
     { to: "/PlaceOrderManagement", icon: <MdShoppingCart />, label: "Place Order" },

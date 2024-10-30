@@ -26,6 +26,8 @@ import aboutUsRoutes from './routes/aboutUsRoutes.js';
 import errorHandler from './middleware/errorMiddleware.js'; 
 import authRoutes from './models/auth.js'; 
 import examResultRoutes from './routes/examResultRoutes.js';
+import profileRoutes from './routes/profileRoutes.js';
+
 
 
 const app = express(); // Express uygulamasını başlatıyoruz
@@ -76,6 +78,7 @@ app.use('/api/flts', fltRoutes); // FLT ile ilgili işlemler
 app.use('/api/miq', miqRoutes); // MIQ ile ilgili işlemler
 app.use('/api/about-us', aboutUsRoutes); // Hakkımızda sayfası ile ilgili işlemler
 app.use('/api/examResults', examResultRoutes); // Sınav sonuçlarıyla ilgili işlemler
+app.use('/api/profiles', profileRoutes);
 
 
 

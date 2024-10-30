@@ -143,10 +143,10 @@ const TopicManagement = () => {
           onChange={handleInputChange}
           placeholder="Link"
         />
-        <button onClick={handleFormSubmit}>
+        <button className='Add' onClick={handleFormSubmit}>
           {isEditing ? 'Update Topic' : 'Add Topic'}
         </button>
-        {isEditing && <button onClick={resetForm}>Cancel</button>}
+        {isEditing && <button  onClick={resetForm}>Cancel</button>}
       </div>
       <div className="topic-list">
         {topics.length > 0 ? (

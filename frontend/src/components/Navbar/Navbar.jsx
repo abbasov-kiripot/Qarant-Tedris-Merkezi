@@ -11,13 +11,7 @@ import scroolTOTop from "../../provider/scroolTOTop";
 const Navbar = () => {
   const [menu, setMenu] = useState("Main page");
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [isLogin, setIsLogin] = useState(false); // Başlangıçta giriş yapılmadı olarak ayarlanır.
-
-  // Giriş durumu localStorage'dan kontrol edilir.
-  useEffect(() => {
-    const loginStatus = localStorage.getItem("isLogin") === "true";
-    setIsLogin(loginStatus); // Eğer 'isLogin' true ise giriş yapılmış kabul edilir.
-  }, []);
+  const [isLogin, setIsLogin] = useState(localStorage.getItem("isLogin") === "true"); // Giriş durumu başlangıçta ayarlanır.
 
   // Dropdown menüyü açıp kapatma
   const toggleDropdown = () => {
@@ -26,33 +20,47 @@ const Navbar = () => {
 
   // Kullanıcının giriş yapıp yapmadığını kontrol eden yardımcı fonksiyon
   const getProfileLink = () => {
-    return isLogin ? "/profile" : "/Results"; // Giriş yapılmışsa "/profile", yapılmamışsa "/Login"
+    return isLogin ? "/profile" : "/Results"; // Giriş yapılmışsa "/profile", yapılmamışsa "/Results"
   };
+
+  // Kullanıcı menü dışına tıkladığında dropdown'u kapatma
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (!event.target.closest('.dropdown')) {
+        setDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
 
   return (
     <div className="Navbar">
       <Link to="/">
         <img src="https://i.ibb.co/hFG0bvF/qarant-logo.jpg" className="logo" alt="logo" />
       </Link>
-      
+
       <ul className="Navbar-menu">
         <li
           onClick={() => setMenu("Main page")}
           className={menu === "Main page" ? "active" : ""}
         >
-          <Link to="" onClick={scroolTOTop}>Əsas</Link>
+          <Link to="/" onClick={scroolTOTop}>Əsas</Link>
         </li>
         <li className="dropdown" onClick={toggleDropdown}>
           <span className={`dropdown-btn ${dropdownOpen ? "active" : ""}`}>
             <Link to="/" onClick={scroolTOTop}>Kurslarımız</Link>
           </span>
           <div className={`dropdown-content ${dropdownOpen ? "show" : ""}`}>
-            <Link to="/School">Ali təhsil müəssisələrinə və Kolleclərə hazırlıq</Link>
-            <Link to="/FLT">Xarici dil hazırlığı</Link>
-            <Link to="/SchoolPreparation">Məktəbə hazırlıq</Link>
-            <Link to="/Program">Ofis programları</Link>
-            <Link to="/Tibb">TİBB</Link>
-            <Link to="/MIQ">MİQ</Link>
+            <Link to="/School" onClick={scroolTOTop}>Ali təhsil müəssisələrinə və Kolleclərə hazırlıq</Link>
+            <Link to="/FLT" onClick={scroolTOTop}>Xarici dil hazırlığı</Link>
+            <Link to="/SchoolPreparation" onClick={scroolTOTop}>Məktəbə hazırlıq</Link>
+            <Link to="/Program" onClick={scroolTOTop}>Ofis programları</Link>
+            <Link to="/Tibb" onClick={scroolTOTop}>TİBB</Link>
+            <Link to="/MIQ" onClick={scroolTOTop}>MİQ</Link>
           </div>
         </li>
         <li
@@ -83,34 +91,33 @@ const Navbar = () => {
 
       <div className="navbar-one flex">
         <div className="left flex">
-          <div className="email">
+          <div className="email" aria-label="Email">
             <MdEmail />
             <span>23abasov@gmail.com</span>
           </div>
-          <div className="call">
+          <div className="call" aria-label="Phone">
             <FaPhoneAlt />
             <span>+994 77 488 04 49</span>
           </div>
         </div>
         <div className="right flex">
-          <div className="twitter">
+          <div className="twitter" aria-label="Twitter">
             <FaSquareTwitter />
             <span>twitter</span>
           </div>
-          <div className="facebook">
+          <div className="facebook" aria-label="Facebook">
             <FaFacebook />
             <span>facebook</span>
           </div>
-          <div className="instagram">
+          <div className="instagram" aria-label="Instagram">
             <AiFillInstagram />
             <span>instagram</span>
           </div>
         </div>
       </div>
-
       <Link to={getProfileLink()}>
         <div className="profile-card">
-          <img src="https://i.ibb.co/hFG0bvF/qarant-logo.jpg" alt="profile" />
+          KABİNET
         </div>
       </Link>
     </div>

@@ -153,7 +153,6 @@ const ExamManagement = () => {
           exams.map(exam => (
             <div key={exam._id} className="exam-item">
               <div className="exam-info">
-                <p>{exam.date}</p>
                 <img src={exam.image} alt={`Exam on ${exam.date}`} className="exam-image" />
                 <a href={exam.link} className="exam-link">View Exam</a>
               </div>

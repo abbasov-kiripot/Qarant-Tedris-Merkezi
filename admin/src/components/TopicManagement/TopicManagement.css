@@ -17,7 +17,7 @@
 .topic-management-container {
   margin: 2rem auto;
   padding: 2rem;
-  margin-left: 250px;
+  margin-left: 310px;
 }
 
 .topic2 {
@@ -48,7 +48,7 @@
   box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
 }
 
-.topic-management-header button {
+.topic-management-header Add {
   padding: 0.75rem 1.5rem;
   background-color: var(--primary-color);
   color: #fff;

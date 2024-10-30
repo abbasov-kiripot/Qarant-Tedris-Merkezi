@@ -17,7 +17,7 @@
   width: 100%;
   height: 29px;
   z-index: 1648484;
-  margin-left: -75px;
+  margin-left: -76px;
 }
 
 .left > div + div {
@@ -148,12 +148,13 @@ span {
   transform: translateY(0);
 }
 
-.profile-card img{
-  width: 40px;
+.profile-card {
+  width: 100px;
   height: 40px;
-  border-radius: 50%;
   display: flex;
+  border-radius:5px;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 0 10px -1px rgb(64, 63, 63);
+  background-color: #019bbd;
+  color: #ffffff;
 }

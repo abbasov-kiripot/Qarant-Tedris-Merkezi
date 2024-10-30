@@ -21,6 +21,7 @@ import FLTManagement from './components/fltManagement/fltManagement';
 import MIQManagement from './components/MIQManagement/MIQManagement';
 import AboutUsManagement from './components/AboutUsManagement/AboutUsManagement';
 import ExamResultsManagement from './components/ExamResultsManagement/ExamResultsManagement';
+import StudentManagement from './components/StudentManagement/StudentManagement';
 
 const App = () => {
   return (
@@ -50,6 +51,7 @@ const App = () => {
               <Route path='/MIQManagement' element={<MIQManagement/>}/>
               <Route path='/AboutUsManagement' element={<AboutUsManagement/>}/>
               <Route path='/ExamResultsManagement' element={<ExamResultsManagement/>}/>
+              <Route path='/StudentManagement' element={<StudentManagement/>}/>
             </Routes>
           </div>
         </div>
