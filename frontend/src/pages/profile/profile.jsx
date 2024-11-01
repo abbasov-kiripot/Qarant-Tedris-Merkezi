@@ -7,14 +7,14 @@ function Profile() {
   useEffect(() => {
     const data = localStorage.getItem("profileData");
     if (data) {
-      setProfileData(JSON.parse(data)); // LocalStorage'dan verileri al ve state'e kaydet
+      setProfileData(JSON.parse(data));
     } else {
       console.error("Profil verileri bulunamadı.");
     }
   }, []);
 
   if (!profileData) {
-    return <p>Profil bilgileri yükleniyor...</p>; // Veriler yüklenirken bekleme mesajı
+    return <p>Profil bilgileri yükleniyor...</p>;
   }
 
   return (
@@ -22,11 +22,23 @@ function Profile() {
       {/* Sol Profil Kartı */}
       <div className="left-card">
         <div className="avatar">
-          <img src={profileData.avatarUrl || "https://img.freepik.com/free-photo/close-up-beautiful-woman-smiling_23-2148369437.jpg"} alt="profile" />
+          {profileData.imageUrl ? (
+            <img
+              src={profileData.imageUrl}
+              alt="Profil resmi"
+              className="profile-image"
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = "path/to/default-image.jpg";
+              }}
+            />
+          ) : (
+            <img src="path/to/default-image.jpg" alt="Varsayılan profil resmi" className="profile-image" />
+          )}
         </div>
         <h2 className="name">{profileData.fullName || "Kullanıcı Adı"}</h2>
         <p className="title">{profileData.group || "Pozisyon"}</p>
-        <p className="location">{profileData.address || "Lokasyon"}</p>
+        <p className="location">{profileData.branch || "Lokasyon"}</p>
       </div>
 
       {/* Sağ Kısım */}
@@ -38,23 +50,30 @@ function Profile() {
             <span className="value">{profileData.fullName || "Ad Soyad"}</span>
           </div>
           <div className="info-item">
-            <span className="label">Əlaqə Nömrəsi</span>
-            <span className="value">{profileData.phone || "(XXX) XXX-XXXX"}</span>
-          </div>
-          <div className="info-item">
-            <span className="label">2-ci əlaqə Nömrəsi</span>
-            <span className="value">{profileData.mobile || "(XXX) XXX-XXXX"}</span>
-          </div>
-          <div className="info-item">
             <span className="label">Email</span>
             <span className="value">{profileData.email || "example@example.com"}</span>
+          </div>
+         
+          <div className="info-item">
+            <span className="label">Cinsiyet</span>
+            <span className="value">{profileData.gender || "Cinsiyet"}</span>
           </div>
           <div className="info-item">
             <span className="label">Ünvanı</span>
             <span className="value">{profileData.address || "Ünvan"}</span>
           </div>
           <div className="info-item">
-            <span className="label">Oxudugu Dərslər</span>
+            <span className="label">Əlaqə Nömrəsi</span>
+            <span className="value">{profileData.phone || "(XXX) XXX-XXXX"}</span>
+          </div>
+          <div className="info-item">
+            <span className="label">2-ci Əlaqə Nömrəsi</span>
+            <span className="value">{profileData.mobile || "(XXX) XXX-XXXX"}</span>
+          </div>
+
+
+          <div className="info-item">
+            <span className="label">Oxuduğu Dərslər</span>
             <span className="value">{profileData.subjects || "Dərslər"}</span>
           </div>
           <div className="info-item">
@@ -70,18 +89,18 @@ function Profile() {
         {/* Sağ Proje Durumu Kartı */}
         <div className="project-card">
           <div className="card-header">
-            <span className="assignment-icon">assignment</span>
-            <span className="header-text">Project Status</span>
+            <span className="assignment-icon">Həfdəlik dərs programı</span>
+            <span className="header-text">Unutmamanızı xaiş edirik</span>
           </div>
-          
+
           <div className="project-items">
-            {profileData.projects && profileData.projects.length > 0 ? (
-              profileData.projects.map((project, index) => (
-                <div className="project-item" key={index}>
-                  <span className="project-name">{project.name}</span>
-                  <div className="progress-bar">
-                    <div className="progress" style={{width: project.progress || '75%'}}></div>
-                  </div>
+            {profileData.schedule && profileData.schedule.length > 0 ? (
+              profileData.schedule.map((schedule, index) => (
+                <div key={index} className="project-item">
+                  <p><strong>Dərs saat'ı:</strong> {schedule.day}</p>
+                  <p><strong>Ders:</strong> {schedule.subject}</p>
+                  <p><strong>Otaq:</strong> {schedule.location}</p>
+                  <p><strong>Saat:</strong> {schedule.startTime} - {schedule.endTime}</p>
                 </div>
               ))
             ) : (

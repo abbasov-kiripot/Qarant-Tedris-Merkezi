@@ -18,7 +18,7 @@ const ProfileSchema = new mongoose.Schema({
   branch: { type: String },
   subjects: { type: String },
   imageUrl: { type: String }, // Resim URL'si için alan
-  gender: { type: String, enum: ['male', 'female', 'other'], required: true }, // Cinsiyet
+  gender: { type: String, enum: ['oğlan','OGLAN','OĞLAN','oglan', 'qız',  'qiz','QİZ','QIZ'], required: true }, // Cinsiyet
   schedule: [ClassScheduleSchema], // Kullanıcının haftalık ders programı
 }, { timestamps: true });
 

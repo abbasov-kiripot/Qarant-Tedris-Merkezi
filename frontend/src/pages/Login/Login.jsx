@@ -72,7 +72,7 @@ const Login = () => {
       <div className="login-box">
         <div>
           <h2 className="login-title">
-            Hesabınıza Giriş Yapın
+            Hesabınıza Giriş Edin
           </h2>
         </div>
         <form className="login-form" onSubmit={loginUser}>
@@ -95,7 +95,7 @@ const Login = () => {
             </div>
             <div className="input-wrapper">
               <label htmlFor="password" className="sr-only">
-                Şifre
+                Şifrə
               </label>
               <Lock className="input-icon" />
               <input
@@ -148,14 +148,14 @@ const Login = () => {
                   <path className="spinner-path" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
               ) : null}
-              {loading ? "Giriş yapılıyor..." : "Giriş Yap"}
+              {loading ? "Daxil Olunur..." : "Daxil Ol"}
             </button>
           </div>
 
           <div className="signup-link-container">
             <div className="signup-text">
               <Link to="/Results" className="signup-link">
-                Hesabınız yok mu? Kayıt olun
+                Hesabınız yok du? Qeydiyyatdan keçin
               </Link>
             </div>
           </div>

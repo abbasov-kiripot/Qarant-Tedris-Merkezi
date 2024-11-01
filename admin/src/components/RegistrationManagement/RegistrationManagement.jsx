@@ -6,21 +6,19 @@ const RegistrationManagement = () => {
   const [filteredRegistrations, setFilteredRegistrations] = useState([]);
   const [message, setMessage] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
-  const token = localStorage.getItem('token'); // Token'ı localStorage'dan alın
+  const token = localStorage.getItem('token');
 
   // Kayıtları yükle
   useEffect(() => {
     const fetchRegistrations = async () => {
-      const token = localStorage.getItem('token'); // Token'ı alın
-    
       try {
         const response = await fetch('http://localhost:8080/api/registrations', {
           method: 'GET',
           headers: {
-            'Authorization': token, // Token'ı başlığa ekleyin
+            'Authorization': `Bearer ${token}`, // Token'ı başlığa ekleyin
           },
         });
-    
+
         if (response.ok) {
           const data = await response.json();
           setRegistrations(data);
@@ -32,10 +30,9 @@ const RegistrationManagement = () => {
         setMessage('Sunucuya bağlanırken bir hata oluştu');
       }
     };
-    
 
     fetchRegistrations();
-  }, [token]); // Token değişirse yeniden yükleyin
+  }, [token]);
 
   // Arama işlemini filtreleme
   useEffect(() => {

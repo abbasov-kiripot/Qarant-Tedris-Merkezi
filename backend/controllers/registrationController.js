@@ -1,5 +1,6 @@
 // controllers/registrationController.js
 import Registration from '../models/Registration.js';
+import mongoose from 'mongoose'; // mongoose'u içe aktar
 
 // Kayıt oluşturma
 export const createRegistration = async (req, res) => {
@@ -23,21 +24,21 @@ export const getRegistrations = async (req, res) => {
 };
 
 // Kayıt silme
-export const deleteOrder = async (req, res) => {
+export const deleteRegistration = async (req, res) => { // Fonksiyon adını burayı değiştirin
   try {
     const { id } = req.params;
 
     // ID'nin geçerli bir ObjectId olup olmadığını kontrol et
     if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res.status(400).json({ message: 'Invalid order ID.' });
+      return res.status(400).json({ message: 'Invalid registration ID.' });
     }
 
-    const deletedOrder = await Order.findByIdAndDelete(id);
-    if (!deletedOrder) {
-      return res.status(404).json({ message: 'Order not found.' });
+    const deletedRegistration = await Registration.findByIdAndDelete(id); // Registration modelini kullan
+    if (!deletedRegistration) {
+      return res.status(404).json({ message: 'Registration not found.' });
     }
 
-    res.status(200).json({ message: 'Order deleted successfully.' });
+    res.status(200).json({ message: 'Registration deleted successfully.' });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

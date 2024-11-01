@@ -132,14 +132,7 @@ h2 {
   transform: translateY(-2px);
 }
 
-p:last-child {
-  text-align: center;
-  font-size: 1.4rem;
-  color: #95a5a6;
-  margin-top: 4rem;
-  font-style: italic;
-  opacity: 0.8;
-}
+
 
 @media (max-width: 1200px) {
   .contact-item {

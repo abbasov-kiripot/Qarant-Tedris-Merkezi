@@ -1,224 +1,257 @@
-/* Ana container stilleri */
-.forum-container {
-    width: 100%;
-    margin: 0 auto;
-    padding: 2rem;
-    background-color: #ffffff;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
-    border-radius: 12px;
-    margin-left: 250px;
-  }
+:root {
+  --primary-color: #2563eb;
+  --primary-hover: #1d4ed8;
+  --danger-color: #dc2626;
+  --danger-hover: #b91c1c;
+  --success-color: #16a34a;
+  --success-hover: #15803d;
+  --background-color: #f8fafc;
+  --card-background: #ffffff;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --border-color: #e2e8f0;
+  --input-background: #ffffff;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.student-management-container {
+  max-width: 100%;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  margin-left: 100px;
+  margin-top: 90px;
+}
+
+/* Form Styles */
+.student-form {
+  background-color: var(--card-background);
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 2rem;
+}
+
+.input-field {
+  margin-bottom: 1.5rem;
+}
+
+.input-field label {
+  display: block;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.375rem;
+  background-color: var(--input-background);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* Schedule Input Styles */
+.schedule-container {
+  background-color: var(--background-color);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--border-color);
+}
+
+.schedule-input {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Button Styles */
+.submit-btn,
+.add-schedule-btn,
+.remove-schedule-btn,
+.edit-btn,
+.delete-btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  transition: all 0.2s;
+  cursor: pointer;
+  border: none;
+}
+
+.submit-btn {
+  background-color: var(--primary-color);
+  color: white;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.submit-btn:hover {
+  background-color: var(--primary-hover);
+}
+
+.add-schedule-btn {
+  background-color: var(--success-color);
+  color: white;
+  margin: 1rem 0;
+}
+
+.add-schedule-btn:hover {
+  background-color: var(--success-hover);
+}
+
+.remove-schedule-btn {
+  background-color: var(--danger-color);
+  color: white;
+}
+
+.remove-schedule-btn:hover {
+  background-color: var(--danger-hover);
+}
+
+/* Search Input Styles */
+.search-input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.375rem;
+  margin-bottom: 1.5rem;
+  background-color: var(--input-background);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* Table Styles */
+.students-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background-color: var(--card-background);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.students-table th,
+.students-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.students-table th {
+  background-color: var(--background-color);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.students-table tr:hover {
+  background-color: var(--background-color);
+}
+
+.students-table td {
+  color: var(--text-secondary);
+}
+
+/* Action Buttons in Table */
+.edit-btn,
+.delete-btn {
+  padding: 0.5rem 1rem;
+  margin: 0.25rem;
+  font-size: 0.875rem;
+}
+
+.edit-btn {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.edit-btn:hover {
+  background-color: var(--primary-hover);
+}
+
+.delete-btn {
+  background-color: var(--danger-color);
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: var(--danger-hover);
+}
+
+/* Image Upload Styles */
+.image-upload {
+  margin: 1rem 0;
+  width: 100%;
   
-  /* Başlık stilleri */
-  .forum-container h2 {
-    color: #2c3e50;
-    font-size: 2.2rem;
-    margin-bottom: 2rem;
-    text-align: center;
-    font-weight: 600;
-    border-bottom: 3px solid #3498db;
-    padding-bottom: 0.5rem;
-  }
-  
-  .forum-container h3 {
-    color: #34495e;
-    font-size: 1.8rem;
-    margin: 2rem 0 1rem;
-    font-weight: 500;
-  }
-  
-  /* Form elemanları stilleri */
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    margin-top: 2rem;
-  }
-  
-  form div {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  
-  label {
-    color: #2c3e50;
-    font-weight: 500;
-    font-size: 1rem;
-  }
-  
-  input[type="text"],
-  input[type="email"],
-  input[type="tel"],
-  input[type="time"],
-  input[type="file"] {
-    padding: 0.8rem;
-    border: 2px solid #e0e0e0;
-    border-radius: 8px;
-    font-size: 1rem;
-    transition: border-color 0.3s, box-shadow 0.3s;
-  }
-  
-  input[type="text"]:focus,
-  input[type="email"]:focus,
-  input[type="tel"]:focus,
-  input[type="time"]:focus {
-    border-color: #3498db;
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
-  }
-  
-  /* Arama kutusu stilleri */
-  .search-input {
-    width: 100%;
-    padding: 1rem;
-    margin: 1rem 0;
-    border: 2px solid #e0e0e0;
-    border-radius: 8px;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-  }
-  
-  .search-input:focus {
-    border-color: #3498db;
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
-  }
-  
-  /* Buton stilleri */
-  button {
-    padding: 0.8rem 1.5rem;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    background-color: #3498db;
-    color: white;
-  }
-  
-  button[type="submit"] {
-    background-color: #2ecc71;
-    margin-top: 1rem;
-  }
-  
-  button[type="button"] {
-    background-color: #3498db;
-  }
-  
-  button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  button:disabled {
-    background-color: #bdc3c7;
-    cursor: not-allowed;
-    transform: none;
-  }
-  
-  /* Ders programı container stilleri */
-  .schedule-container {
-    background-color: #f8f9fa;
-    padding: 1.5rem;
-    border-radius: 8px;
-    margin: 1rem 0;
-    border: 1px solid #e0e0e0;
-  }
-  
+}
+.img-profile-one{
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+}
+
+.profile-image {
+  display: block;
+  margin: 1rem 0;
+  border-radius: 0.375rem;
+  box-shadow: var(--shadow-sm);
+}
+/* Error Message Styles */
+.error-message {
+  color: var(--danger-color);
+  background-color: #fee2e2;
+  padding: 1rem;
+  border-radius: 0.375rem;
+  margin-top: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
   .schedule-input {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin-bottom: 1rem;
+    grid-template-columns: 1fr;
   }
   
-  /* Öğrenci listesi stilleri */
-  .student-list {
-    list-style: none;
-    padding: 0;
-    margin: 2rem 0;
+  .students-table {
+    display: block;
+    overflow-x: auto;
   }
   
-  .student-list li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  .student-form {
     padding: 1rem;
-    margin: 0.5rem 0;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    border: 1px solid #e0e0e0;
-    transition: all 0.3s ease;
   }
-  
-  .student-list li:hover {
-    background-color: #f1f3f5;
-    transform: translateX(5px);
-  }
-  
-  .student-list button {
-    padding: 0.5rem 1rem;
-    margin-left: 0.5rem;
-  }
-  
-  .student-list button:first-of-type {
-    background-color: #f39c12;
-  }
-  
-  .student-list button:last-of-type {
-    background-color: #e74c3c;
-  }
-  
-  /* Hata mesajı stilleri */
-  .error-message {
-    color: #e74c3c;
-    background-color: #fde8e7;
-    padding: 1rem;
-    border-radius: 8px;
-    margin-top: 1rem;
-    border: 1px solid #fadbd9;
-  }
-  
-  /* Profil resmi stilleri */
-  img[alt="Profile"] {
-    border-radius: 50%;
-    object-fit: cover;
-    margin: 1rem 0;
-    border: 3px solid #3498db;
-    transition: all 0.3s ease;
-  }
-  
-  img[alt="Profile"]:hover {
-    transform: scale(1.05);
-  }
-  
-  /* Responsive tasarım */
-  @media (max-width: 768px) {
-    .forum-container {
-      padding: 1rem;
-    }
-  
-    .schedule-input {
-      grid-template-columns: 1fr;
-    }
-  
-    .student-list li {
-      flex-direction: column;
-      gap: 1rem;
-      text-align: center;
-    }
-  
-    .student-list button {
-      width: 100%;
-      margin: 0.5rem 0;
-    }
-    
-    input[type="text"],
-    input[type="email"],
-    input[type="tel"],
-    input[type="time"],
-    input[type="file"] {
-      width: 100%;
-    }
-  }
+}
+
+/* Loading State Styles */
+.submit-btn:disabled {
+  background-color: var(--text-secondary);
+  cursor: not-allowed;
+}
+
+/* Typography */
+h2 {
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+h3 {
+  color: var(--text-primary);
+  margin: 2rem 0 1rem;
+  font-weight: 500;
+}
