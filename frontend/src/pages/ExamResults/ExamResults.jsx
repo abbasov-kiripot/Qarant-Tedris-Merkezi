@@ -59,19 +59,6 @@ const ExamResults = () => {
   return (
     <div className="exam-results">
       <form className="exam-form" onSubmit={handleSubmit}>
-        <label htmlFor="exam-select" className="form-label">İmtahan Seçin:</label>
-        <select
-          id="exam-select"
-          className="form-select"
-          value={selectedExam}
-          onChange={(e) => setSelectedExam(e.target.value)}
-          required
-        >
-          <option value="" disabled>Seçin</option>
-          {exams.map((exam, index) => (
-            <option key={index} value={exam}>{exam}</option>
-          ))}
-        </select>
 
         <label htmlFor="job-number" className="form-label">İş Nömrəsi:</label>
         <input
@@ -93,7 +80,6 @@ const ExamResults = () => {
       {
         results.length ? <div className="results-display">
           <h3>İMTAHAN NƏTİCƏLƏRİ</h3>
-          <p><strong>İmtahan:</strong> {selectedExam}</p>
           <p><strong>İş Nömrəsi:</strong> {jobNumber}</p>
           <p><strong>İmtahan Tarixi:</strong> {examDate}</p>
           <p><strong>Toplam Puan:</strong> {score}</p>

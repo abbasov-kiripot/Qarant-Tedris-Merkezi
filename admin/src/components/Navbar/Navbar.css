@@ -14,6 +14,18 @@
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.logout-button {
+  cursor: pointer;
+  color: #fff; /* İkon rengini beyaz yapabilirsiniz */
+  margin-left: auto; /* Sağ tarafa itmek için */
+  padding: 10px;
+}
+
+.logout-button:hover {
+  color: #f00; /* Hover rengini kırmızı yaparak çıkış ikonuna dikkat çekebilirsiniz */
+}
+
+
 .navbar-logo img {
   width: 79px;
   transition: var(--transition);

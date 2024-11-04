@@ -155,7 +155,7 @@ const Login = () => {
           <div className="signup-link-container">
             <div className="signup-text">
               <Link to="/Results" className="signup-link">
-                Hesabınız yok du? Qeydiyyatdan keçin
+                Hesabınız yox du? Qeydiyyatdan keçin
               </Link>
             </div>
           </div>

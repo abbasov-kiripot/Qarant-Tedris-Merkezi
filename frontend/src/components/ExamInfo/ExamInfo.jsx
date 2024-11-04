@@ -66,7 +66,7 @@ const ExamInfo = () => {
         <h3>İmtahan Nəticələri</h3>
         <Link to="/ExamResults">Yoxlayın</Link>
       </div>
-      <h2>Biletinizi indi asanlıqla 1 kliklə alın!</h2>
+      <h2 id="bletsatisi">Biletinizi indi asanlıqla 1 kliklə alın!</h2>
       <div className="container-info">
         <div className="select-section">
           <input

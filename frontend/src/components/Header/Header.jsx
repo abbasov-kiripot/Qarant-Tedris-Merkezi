@@ -12,7 +12,7 @@ const Header = () => {
         <div className="header-contents">
             <h2>Onlayn imtahan sınaq biletinizi əldə edin!</h2>
             <p className="regs" >TƏHSİLDƏ QARANT BİZİK!</p>
-            <button onClick={()=>navigate("/PlaceOrder")} >Bilet satışı</button>
+            <a href="#bletsatisi"><button>Bilet satışı</button></a>
         </div>
       </div>
     </div>
