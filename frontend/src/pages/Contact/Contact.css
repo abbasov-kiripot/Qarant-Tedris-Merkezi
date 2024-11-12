@@ -1,95 +1,183 @@
 .Contact {
-  text-align: start;
-}
-
-.AH-1 {
-  font-size: 40px;
-  padding-left: 400px;
-  font-weight: 500;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: "Inter", sans-serif;
+  min-height: 70vh;
+  margin-top: -70px;
+  margin-bottom: -150px;
 }
 
 .Contact-header {
-  padding: 20px;
-  color: #019BBD;
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem 0;
+}
+
+.AH-1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2d3436;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.AH-1::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 3px;
+  background: linear-gradient(to right, #6c5ce7, #a8a4e6);
+  border-radius: 2px;
 }
 
 .contact-form {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 16%;
-  padding: 15px;
-  border: 1px solid #019BBD;
-  border-radius: 10px;
-  max-width: 400px;
+  max-width: 800px;
+  margin: 0 auto 4rem;
+  padding: 2.5rem;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.contact-form:hover {
+  transform: translateY(-5px);
 }
 
 .contact-form label {
-  margin-bottom: 15px;
-  width: 100%;
-  opacity: 95%;
+  display: block;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  color: #4a5568;
 }
 
 .contact-form input,
 .contact-form select,
 .contact-form textarea {
   width: 100%;
-  padding: 10px;
-  margin-top: 5px;
-  border: 1px solid #019BBD;
-  border-radius: 5px;
+  padding: 0.8rem 1rem;
+  margin-top: 0.5rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: #f8fafc;
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #6c5ce7;
+  box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.1);
+  background: white;
+}
+
+.contact-form textarea {
+  min-height: 150px;
+  resize: vertical;
 }
 
 .contact-form button {
-  padding: 10px 20px;
-  background-color: #007bff;
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(135deg, #6c5ce7 0%, #a8a4e6 100%);
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .contact-form button:hover {
-  background-color: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4);
 }
 
-.success-message {
-  color: rgb(255, 255, 255);
-  font-size: 18px;
-  font-weight: bold;
-  text-align: center;
-  animation: fadeIn 0.5s ease-in-out;position: fixed;
-  top: 100px;
-  right: 650px;
-  padding: 15px 55px;
-  background-color: green;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px -1px black;
+.contact-form button:active {
+  transform: translateY(0);
+}
 
+
+
+.success-message {
+  background: #4ade80;
+  color: white;
+  padding: 1rem;
+  border-radius: 10px;
+  text-align: center;
+  margin-top: 1rem;
+  animation: slideIn 0.5s ease;
 }
 
 .error-message {
-  color: red;
-  font-size: 18px;
-  font-weight: bold;
+  background: #ef4444;
+  color: white;
+  padding: 1rem;
+  border-radius: 10px;
   text-align: center;
-  margin-top: 20px;
-  animation: fadeIn 0.5s ease-in-out;
-
+  margin-top: 1rem;
+  animation: slideIn 0.5s ease;
 }
 
-@keyframes fadeIn {
-  0% {
+@keyframes slideIn {
+  from {
+    transform: translateY(-10px);
     opacity: 0;
   }
-  100% {
+  to {
+    transform: translateY(0);
     opacity: 1;
   }
 }
 
-.map-container {
-  margin: 20px auto;
-  max-width: 600px;
-  display: flex;
-  margin-left: 50%;
-  margin-top: -53%;
+/* Responsive Tasarım */
+@media (max-width: 768px) {
+  .Contact {
+    padding: 1rem;
+  }
+
+  .AH-1 {
+    font-size: 2rem;
+  }
+
+  .contact-form {
+    padding: 1.5rem;
+  }
+
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    padding: 0.7rem;
+  }
+
+  .map-container iframe {
+    height: 350px;
+  }
+}
+
+@media (max-width: 480px) {
+  .AH-1 {
+    font-size: 1.8rem;
+  }
+
+  .contact-form {
+    padding: 1rem;
+  }
+
+  .map-container iframe {
+    height: 300px;
+  }
+}
+
+/* Özel Seçim Rengi */
+::selection {
+  background: rgba(108, 92, 231, 0.2);
+  color: #2d3436;
 }

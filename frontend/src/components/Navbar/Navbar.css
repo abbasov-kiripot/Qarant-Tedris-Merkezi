@@ -149,12 +149,43 @@ span {
 }
 
 .profile-card {
-  width: 100px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
   display: flex;
-  border-radius:5px;
   justify-content: center;
   align-items: center;
-  background-color: #019bbd;
+  background-color: #62B1CF;
   color: #ffffff;
+  font-size: 25px;
+  
+  /* Smooth transition efekti */
+  transition: all 0.3s ease;
+  
+  /* Başlangıç gölgesi */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+  /* Cursor efekti */
+  cursor: pointer;
+}
+
+/* Hover durumundaki efektler */
+.profile-card:hover {
+  /* Büyüme efekti */
+  transform: scale(1.1);
+  
+  /* Hover durumunda daha belirgin gölge */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  
+  /* Hafif parlaklık efekti */
+  filter: brightness(1.1);
+  
+  /* Hover'da arka plan rengi değişimi */
+  background-color: #4a8ea6;
+}
+
+/* Tıklama efekti */
+.profile-card:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }

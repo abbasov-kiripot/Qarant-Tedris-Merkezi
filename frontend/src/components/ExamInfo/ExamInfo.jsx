@@ -57,11 +57,6 @@ const ExamInfo = () => {
         <Link to="/MED">Detallar</Link>
       </div>
       <div className="info-items">
-        <img src="https://www.zefer.edu.az/frq-templates/assets/images/icons/book.png" alt="Mock Exam Topics" />
-        <h3>Sınaq imtahan mövzuları</h3>
-        <Link to="/MET">Detallar</Link>
-      </div>
-      <div className="info-items">
         <img src="https://www.zefer.edu.az/frq-templates/images/examresults.png" alt="Exam Results" />
         <h3>İmtahan Nəticələri</h3>
         <Link to="/ExamResults">Yoxlayın</Link>
@@ -94,7 +89,7 @@ const ExamInfo = () => {
               setLink(`/PlaceOrder?date=${examDate}&city=${city}&type=${examType}&price=${prices[examType]}`);
             }
           }}>
-            <Link to={link}>Go to Details</Link>
+            <Link to={link}>Təsdiklə</Link>
           </button>
         </div>
       </div>

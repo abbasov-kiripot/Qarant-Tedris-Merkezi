@@ -6,6 +6,8 @@ import { MdEmail } from "react-icons/md";
 import { FaSquareTwitter } from "react-icons/fa6";
 import { FaFacebook } from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai";
+import { AiOutlineUser } from "react-icons/ai";
+
 import scroolTOTop from "../../provider/scroolTOTop";
 
 const Navbar = () => {
@@ -76,6 +78,12 @@ const Navbar = () => {
           <Link to="/exam" onClick={scroolTOTop}>Qeydiyyat</Link>
         </li>
         <li
+          onClick={() => setMenu("Instructors")}
+          className={menu === "Instructors" ? "active" : ""}
+        >
+          <Link to="/Instructors" onClick={scroolTOTop}>Təlimçilərimiz</Link>
+        </li>
+        <li
           onClick={() => setMenu("about us")}
           className={menu === "about us" ? "active" : ""}
         >
@@ -117,7 +125,7 @@ const Navbar = () => {
       </div>
       <Link to={getProfileLink()}>
         <div className="profile-card">
-          KABİNET
+        <AiOutlineUser />
         </div>
       </Link>
     </div>

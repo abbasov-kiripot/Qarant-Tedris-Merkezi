@@ -9,7 +9,7 @@
   border-radius: 10px;
   opacity: 0; /* Başlangıçta görünmez */
   transform: translateY(20px); /* Başlangıçta biraz yukarıda */
-  transition: opacity 1s ease, transform 1s ease; /* Yumuşak geçişler */
+  transition: opacity 1s ease, transform 2s ease; /* Yumuşak geçişler */
 }
 
 /* Görünür hale geldiğinde uygulanacak stil */
@@ -37,6 +37,7 @@
 }
 
 .info-items {
+  flex-wrap: wrap;
   display: inline-block;
   margin: 20px;
   text-align: center;

@@ -37,7 +37,7 @@ const Preparation = () => {
   return (
     <div className="masters-preparation-container">
       <h1 className="title">Magistr hazırlığı</h1>
-      <div className="stages">
+      <div className="stages-Pre">
         {stages.map((stage) => (
           <div className="stage" key={stage._id}>
             <h2>{stage.title}</h2>

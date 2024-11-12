@@ -1,55 +1,87 @@
-/* Container Style */
 .flt-container {
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 30px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    border-radius: 12px;
-    margin-bottom: 30px;
-    margin-top: -40px;
-}
-
-/* Title Style */
-.title {
+    padding: 2rem;
+  }
+  
+  .title-flt {
     text-align: center;
-    font-size: 2.8em;
     color: #333;
-    margin-bottom: 30px;
-    font-weight: 700;
-}
-
-/* Stages Container Style */
-.stages {
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+  }
+  
+  .stages-FLT {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    perspective: 1000px;
+  }
+  
+  .stage-FLT {
+    background: transparent;
+    height: 200px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+  }
+  
+  .stage-FLT:hover {
+    transform: rotateY(180deg);
+  }
+  
+  .stage-FLT h2,
+  .stage-FLT p {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
     display: flex;
-    flex-direction: column;
-    gap: 30px;
-}
-
-/* Stage Style */
-.stage {
-    background: #f9f9f9;
-    padding: 30px;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
     border-radius: 12px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, background 0.3s ease;
-}
-
-.stage:hover {
-    transform: translateY(-8px);
-    background: #f1f3f5;
-}
-
-/* Stage Header Style */
-.stage h2 {
-    font-size: 1.8em;
+    text-align: center;
+  }
+  
+  .stage-FLT h2 {
+    background: linear-gradient(135deg, #62B1CF, #62B1CF);
+    color: white;
+    font-size: 1.5rem;
+    transform: rotateY(0deg);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+                0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+  
+  .stage-FLT p {
+    background: white;
     color: #333;
-    margin-bottom: 20px;
-    font-weight: 600;
-}
-
-/* Stage Paragraph Style */
-.stage p {
-    font-size: 1.1em;
-    color: #555;
-    line-height: 1.7;
-    margin: 0;
-}
+    transform: rotateY(180deg);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+                0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    line-height: 1.6;
+  }
+  
+  /* Loading state styling */
+  .flt-container > div:first-child {
+    text-align: center;
+    padding: 2rem;
+    font-size: 1.2rem;
+    color: #0077b6;
+  }
+  
+  /* Error state styling */
+  .flt-container > div:first-child.error {
+    color: #dc2626;
+  }
+  
+  @media (max-width: 768px) {
+    .title {
+      font-size: 2rem;
+    }
+    
+    .stages-FLT {
+      grid-template-columns: 1fr;
+    }
+  }

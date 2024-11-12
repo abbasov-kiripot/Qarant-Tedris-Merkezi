@@ -1,94 +1,106 @@
-/* Container Style */
 .school-container {
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 40px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    border-radius: 20px;
-    margin-bottom: 40px;
-    position: relative;
-    overflow: hidden;
-    margin-top: -50px;
-    margin-left: 10px;
-}
+    padding: 2rem;
+    margin-top: -80px;
+    margin-bottom: -50px;
 
-/* Title Style */
-.title {
+  }
+  
+  .title-school {
     text-align: center;
-    font-size: 2.5em;
     color: #333;
-    margin-bottom: 40px;
-    letter-spacing: 2px;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    margin-bottom: 55px;
+  }
+  .School-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    padding: 2rem 0;
     position: relative;
-}
-
-/* Adding a subtle underline */
-.title::after {
+  }
+  
+  .School-header h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #2d3436;
+    margin-bottom: 1rem;
+    letter-spacing: -0.5px;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .School-header p::after {
     content: '';
-    display: block;
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
     width: 60px;
     height: 4px;
-    margin: 10px auto;
+    background: linear-gradient(to right, #6c5ce7, #a8a4e6);
     border-radius: 2px;
-    transform: scaleX(0);
-    transition: transform 0.7s ease; /* Slower transition */
-}
-
-.title:hover::after {
-    transform: scaleX(1);
-}
-
-/* Stages Container Style */
-.stages {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-}
-
-/* Stage Style */
-.stage {
-    padding: 30px;
-    border-radius: 20px;
-    transition: transform 1s ease, box-shadow 1s ease; /* Slower transition */
+  }
+  .stages-School {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    perspective: 1000px;
+    flex-wrap: wrap;
+  }
+  
+  .stage-school {
+    background: transparent;
+    height: 200px;
     position: relative;
-    overflow: hidden;
-}
-
-/* Hover Effect for Stages */
-.stage:hover {
-    transform: translateY(-10px); /* Slightly larger lift effect */
-}
-
-/* Adding a hover effect to the stage header */
-.stage h2 {
-    font-size: 1.8em;
-    color: #333;
-    margin-bottom: 20px;
-    font-weight: 700;
-    position: relative;
-    transition: color 0.5s ease; /* Slower transition */
-}
-
-
-
-/* Stage Paragraph Style */
-.stage p {
-    font-size: 1.1em;
-    color: #666;
-    line-height: 1.6;
-    margin: 0;
-    position: relative;
-    padding-left: 20px;
-}
-
-/* Adding a subtle left border to paragraphs */
-.stage p::before {
-    content: '';
-    display: block;
-    width: 4px;
-    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+  }
+  
+  .stage-school:hover {
+    transform: rotateY(180deg);
+  }
+  
+  .stage-school h2,
+  .stage-school p {
     position: absolute;
-    left: 0;
-    top: 0;
-    border-radius: 2px;
-    transition: background-color 1s ease; /* Slower transition */
-}
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+  }
+  
+  .stage-school h2 {
+    background: linear-gradient(135deg, #62B1CF, #62B1CF);
+    color: white;
+    font-size: 1.5rem;
+    transform: rotateY(0deg);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+                0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+  
+  .stage-school p {
+    background: white;
+    color: #333;
+    transform: rotateY(180deg);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+                0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    line-height: 1.6;
+  }
+  
+  @media (max-width: 768px) {
+    .title {
+      font-size: 2rem;
+    }
+    
+    .stages {
+      grid-template-columns: 1fr;
+    }
+  }

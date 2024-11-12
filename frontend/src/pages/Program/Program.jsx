@@ -5,7 +5,7 @@ const Program = () => {
     return (
         <div className="miq-container">
             <h1 className="title">Ofis Proqramları</h1>
-            <div className="stages">
+            <div className="stages-Pro">
                 <div className="stage">
                     <h2>Proqram Məsləhətləri</h2>
                     <p>Ofis proqramları üçün effektiv istifadə məsləhətləri.</p>

@@ -19,11 +19,11 @@ function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     const serviceID = 'service_br9gu7n';
     const templateID = 'template_9u8s6ja';
-    const userID = 'AyP_QIfgP8PlN1YMp'; 
-    
+    const userID = 'AyP_QIfgP8PlN1YMp';
+
     const templateParams = {
       name: formData.name,
       service: formData.service,
@@ -31,15 +31,15 @@ function Contact() {
       email: formData.email,
       message: formData.message,
     };
-    
+
     try {
       await emailjs.send(serviceID, templateID, templateParams, userID)
-      .then(res => {
-        if (res.status === 200){
-          alert("Tebrikler");
-        }
-      });
-      
+        .then(res => {
+          if (res.status === 200) {
+            alert("Tebrikler");
+          }
+        });
+
       setStatus('Message sent successfully via email!');
     } catch (error) {
       setStatus('Error sending email message');
@@ -81,42 +81,46 @@ function Contact() {
   return (
     <div className="Contact">
       <header className="Contact-header">
-        <span className='AH-1'> CONTACT US </span>
+        <span className='AH-1'> Bizimlə əlaqə </span>
       </header>
       <form className="contact-form" onSubmit={handleSubmit}>
         <label>
-          Name and Surname*
+          Ad və Soyad*
           <input
             type="text"
             name="name"
             value={formData.name}
             onChange={handleChange}
-            placeholder="Name and Surname"
+            placeholder="Ad və Soyad"
             required
           />
         </label>
         <label>
-          Service *
+          Xidmət *
           <select
             name="service"
             value={formData.service}
             onChange={handleChange}
             required
           >
-            <option value="" disabled>Select a service</option>
-            <option value="service1">Service 1</option>
-            <option value="service2">Service 2</option>
-            <option value="service3">Service 3</option>
+            <option value="" disabled>Xidmət seçin</option>
+            <option value="service1">Kursa necə qoşula bilərəm?</option>
+            <option value="service4">Dərslər hansı günlərdə keçirilir?</option>
+            <option value="service2">Kursun ödəniş qaydaları necədir?</option>
+            <option value="service5">Kursun materiallarını necə əldə edə bilərəm?</option>
+            <option value="service3">Kurs müəllimləri haqqında məlumat verə bilərsinizmi?</option>
+
           </select>
         </label>
+
         <label>
-          Phone *
+          Telefon nömrəsi *
           <input
             type="tel"
             name="phone"
             value={formData.phone}
             onChange={handleChange}
-            placeholder="Phone"
+            placeholder="Telefon nömrəsi "
             required
           />
         </label>
@@ -133,30 +137,20 @@ function Contact() {
         </label>
 
         <label>
-          Your message *
+          Əlavə qeyd *
           <textarea
             name="message"
             value={formData.message}
             onChange={handleChange}
-            placeholder="Your message"
+            placeholder="Əlavə təkliflər və iradlarinizi bildirə bilərsiniz"
             required
           ></textarea>
         </label>
-        <button type="submit">Send</button>
+        <button type="submit">Göndər</button>
 
         {status && <p className={status === 'Uğurla Göndərildi!' ? 'success-message' : 'error-message'}>{status}</p>}
       </form>
-      <div className="map-container">
-        <iframe
-          title="Google Maps"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9008.323712099676!2d50.09334948311802!3d40.448236528442315!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4030610002e54c89%3A0x16d2da375b1e5edd!2zSMmZZMmZZiBLaXRhYiBFdmk!5e0!3m2!1str!2saz!4v1725663975334!5m2!1str!2saz"
-          width="600"
-          height="450"
-          style={{ border: 0 }}
-          allowFullScreen=""
-          loading="lazy"
-        ></iframe>
-      </div>
+
     </div>
   );
 }

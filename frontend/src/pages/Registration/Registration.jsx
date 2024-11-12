@@ -17,7 +17,7 @@ const Registration = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     const registrationData = {
       email,
       exam,
@@ -31,7 +31,7 @@ const Registration = () => {
       birthMonth: parseInt(birthMonth, 10),
       birthYear: parseInt(birthYear, 10),
     };
-  
+
     try {
       const response = await fetch('http://localhost:8080/api/registrations', {
         method: 'POST',
@@ -40,7 +40,7 @@ const Registration = () => {
         },
         body: JSON.stringify(registrationData)
       });
-  
+
       if (response.ok) {
         setMessage('Registration successful!');
         // Reset form fields
@@ -73,28 +73,40 @@ const Registration = () => {
       console.log('Request completed');
     }
   };
-  
-  
-  
+
+
+
   return (
     <div className="online-exam-portal">
       <h2>Qeydiyyat formu</h2>
       <form onSubmit={handleSubmit}>
         <select value={exam} onChange={(e) => setExam(e.target.value)}>
-          <option value="">İmtahan seçin</option>
-          <option value="Exam1">Exam1</option>
-          <option value="Exam2">Exam2</option>
+          <option value="">Qurup seçin</option>
+          <option value="SAT">SAT</option>
+          <option value="IELTS">IELTS</option>
+          <option value="TOEFL">TOEFL</option>
+          <option value="GRE">GRE</option>
+          <option value="GMAT">GMAT</option>
         </select>
+
         <select value={direction} onChange={(e) => setDirection(e.target.value)}>
           <option value="">İstiqamət seçin</option>
-          <option value="Direction1">Direction1</option>
-          <option value="Direction2">Direction2</option>
+          <option value="Humanities">Humanitar fənlər</option>
+          <option value="STEM">STEM (Elmlər, Texnologiya, Mühəndislik, Riyaziyyat)</option>
+          <option value="Arts">İncəsənət</option>
+          <option value="Business">Biznes və İdarəetmə</option>
+          <option value="Law">Hüquq</option>
         </select>
+
         <select value={city} onChange={(e) => setCity(e.target.value)}>
-          <option value="">Fillial seçin</option>
-          <option value="City1">City1</option>
-          <option value="City2">City2</option>
+          <option value="">Filial seçin</option>
+          <option value="Baku">Bakı</option>
+          <option value="Ganja">Gəncə</option>
+          <option value="Sumqayit">Sumqayıt</option>
+          <option value="Nakhchivan">Naxçıvan</option>
+          <option value="Shaki">Şəki</option>
         </select>
+
         <input
           type="text"
           placeholder="Ad"

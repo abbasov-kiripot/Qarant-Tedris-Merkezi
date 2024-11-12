@@ -37,7 +37,7 @@ function Profile() {
           )}
         </div>
         <h2 className="name">{profileData.fullName || "Kullanıcı Adı"}</h2>
-        <p className="title">{profileData.group || "Pozisyon"}</p>
+        <p className="title-one">{profileData.group || "Pozisyon"}</p>
         <p className="location">{profileData.branch || "Lokasyon"}</p>
       </div>
 

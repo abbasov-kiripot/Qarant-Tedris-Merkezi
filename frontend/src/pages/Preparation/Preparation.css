@@ -21,7 +21,7 @@
 }
 
 /* Stages Container Style */
-.stages {
+.stages-Pre {
     display: flex;
     flex-direction: column;
     gap: 30px;

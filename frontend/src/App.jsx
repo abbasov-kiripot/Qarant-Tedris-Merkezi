@@ -30,6 +30,9 @@ import Biology from "./pages/Biology/Biology";
 import Login from "./pages/Login/Login";
 import Terms from "./pages/Terms/Terms";
 import Profile from "./pages/profile/profile";
+import GoogleMap from "./components/GoogleMap/GoogleMap";
+import Testimonial from "./components/Testimonial/Testimonial";
+import Instructors from "./pages/Instructors/Instructors";
 
 const App = () => {
   return (
@@ -61,6 +64,10 @@ const App = () => {
           <Route path="/Biology" element={<Biology />} />
           <Route path="/Terms" element={<Terms/>}/>
           <Route path="/Profile" element={<Profile/>}/>
+          <Route path="/GoogleMap" element={<GoogleMap/>}/>
+          <Route path="/Testimonial" element={<Testimonial/>}/>
+          <Route path="/Instructors" element={<Instructors/>}/>
+
         </Route>
       </Routes>
     </div>

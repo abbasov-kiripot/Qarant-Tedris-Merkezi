@@ -151,7 +151,7 @@ const EventAndContact = () => {
         )}
       </div>
       <div className="contact-forms" data-aos="fade-left" data-aos-duration="2000" >
-        <h2>Onlayn müraciət</h2>
+        <h2>Təkliflər və İradlar</h2>
         <form onSubmit={handleSubmit}>
           <input
             type="text"
@@ -162,7 +162,8 @@ const EventAndContact = () => {
           />
           <select name="service" value={formData.service} onChange={handleChange}>
             <option value="">Xidmət Seçin</option>
-            <option value="general">General</option>
+            <option value="general">Kurs tələbəsiyəm</option>
+            <option value="general">Kurs tələbəsi deyiləm</option>
             {/* Add other options here */}
           </select>
           <input
